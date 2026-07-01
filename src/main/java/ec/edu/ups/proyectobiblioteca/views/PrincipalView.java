@@ -53,9 +53,6 @@ public class PrincipalView extends javax.swing.JFrame {
         ActualizarUsuarioMenuItem = new javax.swing.JMenuItem();
         BuscarUsuarioMenuItem = new javax.swing.JMenuItem();
         ListarUsuarioMenuItem = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,17 +147,6 @@ public class PrincipalView extends javax.swing.JFrame {
         UsuariosMenu.add(ListarUsuarioMenuItem);
 
         jMenuBar2.add(UsuariosMenu);
-
-        jMenu1.setText("Idioma");
-
-        jMenuItem1.setText("Español");
-        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Inglés");
-        jMenu1.add(jMenuItem2);
-
-        jMenuBar2.add(jMenu1);
 
         setJMenuBar(jMenuBar2);
 
@@ -260,9 +246,6 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenu PrestamoMenu;
     private javax.swing.JMenu UsuariosMenu;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }
