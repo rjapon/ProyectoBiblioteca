@@ -4,22 +4,17 @@
  */
 package ec.edu.ups.proyectobiblioteca.dao;
 
-import ec.edu.ups.proyectobiblioteca.models.Libro;
+import ec.edu.ups.proyectobiblioteca.models.Autor;
 import java.util.List;
 
 /**
  *
- * @author Asus
+ * @author mateo
  */
-public interface LibroDAO {
-      void crear(Libro libro);
-
-    Libro buscar(String isbn);
-
-    void actualizar(String isbn, Libro libro);
-
-    void eliminar(String isbn);
-
-    List<Libro> listar();
-    
+public interface AutorDAO {
+    void crear(Autor autor);
+    Autor buscar(int codigo);
+    void actualizar(int codigo, Autor autor);
+    void eliminar(int codigo);
+    List<Autor>listar();
 }

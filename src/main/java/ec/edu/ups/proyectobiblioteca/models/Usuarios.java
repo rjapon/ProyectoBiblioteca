@@ -11,16 +11,14 @@ package ec.edu.ups.proyectobiblioteca.models;
 public class Usuarios {
     private String nombre;
     private String cedula;
-    private String correo;
     private String telefono;
     
  
     
 
-    public Usuarios(String nombre, String cedula, String correo, String telefono) {
+    public Usuarios(String nombre, String cedula,String telefono) {
         this.nombre = nombre;
         this.cedula = cedula;
-        this.correo = correo;
         this.telefono = telefono;
     }
     
@@ -43,13 +41,6 @@ public class Usuarios {
         this.cedula = cedula;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
 
     public String getTelefono() {
         return telefono;
@@ -61,7 +52,7 @@ public class Usuarios {
 
     @Override
     public String toString() {
-        return "Persona{" + "nombre=" + nombre + ", cedula=" + cedula + ", correo=" + correo + ", telefono=" + telefono + '}';
+        return "Persona{" + "nombre=" + nombre + ", cedula=" + cedula + ", telefono=" + telefono + '}';
     }
 }
     
