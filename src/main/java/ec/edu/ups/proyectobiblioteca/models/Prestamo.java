@@ -4,10 +4,19 @@
  */
 package ec.edu.ups.proyectobiblioteca.models;
 
+import java.util.Date;
+
 /**
  *
  * @author Asus
  */
 public class Prestamo {
-    
+
+    private int codigo;
+    private Date fechaPrestamo;
+    private Date fechaDevolucion;
+    private String estado;
+    private Libro libro;
+    private Usuarios usuario;
+
 }

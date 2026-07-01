@@ -46,6 +46,7 @@ public class PrincipalView extends javax.swing.JFrame {
         AgregarAutorMenuItem = new javax.swing.JMenuItem();
         EliminarAutorMenuItem = new javax.swing.JMenuItem();
         ActualizarAutorMenuItem = new javax.swing.JMenuItem();
+        ListarLibroAutorMenuItem = new javax.swing.JMenuItem();
         UsuariosMenu = new javax.swing.JMenu();
         AgregarUsuarioMenuItem = new javax.swing.JMenuItem();
         EliminarUsuarioMenuItem = new javax.swing.JMenuItem();
@@ -120,6 +121,10 @@ public class PrincipalView extends javax.swing.JFrame {
         ActualizarAutorMenuItem.setText("Actualizar");
         AutorMenu.add(ActualizarAutorMenuItem);
 
+        ListarLibroAutorMenuItem.setText("Listar Libros");
+        ListarLibroAutorMenuItem.addActionListener(this::ListarLibroAutorMenuItemActionPerformed);
+        AutorMenu.add(ListarLibroAutorMenuItem);
+
         jMenuBar2.add(AutorMenu);
 
         UsuariosMenu.setText("Usuarios");
@@ -187,6 +192,10 @@ public class PrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ListarPrestamoMenuItemActionPerformed
 
+    private void ListarLibroAutorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarLibroAutorMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ListarLibroAutorMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,6 +239,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem EliminarPrestamoMenuItem;
     private javax.swing.JMenuItem EliminarUsuarioMenuItem;
     private javax.swing.JMenu LibroMenu;
+    private javax.swing.JMenuItem ListarLibroAutorMenuItem;
     private javax.swing.JMenuItem ListarLibroMenuItem;
     private javax.swing.JMenuItem ListarPrestamoMenuItem;
     private javax.swing.JMenuItem ListarUsuarioMenuItem;
