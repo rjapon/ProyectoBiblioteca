@@ -4,10 +4,23 @@
  */
 package ec.edu.ups.proyectobiblioteca.dao;
 
+import ec.edu.ups.proyectobiblioteca.models.Usuarios;
+import java.util.List;
+
 /**
  *
  * @author Asus
  */
 public interface UsuarioDAO {
-    
+
+     void crear(Usuarios usuario);
+
+    Usuarios buscar(String cedula);
+
+    void actualizar(String cedula, Usuarios usuario);
+
+    void eliminar(String cedula);
+
+    List<Usuarios> listar();
+
 }
