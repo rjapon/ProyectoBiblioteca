@@ -42,6 +42,9 @@ public class EliminarAutorView extends javax.swing.JInternalFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
+        setClosable(true);
+        setTitle("Eliminar Autor");
+
         jLabel1.setText("Codigo");
 
         jLabel2.setText("Nombre:");
