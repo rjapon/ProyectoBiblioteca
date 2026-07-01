@@ -27,16 +27,139 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        lblCodigoActualizar = new javax.swing.JLabel();
+        txtCodigoActualizar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        lblUsuarioActualizar = new javax.swing.JLabel();
+        txtUsuarioActualizar = new javax.swing.JTextField();
+        lblLibroActualizar = new javax.swing.JLabel();
+        txtLibroActualizar = new javax.swing.JTextField();
+        lblFechaActualizar = new javax.swing.JLabel();
+        txtFechaActualizar = new javax.swing.JTextField();
+        lblFechaDevActualizar = new javax.swing.JLabel();
+        txtFechaDevActualizar = new javax.swing.JTextField();
+        btnAceptar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        lblLectura1 = new javax.swing.JLabel();
+        lblLectura2 = new javax.swing.JLabel();
+        lblLectura3 = new javax.swing.JLabel();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Actualizar Prestamo");
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actualizar datos del prestamo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Bright", 0, 12))); // NOI18N
+
+        lblCodigoActualizar.setText("Ingrese el codigo del prestamo:");
+
+        btnBuscar.setText("Buscar");
+
+        lblUsuarioActualizar.setText("Usuario:");
+
+        txtUsuarioActualizar.setEditable(false);
+
+        lblLibroActualizar.setText("Libro:");
+
+        txtLibroActualizar.setEditable(false);
+
+        lblFechaActualizar.setText("Fecha del prestamo:");
+
+        txtFechaActualizar.setEditable(false);
+
+        lblFechaDevActualizar.setText("Fecha de devolución:");
+
+        btnAceptar.setText("Aceptar");
+
+        btnCancelar.setText("Cancelar");
+
+        lblLectura1.setText("(solo lectura)");
+
+        lblLectura2.setText("(solo lectura)");
+
+        lblLectura3.setText("(solo lectura)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblFechaDevActualizar)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtFechaDevActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblFechaActualizar)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtFechaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblLectura3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblCodigoActualizar)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblUsuarioActualizar)
+                                    .addComponent(lblLibroActualizar))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtUsuarioActualizar)
+                                    .addComponent(txtLibroActualizar))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCodigoActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblLectura2)
+                                    .addComponent(lblLectura1))
+                                .addGap(171, 171, 171)))))
+                .addContainerGap(46, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(btnAceptar)
+                .addGap(75, 75, 75)
+                .addComponent(btnCancelar)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 262, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCodigoActualizar)
+                    .addComponent(txtCodigoActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUsuarioActualizar)
+                    .addComponent(txtUsuarioActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLectura1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLibroActualizar)
+                    .addComponent(txtLibroActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLectura2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFechaActualizar)
+                    .addComponent(txtFechaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLectura3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFechaDevActualizar)
+                    .addComponent(txtFechaDevActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAceptar)
+                    .addComponent(btnCancelar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -61,6 +184,22 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblCodigoActualizar;
+    private javax.swing.JLabel lblFechaActualizar;
+    private javax.swing.JLabel lblFechaDevActualizar;
+    private javax.swing.JLabel lblLectura1;
+    private javax.swing.JLabel lblLectura2;
+    private javax.swing.JLabel lblLectura3;
+    private javax.swing.JLabel lblLibroActualizar;
+    private javax.swing.JLabel lblUsuarioActualizar;
+    private javax.swing.JTextField txtCodigoActualizar;
+    private javax.swing.JTextField txtFechaActualizar;
+    private javax.swing.JTextField txtFechaDevActualizar;
+    private javax.swing.JTextField txtLibroActualizar;
+    private javax.swing.JTextField txtUsuarioActualizar;
     // End of variables declaration//GEN-END:variables
 }

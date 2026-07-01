@@ -52,7 +52,7 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
         jPanel1.setBackground(java.awt.Color.pink);
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agregar un nuevo Libro\n", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Bright", 0, 12))); // NOI18N
 
-        lblISBNAgregar.setText("Ingrese el ISBN:");
+        lblISBNAgregar.setText("Ingrese el ISBN del libro:");
 
         lblTituloAgregar.setText("Titulo:");
 
@@ -101,7 +101,7 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
                         .addComponent(temporal, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtEditorialAgregar, javax.swing.GroupLayout.Alignment.LEADING))
                     .addComponent(btnCancelar))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblDateFormatAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
