@@ -103,6 +103,14 @@
                 <Property name="text" type="java.lang.String" value="Actualizar"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="ListarLibroAutorMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar Libros"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListarLibroAutorMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="UsuariosMenu">
@@ -139,26 +147,6 @@
             <MenuItem class="javax.swing.JMenuItem" name="ListarUsuarioMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listar"/>
-              </Properties>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Idioma"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Espa&#xf1;ol"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ingl&#xe9;s"/>
               </Properties>
             </MenuItem>
           </SubComponents>

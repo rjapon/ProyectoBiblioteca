@@ -46,15 +46,13 @@ public class PrincipalView extends javax.swing.JFrame {
         AgregarAutorMenuItem = new javax.swing.JMenuItem();
         EliminarAutorMenuItem = new javax.swing.JMenuItem();
         ActualizarAutorMenuItem = new javax.swing.JMenuItem();
+        ListarLibroAutorMenuItem = new javax.swing.JMenuItem();
         UsuariosMenu = new javax.swing.JMenu();
         AgregarUsuarioMenuItem = new javax.swing.JMenuItem();
         EliminarUsuarioMenuItem = new javax.swing.JMenuItem();
         ActualizarUsuarioMenuItem = new javax.swing.JMenuItem();
         BuscarUsuarioMenuItem = new javax.swing.JMenuItem();
         ListarUsuarioMenuItem = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,6 +121,10 @@ public class PrincipalView extends javax.swing.JFrame {
         ActualizarAutorMenuItem.setText("Actualizar");
         AutorMenu.add(ActualizarAutorMenuItem);
 
+        ListarLibroAutorMenuItem.setText("Listar Libros");
+        ListarLibroAutorMenuItem.addActionListener(this::ListarLibroAutorMenuItemActionPerformed);
+        AutorMenu.add(ListarLibroAutorMenuItem);
+
         jMenuBar2.add(AutorMenu);
 
         UsuariosMenu.setText("Usuarios");
@@ -145,17 +147,6 @@ public class PrincipalView extends javax.swing.JFrame {
         UsuariosMenu.add(ListarUsuarioMenuItem);
 
         jMenuBar2.add(UsuariosMenu);
-
-        jMenu1.setText("Idioma");
-
-        jMenuItem1.setText("Español");
-        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Inglés");
-        jMenu1.add(jMenuItem2);
-
-        jMenuBar2.add(jMenu1);
 
         setJMenuBar(jMenuBar2);
 
@@ -201,9 +192,9 @@ public class PrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ListarPrestamoMenuItemActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void ListarLibroAutorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarLibroAutorMenuItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_ListarLibroAutorMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,15 +239,13 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem EliminarPrestamoMenuItem;
     private javax.swing.JMenuItem EliminarUsuarioMenuItem;
     private javax.swing.JMenu LibroMenu;
+    private javax.swing.JMenuItem ListarLibroAutorMenuItem;
     private javax.swing.JMenuItem ListarLibroMenuItem;
     private javax.swing.JMenuItem ListarPrestamoMenuItem;
     private javax.swing.JMenuItem ListarUsuarioMenuItem;
     private javax.swing.JMenu PrestamoMenu;
     private javax.swing.JMenu UsuariosMenu;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }
