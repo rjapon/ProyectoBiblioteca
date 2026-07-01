@@ -54,6 +54,7 @@ public class PrincipalView extends javax.swing.JFrame {
         listarLibroView=new ListarLibroView();
         listarUsuariosView=new ListarUsuariosView();
         listarPrestamoView=new  ListarPrestamoView();
+        //R
         
         
         initComponents();
