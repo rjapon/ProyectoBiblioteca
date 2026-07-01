@@ -9,21 +9,19 @@ package ec.edu.ups.proyectobiblioteca.models;
  * @author Asus
  */
 public class Usuarios {
+
     private String nombre;
     private String cedula;
     private String telefono;
-    
- 
-    
+
+    public Usuarios() {
+    }
 
     public Usuarios(String nombre, String cedula,String telefono) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.telefono = telefono;
     }
-    
-    public Usuarios(){
-}
 
     public String getNombre() {
         return nombre;
@@ -55,5 +53,3 @@ public class Usuarios {
         return "Persona{" + "nombre=" + nombre + ", cedula=" + cedula + ", telefono=" + telefono + '}';
     }
 }
-    
-
