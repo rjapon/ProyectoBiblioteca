@@ -35,6 +35,7 @@ public class AgregarAutorView extends javax.swing.JInternalFrame {
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
+        setClosable(true);
         setTitle("Agregar Autor");
 
         jLabel1.setText("Codigo:");
@@ -68,11 +69,11 @@ public class AgregarAutorView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
                         .addGap(75, 75, 75)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNacionalidadAgregarAutorView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombreAgregarAutorView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCodigoAgregarAutorView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(148, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNombreAgregarAutorView, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(txtCodigoAgregarAutorView)
+                            .addComponent(txtNacionalidadAgregarAutorView))
+                        .addContainerGap(112, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(90, 90, 90)
                 .addComponent(btnAceptar)

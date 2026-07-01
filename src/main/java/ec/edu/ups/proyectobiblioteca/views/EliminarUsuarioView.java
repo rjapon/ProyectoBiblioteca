@@ -37,6 +37,9 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
+        setClosable(true);
+        setTitle("Eliminar Usuario");
+
         jLabel1.setText("Cedula:");
 
         jLabel2.setText("Nombre:");
