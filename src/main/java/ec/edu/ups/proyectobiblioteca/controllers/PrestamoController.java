@@ -5,7 +5,7 @@ import ec.edu.ups.proyectobiblioteca.dao.PrestamoDAO;
 import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAO;
 import ec.edu.ups.proyectobiblioteca.models.Libro;
 import ec.edu.ups.proyectobiblioteca.models.Prestamo;
-import ec.edu.ups.proyectobiblioteca.models.Usuarios;
+import ec.edu.ups.proyectobiblioteca.models.Usuario;
 import ec.edu.ups.proyectobiblioteca.views.ActualizarPrestamoView;
 import ec.edu.ups.proyectobiblioteca.views.BuscarPrestamoView;
 import ec.edu.ups.proyectobiblioteca.views.CrearPrestamoView;
@@ -75,7 +75,7 @@ public class PrestamoController {
             String cedula = crearPrestamoView.getTxtCedulaCrear().getText();
             String isbn = crearPrestamoView.getTxtISBNCrear().getText();
 
-            Usuarios usuario = usuarioDAO.buscar(cedula);
+            Usuario usuario = usuarioDAO.buscar(cedula);
             Libro libro = libroDAO.buscar(isbn);
 
             if (usuario == null) {
@@ -113,7 +113,7 @@ public class PrestamoController {
 
         String cedula = crearPrestamoView.getTxtCedulaCrear().getText();
 
-        Usuarios usuario = usuarioDAO.buscar(cedula);
+        Usuario usuario = usuarioDAO.buscar(cedula);
 
         if (usuario != null) {
 

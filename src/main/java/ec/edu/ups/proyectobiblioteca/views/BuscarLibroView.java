@@ -4,6 +4,9 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Asus
@@ -16,6 +19,80 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
     public BuscarLibroView() {
         initComponents();
     }
+
+    public JButton getBtnAceptar() {
+        return btnAceptar;
+    }
+
+    public void setBtnAceptar(JButton btnAceptar) {
+        this.btnAceptar = btnAceptar;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
+    public JTextField getTxtAutorBuscar() {
+        return txtAutorBuscar;
+    }
+
+    public void setTxtAutorBuscar(JTextField txtAutorBuscar) {
+        this.txtAutorBuscar = txtAutorBuscar;
+    }
+
+    public JTextField getTxtCategoriaBuscar() {
+        return txtCategoriaBuscar;
+    }
+
+    public void setTxtCategoriaBuscar(JTextField txtCategoriaBuscar) {
+        this.txtCategoriaBuscar = txtCategoriaBuscar;
+    }
+
+    public JTextField getTxtEditorialBuscar() {
+        return txtEditorialBuscar;
+    }
+
+    public void setTxtEditorialBuscar(JTextField txtEditorialBuscar) {
+        this.txtEditorialBuscar = txtEditorialBuscar;
+    }
+
+    public JTextField getTxtEstadoBuscar() {
+        return txtEstadoBuscar;
+    }
+
+    public void setTxtEstadoBuscar(JTextField txtEstadoBuscar) {
+        this.txtEstadoBuscar = txtEstadoBuscar;
+    }
+
+    public JTextField getTxtFechaBuscar() {
+        return txtFechaBuscar;
+    }
+
+    public void setTxtFechaBuscar(JTextField txtFechaBuscar) {
+        this.txtFechaBuscar = txtFechaBuscar;
+    }
+
+    public JTextField getTxtISBNBuscar() {
+        return txtISBNBuscar;
+    }
+
+    public void setTxtISBNBuscar(JTextField txtISBNBuscar) {
+        this.txtISBNBuscar = txtISBNBuscar;
+    }
+
+    public JTextField getTxtTituloBuscar() {
+        return txtTituloBuscar;
+    }
+
+    public void setTxtTituloBuscar(JTextField txtTituloBuscar) {
+        this.txtTituloBuscar = txtTituloBuscar;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

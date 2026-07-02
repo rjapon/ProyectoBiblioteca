@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author mateo
@@ -15,6 +19,52 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
      */
     public EliminarUsuarioView() {
         initComponents();
+    }
+
+    public JButton getBtnBuscarEliminarUsuario() {
+        return btnBuscarEliminarUsuario;
+    }
+
+    public void setBtnBuscarEliminarUsuario(JButton btnBuscarEliminarUsuario) {
+        this.btnBuscarEliminarUsuario = btnBuscarEliminarUsuario;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public void setBtnEliminar(JButton btnEliminar) {
+        this.btnEliminar = btnEliminar;
+    }
+
+    public JTextField getTxtCedulaEliminarUsuario() {
+        return txtCedulaEliminarUsuario;
+    }
+
+    public void setTxtCedulaEliminarUsuario(JTextField txtCedulaEliminarUsuario) {
+        this.txtCedulaEliminarUsuario = txtCedulaEliminarUsuario;
+    }
+
+    public JTextField getTxtNombreEliminarUsuario() {
+        return txtNombreEliminarUsuario;
+    }
+
+    public void setTxtNombreEliminarUsuario(JTextField txtNombreEliminarUsuario) {
+        this.txtNombreEliminarUsuario = txtNombreEliminarUsuario;
+    }
+
+    public JTextField getTxtTelfonoEliminarUsuario() {
+        return txtTelfonoEliminarUsuario;
+    }
+
+    public void setTxtTelfonoEliminarUsuario(JTextField txtTelfonoEliminarUsuario) {
+        this.txtTelfonoEliminarUsuario = txtTelfonoEliminarUsuario;
+    }
+    
+    
+    
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
     }
 
     /**
@@ -33,7 +83,7 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
         txtCedulaEliminarUsuario = new javax.swing.JTextField();
         txtNombreEliminarUsuario = new javax.swing.JTextField();
         txtTelfonoEliminarUsuario = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnBuscarEliminarUsuario = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
@@ -46,11 +96,12 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Telefono:");
 
-        jButton1.setText("Buscar");
+        btnBuscarEliminarUsuario.setText("Buscar");
 
         btnEliminar.setText("Eliminar");
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -70,7 +121,7 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(btnBuscarEliminarUsuario))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtCedulaEliminarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
@@ -96,7 +147,7 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
                             .addComponent(txtCedulaEliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jButton1)))
+                        .addComponent(btnBuscarEliminarUsuario)))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -131,11 +182,15 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarEliminarUsuario;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

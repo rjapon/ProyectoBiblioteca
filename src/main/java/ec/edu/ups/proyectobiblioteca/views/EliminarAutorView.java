@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author mateo
@@ -16,6 +20,50 @@ public class EliminarAutorView extends javax.swing.JInternalFrame {
     public EliminarAutorView() {
         initComponents();
     }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public void setBtnEliminar(JButton btnEliminar) {
+        this.btnEliminar = btnEliminar;
+    }
+
+    public JTextField getTxtCodigoEliminarAutorView() {
+        return txtCodigoEliminarAutorView;
+    }
+
+    public void setTxtCodigoEliminarAutorView(JTextField txtCodigoEliminarAutorView) {
+        this.txtCodigoEliminarAutorView = txtCodigoEliminarAutorView;
+    }
+
+    public JTextField getTxtNacionalidadEliminarAutorView() {
+        return txtNacionalidadEliminarAutorView;
+    }
+
+    public void setTxtNacionalidadEliminarAutorView(JTextField txtNacionalidadEliminarAutorView) {
+        this.txtNacionalidadEliminarAutorView = txtNacionalidadEliminarAutorView;
+    }
+
+    public JTextField getTxtNombreEliminarAutorView() {
+        return txtNombreEliminarAutorView;
+    }
+
+    public void setTxtNombreEliminarAutorView(JTextField txtNombreEliminarAutorView) {
+        this.txtNombreEliminarAutorView = txtNombreEliminarAutorView;
+    }
+    
+    public void mostrarInformacion(String mensaje) {
+    JOptionPane.showMessageDialog(this, mensaje);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,6 +104,7 @@ public class EliminarAutorView extends javax.swing.JInternalFrame {
         btnEliminar.setText("Eliminar");
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,6 +156,10 @@ public class EliminarAutorView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

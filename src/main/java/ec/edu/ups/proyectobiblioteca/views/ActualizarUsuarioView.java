@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author mateo
@@ -15,6 +19,50 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
      */
     public ActualizarUsuarioView() {
         initComponents();
+    }
+
+    public JButton getBtnActualizar() {
+        return btnActualizar;
+    }
+
+    public void setBtnActualizar(JButton btnActualizar) {
+        this.btnActualizar = btnActualizar;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
+    public JTextField getTxtCedulaActualizarUsuario() {
+        return txtCedulaActualizarUsuario;
+    }
+
+    public void setTxtCedulaActualizarUsuario(JTextField txtCedulaActualizarUsuario) {
+        this.txtCedulaActualizarUsuario = txtCedulaActualizarUsuario;
+    }
+
+    public JTextField getTxtNombreActualizarUsuario() {
+        return txtNombreActualizarUsuario;
+    }
+
+    public void setTxtNombreActualizarUsuario(JTextField txtNombreActualizarUsuario) {
+        this.txtNombreActualizarUsuario = txtNombreActualizarUsuario;
+    }
+
+    public JTextField getTxtTelefonoActualizarUsuario() {
+        return txtTelefonoActualizarUsuario;
+    }
+
+    public void setTxtTelefonoActualizarUsuario(JTextField txtTelefonoActualizarUsuario) {
+        this.txtTelefonoActualizarUsuario = txtTelefonoActualizarUsuario;
+    }
+    
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
     }
 
     /**
@@ -51,6 +99,7 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
         btnActualizar.setText("Actualizar");
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,6 +171,10 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -58,4 +58,18 @@ public class AutorDAOMemoria implements AutorDAO {
     public List<Autor> listar() {
         return lista;
     }
+    
+   @Override
+public Autor buscarPorNombre(String nombre) {
+
+    for (Autor autor : lista) {
+
+        if (autor.getNombre().equalsIgnoreCase(nombre)) {
+            return autor;
+        }
+
+    }
+
+    return null;
+}
 }

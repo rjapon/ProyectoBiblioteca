@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author mateo
@@ -16,6 +20,44 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
     public CrearUsuarioView() {
         initComponents();
     }
+
+    public JButton getBtnCrear() {
+        return btnCrear;
+    }
+
+    public void setBtnCrear(JButton btnCrear) {
+        this.btnCrear = btnCrear;
+    }
+
+    public JTextField getTxtCedulaCrearUsuario() {
+        return txtCedulaCrearUsuario;
+    }
+
+    public void setTxtCedulaCrearUsuario(JTextField txtCedulaCrearUsuario) {
+        this.txtCedulaCrearUsuario = txtCedulaCrearUsuario;
+    }
+
+    public JTextField getTxtNombreCrearUsuario() {
+        return txtNombreCrearUsuario;
+    }
+
+    public void setTxtNombreCrearUsuario(JTextField txtNombreCrearUsuario) {
+        this.txtNombreCrearUsuario = txtNombreCrearUsuario;
+    }
+
+    public JTextField getTxtTelefonoCrearUsuario() {
+        return txtTelefonoCrearUsuario;
+    }
+
+    public void setTxtTelefonoCrearUsuario(JTextField txtTelefonoCrearUsuario) {
+        this.txtTelefonoCrearUsuario = txtTelefonoCrearUsuario;
+    }
+    
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,6 +91,7 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
         btnCrear.addActionListener(this::btnCrearActionPerformed);
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -119,6 +162,10 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

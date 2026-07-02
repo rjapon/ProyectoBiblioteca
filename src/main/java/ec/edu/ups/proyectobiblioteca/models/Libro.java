@@ -78,6 +78,16 @@ public class Libro {
         }
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "Libro{" + "ISBN=" + ISBN + ", titulo=" + titulo + ", editorial=" + editorial + ", disponible=" + disponible + ", autor=" + (autor.getNombre()) + '}';

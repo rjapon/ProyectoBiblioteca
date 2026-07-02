@@ -4,7 +4,9 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import ec.edu.ups.proyectobiblioteca.controllers.AutorController;
 import ec.edu.ups.proyectobiblioteca.controllers.PrestamoController;
+import ec.edu.ups.proyectobiblioteca.controllers.UsuarioController;
 import ec.edu.ups.proyectobiblioteca.dao.AutorDAO;
 import ec.edu.ups.proyectobiblioteca.dao.AutorDAOMemoria;
 import ec.edu.ups.proyectobiblioteca.dao.LibroDAO;
@@ -31,7 +33,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private BuscarLibroView buscarLibroView;
     private BuscarPrestamoView buscarPrestamoView;
     private BuscarUsuarioView buscarUsuarioView;
-
+    private BuscarAutorView buscarAutorView;
     private CrearPrestamoView crearPrestamoView;
     private CrearUsuarioView crearUsuarioView;
 
@@ -41,18 +43,16 @@ public class PrincipalView extends javax.swing.JFrame {
     private EliminarUsuarioView eliminarUsuarioView;
 
     private ListarLibroView listarLibroView;
-    private ListarUsuariosView listarUsuariosView;
+    private ListarUsuarioView listarUsuarioView;
     private ListarPrestamoView listarPrestamoView;
-
-    private PrestamoDAO prestamoDAO;
-
-    private LibroDAO libroDAO;
-
+    private ListarLibrosAutorView listarLibrosAutorView;
     private UsuarioDAO usuarioDAO;
-
     private AutorDAO autorDAO;
-
+    private UsuarioController usuarioController;
+    private AutorController autorController;
     private PrestamoController prestamoController;
+    private LibroDAO libroDAO;
+    private PrestamoDAO prestamoDAO;
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PrincipalView.class.getName());
 
@@ -61,37 +61,37 @@ public class PrincipalView extends javax.swing.JFrame {
      */
     public PrincipalView() {
 
-        initComponents();
         actualizarAutorView = new ActualizarAutorView();
         actualizarLibroView = new ActualizarLibroView();
         actualizarPrestamoView = new ActualizarPrestamoView();
         actualizarUsuarioView = new ActualizarUsuarioView();
-
         agregarAutorView = new AgregarAutorView();
         agregarLibroView = new AgregarLibroView();
-
         buscarLibroView = new BuscarLibroView();
         buscarPrestamoView = new BuscarPrestamoView();
         buscarUsuarioView = new BuscarUsuarioView();
-
+        buscarAutorView = new BuscarAutorView();
         crearPrestamoView = new CrearPrestamoView();
         crearUsuarioView = new CrearUsuarioView();
-
         eliminarAutorView = new EliminarAutorView();
         eliminarLibroView = new EliminarLibroView();
         eliminarPrestamoView = new EliminarPrestamoView();
         eliminarUsuarioView = new EliminarUsuarioView();
-
         listarLibroView = new ListarLibroView();
-        listarUsuariosView = new ListarUsuariosView();
+        listarUsuarioView = new ListarUsuarioView();
         listarPrestamoView = new ListarPrestamoView();
+        listarLibrosAutorView = new ListarLibrosAutorView();
 
-        libroDAO = new LibroDAOMemoria();
         usuarioDAO = new UsuarioDAOMemoria();
-        prestamoDAO = new PrestamoDAOMemoria();
         autorDAO = new AutorDAOMemoria();
+        libroDAO = new LibroDAOMemoria();
+        prestamoDAO = new PrestamoDAOMemoria();
 
+        usuarioController = new UsuarioController(crearUsuarioView, actualizarUsuarioView, eliminarUsuarioView, buscarUsuarioView, usuarioDAO);
+        autorController = new AutorController(actualizarAutorView, agregarAutorView, eliminarAutorView, buscarAutorView, autorDAO);
         prestamoController = new PrestamoController(prestamoDAO, libroDAO, usuarioDAO, crearPrestamoView, actualizarPrestamoView, eliminarPrestamoView, buscarPrestamoView, listarPrestamoView);
+
+        initComponents();
     }
 
     /**
@@ -123,6 +123,7 @@ public class PrincipalView extends javax.swing.JFrame {
         EliminarAutorMenuItem = new javax.swing.JMenuItem();
         ActualizarAutorMenuItem = new javax.swing.JMenuItem();
         ListarLibroAutorMenuItem = new javax.swing.JMenuItem();
+        BuscarAutorMenuItem = new javax.swing.JMenuItem();
         UsuariosMenu = new javax.swing.JMenu();
         CrearUsuarioMenuItem = new javax.swing.JMenuItem();
         EliminarUsuarioMenuItem = new javax.swing.JMenuItem();
@@ -210,6 +211,10 @@ public class PrincipalView extends javax.swing.JFrame {
         ListarLibroAutorMenuItem.setText("Listar Libros");
         ListarLibroAutorMenuItem.addActionListener(this::ListarLibroAutorMenuItemActionPerformed);
         AutorMenu.add(ListarLibroAutorMenuItem);
+
+        BuscarAutorMenuItem.setText("Buscar");
+        BuscarAutorMenuItem.addActionListener(this::BuscarAutorMenuItemActionPerformed);
+        AutorMenu.add(BuscarAutorMenuItem);
 
         jMenuBar2.add(AutorMenu);
 
@@ -310,10 +315,10 @@ public class PrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_ListarPrestamoMenuItemActionPerformed
 
     private void ListarLibroAutorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarLibroAutorMenuItemActionPerformed
-        if (!listarLibroView.isVisible()) {
-            jDesktopPane1.remove(listarLibroView);
-            listarLibroView.setVisible(true);
-            jDesktopPane1.add(listarLibroView);
+        if (!listarLibrosAutorView.isVisible()) {
+            jDesktopPane1.remove(listarLibrosAutorView);
+            listarLibrosAutorView.setVisible(true);
+            jDesktopPane1.add(listarLibrosAutorView);
         }
     }//GEN-LAST:event_ListarLibroAutorMenuItemActionPerformed
 
@@ -398,12 +403,21 @@ public class PrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_ActualizarUsuarioMenuItemActionPerformed
 
     private void ListarUsuarioMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarUsuarioMenuItemActionPerformed
-        if (!listarUsuariosView.isVisible()) {
-            jDesktopPane1.remove(listarUsuariosView);
-            listarUsuariosView.setVisible(true);
-            jDesktopPane1.add(listarUsuariosView);
+        if (!listarUsuarioView.isVisible()) {
+            jDesktopPane1.remove(listarUsuarioView);
+            listarUsuarioView.setVisible(true);
+            jDesktopPane1.add(listarUsuarioView);
         }
     }//GEN-LAST:event_ListarUsuarioMenuItemActionPerformed
+
+    private void BuscarAutorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarAutorMenuItemActionPerformed
+
+        if (!buscarAutorView.isVisible()) {
+            jDesktopPane1.remove(buscarAutorView);
+            buscarAutorView.setVisible(true);
+            jDesktopPane1.add(buscarAutorView);
+        }
+    }//GEN-LAST:event_BuscarAutorMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -438,6 +452,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem AgregarAutorMenuItem;
     private javax.swing.JMenuItem AgregarLibroMenuItem;
     private javax.swing.JMenu AutorMenu;
+    private javax.swing.JMenuItem BuscarAutorMenuItem;
     private javax.swing.JMenuItem BuscarLibroMenuItem;
     private javax.swing.JMenuItem BuscarPrestamoMenuItem;
     private javax.swing.JMenuItem BuscarUsuarioMenuItem;

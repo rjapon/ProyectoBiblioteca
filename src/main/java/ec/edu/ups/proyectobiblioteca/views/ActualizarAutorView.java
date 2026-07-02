@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author mateo
@@ -16,6 +20,52 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
     public ActualizarAutorView() {
         initComponents();
     }
+
+    public JButton getBtnActualizar() {
+        return btnActualizar;
+    }
+
+    public void setBtnActualizar(JButton btnActualizar) {
+        this.btnActualizar = btnActualizar;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
+    public JTextField getTxtCodigoActulizarAutorView() {
+        return txtCodigoActulizarAutorView;
+    }
+
+    public void setTxtCodigoActulizarAutorView(JTextField txtCodigoActulizarAutorView) {
+        this.txtCodigoActulizarAutorView = txtCodigoActulizarAutorView;
+    }
+
+    public JTextField getTxtNacionalidadActualizarAutorView() {
+        return txtNacionalidadActualizarAutorView;
+    }
+
+    public void setTxtNacionalidadActualizarAutorView(JTextField txtNacionalidadActualizarAutorView) {
+        this.txtNacionalidadActualizarAutorView = txtNacionalidadActualizarAutorView;
+    }
+
+    public JTextField getTxtNombreActualizarAutorView() {
+        return txtNombreActualizarAutorView;
+    }
+
+    public void setTxtNombreActualizarAutorView(JTextField txtNombreActualizarAutorView) {
+        this.txtNombreActualizarAutorView = txtNombreActualizarAutorView;
+    }
+    
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,6 +101,7 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
         btnActualizar.setText("Actualizar");
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,6 +167,10 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
