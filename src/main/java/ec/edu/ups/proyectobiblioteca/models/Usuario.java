@@ -8,16 +8,16 @@ package ec.edu.ups.proyectobiblioteca.models;
  *
  * @author Asus
  */
-public class Usuarios {
+public class Usuario {
 
     private String nombre;
     private String cedula;
     private String telefono;
 
-    public Usuarios() {
+    public Usuario() {
     }
 
-    public Usuarios(String nombre, String cedula,String telefono) {
+    public Usuario(String nombre, String cedula,String telefono) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.telefono = telefono;

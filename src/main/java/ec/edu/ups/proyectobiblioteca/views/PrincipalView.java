@@ -4,12 +4,20 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import ec.edu.ups.proyectobiblioteca.controllers.AutorController;
+import ec.edu.ups.proyectobiblioteca.controllers.UsuarioController;
+import ec.edu.ups.proyectobiblioteca.dao.AutorDAO;
+import ec.edu.ups.proyectobiblioteca.dao.AutorDAOMemoria;
+import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAO;
+import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAOMemoria;
+
 /**
  *
  * @author Asus
  */
 public class PrincipalView extends javax.swing.JFrame {
-    private ActualizarAutorView  actualizarAutorView;
+
+    private ActualizarAutorView actualizarAutorView;
     private ActualizarLibroView actualizarLibroView;
     private ActualizarPrestamoView actualizarPrestamoView;
     private ActualizarUsuarioView actualizarUsuarioView;
@@ -18,6 +26,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private BuscarLibroView buscarLibroView;
     private BuscarPrestamoView buscarPrestamoView;
     private BuscarUsuarioView buscarUsuarioView;
+    private BuscarAutorView buscarAutorView;
     private CrearPrestamoView crearPrestamoView;
     private CrearUsuarioView crearUsuarioView;
     private EliminarAutorView eliminarAutorView;
@@ -25,11 +34,14 @@ public class PrincipalView extends javax.swing.JFrame {
     private EliminarPrestamoView eliminarPrestamoView;
     private EliminarUsuarioView eliminarUsuarioView;
     private ListarLibroView listarLibroView;
-    private ListarUsuariosView listarUsuariosView;
+    private ListarUsuarioView listarUsuariosView;
     private ListarPrestamoView listarPrestamoView;
-    
-    
-    
+    private ListarLibrosAutorView listarLibrosAutorView;
+    private UsuarioDAO usuarioDAO;
+    private AutorDAO autorDAO;
+    private UsuarioController usuarioController;
+    private AutorController autorController;
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PrincipalView.class.getName());
 
     /**
@@ -37,37 +49,36 @@ public class PrincipalView extends javax.swing.JFrame {
      */
     public PrincipalView() {
         actualizarAutorView = new ActualizarAutorView();
-        actualizarLibroView=new ActualizarLibroView();
-        actualizarPrestamoView=new ActualizarPrestamoView();
-        actualizarUsuarioView=new ActualizarUsuarioView();
-        agregarAutorView=new AgregarAutorView();
-        agregarLibroView=new AgregarLibroView();
-        buscarLibroView=new BuscarLibroView();
-        buscarPrestamoView=new BuscarPrestamoView();
-        buscarUsuarioView=new BuscarUsuarioView();
-        crearPrestamoView=new CrearPrestamoView();
-        crearUsuarioView=new CrearUsuarioView();
-        eliminarAutorView=new EliminarAutorView();
-        eliminarLibroView=new EliminarLibroView();
-        eliminarPrestamoView=new EliminarPrestamoView();
-        eliminarUsuarioView=new EliminarUsuarioView();
-        listarLibroView=new ListarLibroView();
-        listarUsuariosView=new ListarUsuariosView();
-        listarPrestamoView=new  ListarPrestamoView();
-        //R
+        actualizarLibroView = new ActualizarLibroView();
+        actualizarPrestamoView = new ActualizarPrestamoView();
+        actualizarUsuarioView = new ActualizarUsuarioView();
+        agregarAutorView = new AgregarAutorView();
+        agregarLibroView = new AgregarLibroView();
+        buscarLibroView = new BuscarLibroView();
+        buscarPrestamoView = new BuscarPrestamoView();
+        buscarUsuarioView = new BuscarUsuarioView();
+        crearPrestamoView = new CrearPrestamoView();
+        crearUsuarioView = new CrearUsuarioView();
+        eliminarAutorView = new EliminarAutorView();
+        eliminarLibroView = new EliminarLibroView();
+        eliminarPrestamoView = new EliminarPrestamoView();
+        eliminarUsuarioView = new EliminarUsuarioView();
+        listarLibroView = new ListarLibroView();
+        listarUsuariosView = new ListarUsuarioView();
+        listarPrestamoView = new ListarPrestamoView();
+        listarLibrosAutorView = new ListarLibrosAutorView();
+        buscarAutorView = new BuscarAutorView();
         
         
+        
+        usuarioDAO=new UsuarioDAOMemoria();
+        usuarioController =new UsuarioController(crearUsuarioView,actualizarUsuarioView,eliminarUsuarioView,buscarUsuarioView,usuarioDAO);
+        
+        autorDAO=new AutorDAOMemoria();
+        autorController=new AutorController(actualizarAutorView,agregarAutorView,eliminarAutorView,buscarAutorView,autorDAO);
         initComponents();
     }
-    
-     
-     
-     
-            
-            
-            
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,6 +108,7 @@ public class PrincipalView extends javax.swing.JFrame {
         EliminarAutorMenuItem = new javax.swing.JMenuItem();
         ActualizarAutorMenuItem = new javax.swing.JMenuItem();
         ListarLibroAutorMenuItem = new javax.swing.JMenuItem();
+        BuscarAutorMenuItem = new javax.swing.JMenuItem();
         UsuariosMenu = new javax.swing.JMenu();
         CrearUsuarioMenuItem = new javax.swing.JMenuItem();
         EliminarUsuarioMenuItem = new javax.swing.JMenuItem();
@@ -185,6 +197,10 @@ public class PrincipalView extends javax.swing.JFrame {
         ListarLibroAutorMenuItem.addActionListener(this::ListarLibroAutorMenuItemActionPerformed);
         AutorMenu.add(ListarLibroAutorMenuItem);
 
+        BuscarAutorMenuItem.setText("Buscar");
+        BuscarAutorMenuItem.addActionListener(this::BuscarAutorMenuItemActionPerformed);
+        AutorMenu.add(BuscarAutorMenuItem);
+
         jMenuBar2.add(AutorMenu);
 
         UsuariosMenu.setText("Usuarios");
@@ -236,7 +252,7 @@ public class PrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_AgregarLibroMenuItemActionPerformed
 
     private void ActualizarLibroMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarLibroMenuItemActionPerformed
-          if (!actualizarLibroView.isVisible()) {
+        if (!actualizarLibroView.isVisible()) {
             jDesktopPane1.remove(actualizarLibroView);
             actualizarLibroView.setVisible(true);
             jDesktopPane1.add(actualizarLibroView);
@@ -262,39 +278,39 @@ public class PrincipalView extends javax.swing.JFrame {
     private void EliminarUsuarioMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarUsuarioMenuItemActionPerformed
         if (!eliminarUsuarioView.isVisible()) {
             jDesktopPane1.remove(eliminarUsuarioView);
-           eliminarUsuarioView.setVisible(true);
+            eliminarUsuarioView.setVisible(true);
             jDesktopPane1.add(eliminarUsuarioView);
         }
     }//GEN-LAST:event_EliminarUsuarioMenuItemActionPerformed
 
     private void BuscarUsuarioMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarUsuarioMenuItemActionPerformed
-       if (!buscarUsuarioView.isVisible()) {
+        if (!buscarUsuarioView.isVisible()) {
             jDesktopPane1.remove(buscarUsuarioView);
-           buscarUsuarioView.setVisible(true);
+            buscarUsuarioView.setVisible(true);
             jDesktopPane1.add(buscarUsuarioView);
         }
     }//GEN-LAST:event_BuscarUsuarioMenuItemActionPerformed
 
     private void ListarPrestamoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarPrestamoMenuItemActionPerformed
-      if (!listarPrestamoView.isVisible()) {
+        if (!listarPrestamoView.isVisible()) {
             jDesktopPane1.remove(listarPrestamoView);
-           listarPrestamoView.setVisible(true);
+            listarPrestamoView.setVisible(true);
             jDesktopPane1.add(listarPrestamoView);
         }
     }//GEN-LAST:event_ListarPrestamoMenuItemActionPerformed
 
     private void ListarLibroAutorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarLibroAutorMenuItemActionPerformed
-        if (!listarLibroView.isVisible()) {
-            jDesktopPane1.remove(listarLibroView);
-           listarLibroView.setVisible(true);
-            jDesktopPane1.add(listarLibroView);
+        if (!listarLibrosAutorView.isVisible()) {
+            jDesktopPane1.remove(listarLibrosAutorView);
+            listarLibrosAutorView.setVisible(true);
+            jDesktopPane1.add(listarLibrosAutorView);
         }
     }//GEN-LAST:event_ListarLibroAutorMenuItemActionPerformed
 
     private void CrearPrestamoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearPrestamoMenuItemActionPerformed
         if (!crearPrestamoView.isVisible()) {
             jDesktopPane1.remove(crearPrestamoView);
-           crearPrestamoView.setVisible(true);
+            crearPrestamoView.setVisible(true);
             jDesktopPane1.add(crearPrestamoView);
         }
     }//GEN-LAST:event_CrearPrestamoMenuItemActionPerformed
@@ -302,7 +318,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private void BuscarPrestamoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarPrestamoMenuItemActionPerformed
         if (!buscarPrestamoView.isVisible()) {
             jDesktopPane1.remove(buscarPrestamoView);
-           buscarPrestamoView.setVisible(true);
+            buscarPrestamoView.setVisible(true);
             jDesktopPane1.add(buscarPrestamoView);
         }
     }//GEN-LAST:event_BuscarPrestamoMenuItemActionPerformed
@@ -310,31 +326,31 @@ public class PrincipalView extends javax.swing.JFrame {
     private void EliminarPrestamoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarPrestamoMenuItemActionPerformed
         if (!eliminarPrestamoView.isVisible()) {
             jDesktopPane1.remove(eliminarPrestamoView);
-           eliminarPrestamoView.setVisible(true);
+            eliminarPrestamoView.setVisible(true);
             jDesktopPane1.add(eliminarPrestamoView);
         }
     }//GEN-LAST:event_EliminarPrestamoMenuItemActionPerformed
 
     private void ActualizarPrestamoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarPrestamoMenuItemActionPerformed
-       if (actualizarPrestamoView.isVisible()) {
+        if (!actualizarPrestamoView.isVisible()) {
             jDesktopPane1.remove(actualizarPrestamoView);
-           actualizarPrestamoView.setVisible(true);
+            actualizarPrestamoView.setVisible(true);
             jDesktopPane1.add(actualizarPrestamoView);
         }
     }//GEN-LAST:event_ActualizarPrestamoMenuItemActionPerformed
 
     private void EliminarLibroMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarLibroMenuItemActionPerformed
-     if (!eliminarLibroView.isVisible()) {
+        if (!eliminarLibroView.isVisible()) {
             jDesktopPane1.remove(eliminarLibroView);
-           eliminarLibroView.setVisible(true);
+            eliminarLibroView.setVisible(true);
             jDesktopPane1.add(eliminarLibroView);
         }
     }//GEN-LAST:event_EliminarLibroMenuItemActionPerformed
 
     private void BuscarLibroMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarLibroMenuItemActionPerformed
-       if (!buscarLibroView.isVisible()) {
+        if (!buscarLibroView.isVisible()) {
             jDesktopPane1.remove(buscarLibroView);
-           buscarLibroView.setVisible(true);
+            buscarLibroView.setVisible(true);
             jDesktopPane1.add(buscarLibroView);
         }
     }//GEN-LAST:event_BuscarLibroMenuItemActionPerformed
@@ -342,7 +358,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private void AgregarAutorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAutorMenuItemActionPerformed
         if (!agregarAutorView.isVisible()) {
             jDesktopPane1.remove(agregarAutorView);
-           agregarAutorView.setVisible(true);
+            agregarAutorView.setVisible(true);
             jDesktopPane1.add(agregarAutorView);
         }
     }//GEN-LAST:event_AgregarAutorMenuItemActionPerformed
@@ -350,23 +366,23 @@ public class PrincipalView extends javax.swing.JFrame {
     private void ActualizarAutorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarAutorMenuItemActionPerformed
         if (!actualizarAutorView.isVisible()) {
             jDesktopPane1.remove(actualizarAutorView);
-           actualizarAutorView.setVisible(true);
+            actualizarAutorView.setVisible(true);
             jDesktopPane1.add(actualizarAutorView);
         }
     }//GEN-LAST:event_ActualizarAutorMenuItemActionPerformed
 
     private void CrearUsuarioMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearUsuarioMenuItemActionPerformed
-      if (!crearUsuarioView.isVisible()) {
+        if (!crearUsuarioView.isVisible()) {
             jDesktopPane1.remove(crearUsuarioView);
-           crearUsuarioView.setVisible(true);
+            crearUsuarioView.setVisible(true);
             jDesktopPane1.add(crearUsuarioView);
         }
     }//GEN-LAST:event_CrearUsuarioMenuItemActionPerformed
 
     private void ActualizarUsuarioMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarUsuarioMenuItemActionPerformed
-     if (!actualizarUsuarioView.isVisible()) {
+        if (!actualizarUsuarioView.isVisible()) {
             jDesktopPane1.remove(actualizarUsuarioView);
-           actualizarUsuarioView.setVisible(true);
+            actualizarUsuarioView.setVisible(true);
             jDesktopPane1.add(actualizarUsuarioView);
         }
     }//GEN-LAST:event_ActualizarUsuarioMenuItemActionPerformed
@@ -374,10 +390,19 @@ public class PrincipalView extends javax.swing.JFrame {
     private void ListarUsuarioMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarUsuarioMenuItemActionPerformed
         if (!listarUsuariosView.isVisible()) {
             jDesktopPane1.remove(listarUsuariosView);
-           listarUsuariosView.setVisible(true);
+            listarUsuariosView.setVisible(true);
             jDesktopPane1.add(listarUsuariosView);
         }
     }//GEN-LAST:event_ListarUsuarioMenuItemActionPerformed
+
+    private void BuscarAutorMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarAutorMenuItemActionPerformed
+
+        if (!buscarAutorView.isVisible()) {
+            jDesktopPane1.remove(buscarAutorView);
+            buscarAutorView.setVisible(true);
+            jDesktopPane1.add(buscarAutorView);
+        }
+    }//GEN-LAST:event_BuscarAutorMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -412,6 +437,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem AgregarAutorMenuItem;
     private javax.swing.JMenuItem AgregarLibroMenuItem;
     private javax.swing.JMenu AutorMenu;
+    private javax.swing.JMenuItem BuscarAutorMenuItem;
     private javax.swing.JMenuItem BuscarLibroMenuItem;
     private javax.swing.JMenuItem BuscarPrestamoMenuItem;
     private javax.swing.JMenuItem BuscarUsuarioMenuItem;

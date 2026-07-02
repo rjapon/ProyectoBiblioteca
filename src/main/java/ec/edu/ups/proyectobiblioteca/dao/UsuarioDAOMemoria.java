@@ -4,7 +4,7 @@
  */
 package ec.edu.ups.proyectobiblioteca.dao;
 
-import ec.edu.ups.proyectobiblioteca.models.Usuarios;
+import ec.edu.ups.proyectobiblioteca.models.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,21 +14,21 @@ import java.util.List;
  */
 public class UsuarioDAOMemoria implements UsuarioDAO {
 
-    private List<Usuarios> lista;
+    private List<Usuario> lista;
 
     public UsuarioDAOMemoria() {
         lista = new ArrayList<>();
     }
 
     @Override
-    public void crear(Usuarios usuario) {
+    public void crear(Usuario usuario) {
         lista.add(usuario);
     }
 
     @Override
-    public Usuarios buscar(String cedula) {
+    public Usuario buscar(String cedula) {
 
-        for (Usuarios usuario : lista) {
+        for (Usuario usuario : lista) {
             if (usuario.getCedula().equals(cedula)) {
                 return usuario;
             }
@@ -38,10 +38,10 @@ public class UsuarioDAOMemoria implements UsuarioDAO {
     }
 
     @Override
-    public void actualizar(String cedula, Usuarios usuario) {
+    public void actualizar(String cedula, Usuario usuario) {
 
         for (int i = 0; i < lista.size(); i++) {
-            Usuarios usuarioEncontrado = lista.get(i);
+            Usuario usuarioEncontrado = lista.get(i);
 
             if (usuarioEncontrado.getCedula().equals(cedula)) {
                 lista.set(i, usuario);
@@ -53,7 +53,7 @@ public class UsuarioDAOMemoria implements UsuarioDAO {
     @Override
     public void eliminar(String cedula) {
 
-        Usuarios usuarioEncontrado = buscar(cedula);
+        Usuario usuarioEncontrado = buscar(cedula);
 
         if (usuarioEncontrado != null) {
             lista.remove(usuarioEncontrado);
@@ -61,7 +61,7 @@ public class UsuarioDAOMemoria implements UsuarioDAO {
     }
 
     @Override
-    public List<Usuarios> listar() {
+    public List<Usuario> listar() {
         return lista;
     }
 

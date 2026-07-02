@@ -16,5 +16,6 @@ public interface AutorDAO {
     Autor buscar(int codigo);
     void actualizar(int codigo, Autor autor);
     void eliminar(int codigo);
+    Autor buscarPorNombre(String nombre);
     List<Autor>listar();
 }

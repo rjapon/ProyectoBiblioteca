@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author mateo
@@ -15,6 +19,43 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
      */
     public BuscarUsuarioView() {
         initComponents();
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
+    public JTextField getTxtCedulaBuscarUsuarioView() {
+        return txtCedulaBuscarUsuarioView;
+    }
+
+    public void setTxtCedulaBuscarUsuarioView(JTextField txtCedulaBuscarUsuarioView) {
+        this.txtCedulaBuscarUsuarioView = txtCedulaBuscarUsuarioView;
+    }
+
+    public JTextField getTxtNombreBuscarUsuarioView() {
+        return txtNombreBuscarUsuarioView;
+    }
+
+    public void setTxtNombreBuscarUsuarioView(JTextField txtNombreBuscarUsuarioView) {
+        this.txtNombreBuscarUsuarioView = txtNombreBuscarUsuarioView;
+    }
+
+    public JTextField getTxtTelefonoBuscarUsuarioView() {
+        return txtTelefonoBuscarUsuarioView;
+    }
+
+    public void setTxtTelefonoBuscarUsuarioView(JTextField txtTelefonoBuscarUsuarioView) {
+        this.txtTelefonoBuscarUsuarioView = txtTelefonoBuscarUsuarioView;
+    }
+    
+    
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
     }
 
     /**
@@ -50,6 +91,7 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
         btnBuscar.setText("Buscar");
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,6 +157,10 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
     private void txtTelefonoBuscarUsuarioViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoBuscarUsuarioViewActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefonoBuscarUsuarioViewActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

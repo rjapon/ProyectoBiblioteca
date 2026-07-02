@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author mateo
@@ -16,6 +20,45 @@ public class AgregarAutorView extends javax.swing.JInternalFrame {
     public AgregarAutorView() {
         initComponents();
     }
+
+    public JButton getBtnAceptar() {
+        return btnAceptar;
+    }
+
+    public void setBtnAceptar(JButton btnAceptar) {
+        this.btnAceptar = btnAceptar;
+    }
+
+    public JTextField getTxtCodigoAgregarAutorView() {
+        return txtCodigoAgregarAutorView;
+    }
+
+    public void setTxtCodigoAgregarAutorView(JTextField txtCodigoAgregarAutorView) {
+        this.txtCodigoAgregarAutorView = txtCodigoAgregarAutorView;
+    }
+
+    public JTextField getTxtNacionalidadAgregarAutorView() {
+        return txtNacionalidadAgregarAutorView;
+    }
+
+    public void setTxtNacionalidadAgregarAutorView(JTextField txtNacionalidadAgregarAutorView) {
+        this.txtNacionalidadAgregarAutorView = txtNacionalidadAgregarAutorView;
+    }
+
+    public JTextField getTxtNombreAgregarAutorView() {
+        return txtNombreAgregarAutorView;
+    }
+
+    public void setTxtNombreAgregarAutorView(JTextField txtNombreAgregarAutorView) {
+        this.txtNombreAgregarAutorView = txtNombreAgregarAutorView;
+    }
+    
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

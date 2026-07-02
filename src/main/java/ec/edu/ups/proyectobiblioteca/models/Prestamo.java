@@ -17,12 +17,12 @@ public class Prestamo {
     private Date fechaDevolucion;
     private String estado;
     private Libro libro;
-    private Usuarios usuario;
+    private Usuario usuario;
 
     public Prestamo() {
     }
 
-    public Prestamo(int codigo, Date fechaPrestamo, Date fechaDevolucion, String estado, Libro libro, Usuarios usuario) {
+    public Prestamo(int codigo, Date fechaPrestamo, Date fechaDevolucion, String estado, Libro libro, Usuario usuario) {
         this.codigo = codigo;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
@@ -71,11 +71,11 @@ public class Prestamo {
         this.libro = libro;
     }
 
-    public Usuarios getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuarios usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
