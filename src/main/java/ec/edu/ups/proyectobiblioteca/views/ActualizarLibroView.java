@@ -42,7 +42,6 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
         txtEditorialActualizar = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -79,8 +78,6 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
 
         btnCancelar.setText("Cancelar");
 
-        jButton1.setText("jButton1");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -110,9 +107,7 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(42, 42, 42)
-                                .addComponent(btnCancelar)
-                                .addGap(55, 55, 55)
-                                .addComponent(jButton1))
+                                .addComponent(btnCancelar))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(txtISBNActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,8 +146,7 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizar)
-                    .addComponent(btnCancelar)
-                    .addComponent(jButton1))
+                    .addComponent(btnCancelar))
                 .addGap(42, 42, 42))
         );
 
@@ -191,7 +185,6 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cboAutorActualizar;
     private javax.swing.JComboBox<String> cboCategoriaActualizar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAutorActualizar;
     private javax.swing.JLabel lblCategoriaActualizar;

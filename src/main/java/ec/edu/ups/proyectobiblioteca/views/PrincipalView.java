@@ -5,9 +5,14 @@
 package ec.edu.ups.proyectobiblioteca.views;
 
 import ec.edu.ups.proyectobiblioteca.controllers.AutorController;
+import ec.edu.ups.proyectobiblioteca.controllers.PrestamoController;
 import ec.edu.ups.proyectobiblioteca.controllers.UsuarioController;
 import ec.edu.ups.proyectobiblioteca.dao.AutorDAO;
 import ec.edu.ups.proyectobiblioteca.dao.AutorDAOMemoria;
+import ec.edu.ups.proyectobiblioteca.dao.LibroDAO;
+import ec.edu.ups.proyectobiblioteca.dao.LibroDAOMemoria;
+import ec.edu.ups.proyectobiblioteca.dao.PrestamoDAO;
+import ec.edu.ups.proyectobiblioteca.dao.PrestamoDAOMemoria;
 import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAO;
 import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAOMemoria;
 
@@ -21,26 +26,33 @@ public class PrincipalView extends javax.swing.JFrame {
     private ActualizarLibroView actualizarLibroView;
     private ActualizarPrestamoView actualizarPrestamoView;
     private ActualizarUsuarioView actualizarUsuarioView;
+
     private AgregarAutorView agregarAutorView;
     private AgregarLibroView agregarLibroView;
+
     private BuscarLibroView buscarLibroView;
     private BuscarPrestamoView buscarPrestamoView;
     private BuscarUsuarioView buscarUsuarioView;
     private BuscarAutorView buscarAutorView;
     private CrearPrestamoView crearPrestamoView;
     private CrearUsuarioView crearUsuarioView;
+
     private EliminarAutorView eliminarAutorView;
     private EliminarLibroView eliminarLibroView;
     private EliminarPrestamoView eliminarPrestamoView;
     private EliminarUsuarioView eliminarUsuarioView;
+
     private ListarLibroView listarLibroView;
-    private ListarUsuarioView listarUsuariosView;
+    private ListarUsuarioView listarUsuarioView;
     private ListarPrestamoView listarPrestamoView;
     private ListarLibrosAutorView listarLibrosAutorView;
     private UsuarioDAO usuarioDAO;
     private AutorDAO autorDAO;
     private UsuarioController usuarioController;
     private AutorController autorController;
+    private PrestamoController prestamoController;
+    private LibroDAO libroDAO;
+    private PrestamoDAO prestamoDAO;
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PrincipalView.class.getName());
 
@@ -48,6 +60,7 @@ public class PrincipalView extends javax.swing.JFrame {
      * Creates new form PrincipalVoew
      */
     public PrincipalView() {
+
         actualizarAutorView = new ActualizarAutorView();
         actualizarLibroView = new ActualizarLibroView();
         actualizarPrestamoView = new ActualizarPrestamoView();
@@ -57,6 +70,7 @@ public class PrincipalView extends javax.swing.JFrame {
         buscarLibroView = new BuscarLibroView();
         buscarPrestamoView = new BuscarPrestamoView();
         buscarUsuarioView = new BuscarUsuarioView();
+        buscarAutorView = new BuscarAutorView();
         crearPrestamoView = new CrearPrestamoView();
         crearUsuarioView = new CrearUsuarioView();
         eliminarAutorView = new EliminarAutorView();
@@ -64,18 +78,19 @@ public class PrincipalView extends javax.swing.JFrame {
         eliminarPrestamoView = new EliminarPrestamoView();
         eliminarUsuarioView = new EliminarUsuarioView();
         listarLibroView = new ListarLibroView();
-        listarUsuariosView = new ListarUsuarioView();
+        listarUsuarioView = new ListarUsuarioView();
         listarPrestamoView = new ListarPrestamoView();
         listarLibrosAutorView = new ListarLibrosAutorView();
-        buscarAutorView = new BuscarAutorView();
-        
-        
-        
-        usuarioDAO=new UsuarioDAOMemoria();
-        usuarioController =new UsuarioController(crearUsuarioView,actualizarUsuarioView,eliminarUsuarioView,buscarUsuarioView,usuarioDAO);
-        
-        autorDAO=new AutorDAOMemoria();
-        autorController=new AutorController(actualizarAutorView,agregarAutorView,eliminarAutorView,buscarAutorView,autorDAO);
+
+        usuarioDAO = new UsuarioDAOMemoria();
+        autorDAO = new AutorDAOMemoria();
+        libroDAO = new LibroDAOMemoria();
+        prestamoDAO = new PrestamoDAOMemoria();
+
+        usuarioController = new UsuarioController(crearUsuarioView, actualizarUsuarioView, eliminarUsuarioView, buscarUsuarioView, usuarioDAO);
+        autorController = new AutorController(actualizarAutorView, agregarAutorView, eliminarAutorView, buscarAutorView, autorDAO);
+        prestamoController = new PrestamoController(prestamoDAO, libroDAO, usuarioDAO, crearPrestamoView, actualizarPrestamoView, eliminarPrestamoView, buscarPrestamoView, listarPrestamoView);
+
         initComponents();
     }
 
@@ -388,10 +403,10 @@ public class PrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_ActualizarUsuarioMenuItemActionPerformed
 
     private void ListarUsuarioMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarUsuarioMenuItemActionPerformed
-        if (!listarUsuariosView.isVisible()) {
-            jDesktopPane1.remove(listarUsuariosView);
-            listarUsuariosView.setVisible(true);
-            jDesktopPane1.add(listarUsuariosView);
+        if (!listarUsuarioView.isVisible()) {
+            jDesktopPane1.remove(listarUsuarioView);
+            listarUsuarioView.setVisible(true);
+            jDesktopPane1.add(listarUsuarioView);
         }
     }//GEN-LAST:event_ListarUsuarioMenuItemActionPerformed
 
