@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Asus
@@ -15,6 +19,100 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
      */
     public BuscarPrestamoView() {
         initComponents();
+    }
+
+    public JButton getBtnAceptar() {
+        return btnAceptar;
+    }
+
+    public void setBtnAceptar(JButton btnAceptar) {
+        this.btnAceptar = btnAceptar;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
+    public JTextField getTxtAutorBuscar() {
+        return txtAutorBuscar;
+    }
+
+    public void setTxtAutorBuscar(JTextField txtAutorBuscar) {
+        this.txtAutorBuscar = txtAutorBuscar;
+    }
+
+    public JTextField getTxtCedulaBuscar() {
+        return txtCedulaBuscar;
+    }
+
+    public void setTxtCedulaBuscar(JTextField txtCedulaBuscar) {
+        this.txtCedulaBuscar = txtCedulaBuscar;
+    }
+
+    public JTextField getTxtCodigoBuscar() {
+        return txtCodigoBuscar;
+    }
+
+    public void setTxtCodigoBuscar(JTextField txtCodigoBuscar) {
+        this.txtCodigoBuscar = txtCodigoBuscar;
+    }
+
+    public JTextField getTxtFechaBuscar() {
+        return txtFechaBuscar;
+    }
+
+    public void setTxtFechaBuscar(JTextField txtFechaBuscar) {
+        this.txtFechaBuscar = txtFechaBuscar;
+    }
+
+    public JTextField getTxtFechaDevBuscar() {
+        return txtFechaDevBuscar;
+    }
+
+    public void setTxtFechaDevBuscar(JTextField txtFechaDevBuscar) {
+        this.txtFechaDevBuscar = txtFechaDevBuscar;
+    }
+
+    public JTextField getTxtISBNBuscar() {
+        return txtISBNBuscar;
+    }
+
+    public void setTxtISBNBuscar(JTextField txtISBNBuscar) {
+        this.txtISBNBuscar = txtISBNBuscar;
+    }
+
+    public JTextField getTxtLibroBuscar() {
+        return txtLibroBuscar;
+    }
+
+    public void setTxtLibroBuscar(JTextField txtLibroBuscar) {
+        this.txtLibroBuscar = txtLibroBuscar;
+    }
+
+    public JTextField getTxtUsuarioBuscar() {
+        return txtUsuarioBuscar;
+    }
+
+    public void setTxtUsuarioBuscar(JTextField txtUsuarioBuscar) {
+        this.txtUsuarioBuscar = txtUsuarioBuscar;
+    }
+
+    public JTextField getTxtEstadoBuscar() {
+        return txtEstadoBuscar;
+    }
+
+    public void setTxtEstadoBuscar(JTextField txtEstadoBuscar) {
+        this.txtEstadoBuscar = txtEstadoBuscar;
+    }
+
+    
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
     }
 
     /**
@@ -43,6 +141,10 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
         txtFechaBuscar = new javax.swing.JTextField();
         lblFechaDevBuscar = new javax.swing.JLabel();
         txtFechaDevBuscar = new javax.swing.JTextField();
+        lblEstadoBuscar = new javax.swing.JLabel();
+        lblCedulaBuscar = new javax.swing.JLabel();
+        txtCedulaBuscar = new javax.swing.JTextField();
+        txtEstadoBuscar = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -85,6 +187,12 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
 
         lblFechaDevBuscar.setText("Fecha de devolucion:");
 
+        txtFechaDevBuscar.setEditable(false);
+
+        lblEstadoBuscar.setText("Estado:");
+
+        lblCedulaBuscar.setText("Cedula:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -92,12 +200,25 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addComponent(btnAceptar))
+                    .addComponent(btnBuscar)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblAutorBuscar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblEstadoBuscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtEstadoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblFechaBuscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtFechaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblFechaBuscar)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtFechaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblCodigoBuscar)
                                 .addGap(33, 33, 33)
@@ -106,24 +227,22 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblUsuarioBuscar)
                                     .addComponent(lblLibroBuscar)
-                                    .addComponent(lblAutorBuscar)
-                                    .addComponent(lblISBNBuscar))
+                                    .addComponent(lblISBNBuscar)
+                                    .addComponent(lblCedulaBuscar))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtUsuarioBuscar)
                                     .addComponent(txtISBNBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                                     .addComponent(txtAutorBuscar)
-                                    .addComponent(txtLibroBuscar))
-                                .addGap(123, 123, 123))))
+                                    .addComponent(txtLibroBuscar)
+                                    .addComponent(txtCedulaBuscar))
+                                .addGap(120, 120, 120))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addComponent(btnAceptar))
-                    .addComponent(btnBuscar)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(lblFechaDevBuscar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtFechaDevBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,24 +252,29 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
                     .addComponent(lblCodigoBuscar)
                     .addComponent(txtCodigoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBuscar)
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUsuarioBuscar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnBuscar)
+                        .addGap(36, 36, 36)
+                        .addComponent(lblUsuarioBuscar))
                     .addComponent(txtUsuarioBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLibroBuscar)
-                    .addComponent(txtLibroBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(lblCedulaBuscar)
+                    .addComponent(txtCedulaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtLibroBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLibroBuscar, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAutorBuscar)
                     .addComponent(txtAutorBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblISBNBuscar)
-                    .addComponent(txtISBNBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtISBNBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblISBNBuscar))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaBuscar)
                     .addComponent(txtFechaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -158,9 +282,13 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaDevBuscar)
                     .addComponent(txtFechaDevBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEstadoBuscar)
+                    .addComponent(txtEstadoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
                 .addComponent(btnAceptar)
-                .addGap(20, 20, 20))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -188,7 +316,7 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void txtUsuarioBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioBuscarActionPerformed
@@ -201,14 +329,18 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAutorBuscar;
+    private javax.swing.JLabel lblCedulaBuscar;
     private javax.swing.JLabel lblCodigoBuscar;
+    private javax.swing.JLabel lblEstadoBuscar;
     private javax.swing.JLabel lblFechaBuscar;
     private javax.swing.JLabel lblFechaDevBuscar;
     private javax.swing.JLabel lblISBNBuscar;
     private javax.swing.JLabel lblLibroBuscar;
     private javax.swing.JLabel lblUsuarioBuscar;
     private javax.swing.JTextField txtAutorBuscar;
+    private javax.swing.JTextField txtCedulaBuscar;
     private javax.swing.JTextField txtCodigoBuscar;
+    private javax.swing.JTextField txtEstadoBuscar;
     private javax.swing.JTextField txtFechaBuscar;
     private javax.swing.JTextField txtFechaDevBuscar;
     private javax.swing.JTextField txtISBNBuscar;

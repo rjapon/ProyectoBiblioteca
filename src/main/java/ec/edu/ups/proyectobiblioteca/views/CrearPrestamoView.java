@@ -4,6 +4,11 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Asus
@@ -15,6 +20,116 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
      */
     public CrearPrestamoView() {
         initComponents();
+    }
+
+    public JButton getBtnAceptar() {
+        return btnAceptar;
+    }
+
+    public void setBtnAceptar(JButton btnAceptar) {
+        this.btnAceptar = btnAceptar;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JTextField getTxtCedulaCrear() {
+        return txtCedulaCrear;
+    }
+
+    public void setTxtCedulaCrear(JTextField txtCedulaCrear) {
+        this.txtCedulaCrear = txtCedulaCrear;
+    }
+
+    public JTextField getTxtCodigoCrear() {
+        return txtCodigoCrear;
+    }
+
+    public void setTxtCodigoCrear(JTextField txtCodigoCrear) {
+        this.txtCodigoCrear = txtCodigoCrear;
+    }
+
+    public JTextField getTxtDisponibleCrear() {
+        return txtDisponibleCrear;
+    }
+
+    public void setTxtDisponibleCrear(JTextField txtDisponibleCrear) {
+        this.txtDisponibleCrear = txtDisponibleCrear;
+    }
+
+    public JTextField getTxtFechaCrear() {
+        return txtFechaCrear;
+    }
+
+    public void setTxtFechaCrear(JTextField txtFechaCrear) {
+        this.txtFechaCrear = txtFechaCrear;
+    }
+
+    public JTextField getTxtFechaDevCrear() {
+        return txtFechaDevCrear;
+    }
+
+    public void setTxtFechaDevCrear(JTextField txtFechaDevCrear) {
+        this.txtFechaDevCrear = txtFechaDevCrear;
+    }
+
+    public JTextField getTxtISBNCrear() {
+        return txtISBNCrear;
+    }
+
+    public void setTxtISBNCrear(JTextField txtISBNCrear) {
+        this.txtISBNCrear = txtISBNCrear;
+    }
+
+    public JButton getBtnBuscarLibro() {
+        return btnBuscarLibro;
+    }
+
+    public void setBtnBuscarLibro(JButton btnBuscarLibro) {
+        this.btnBuscarLibro = btnBuscarLibro;
+    }
+
+    public JButton getBtnBuscarUsuario() {
+        return btnBuscarUsuario;
+    }
+
+    public void setBtnBuscarUsuario(JButton btnBuscarUsuario) {
+        this.btnBuscarUsuario = btnBuscarUsuario;
+    }
+
+    public JTextField getTxtAutorCrear() {
+        return txtAutorCrear;
+    }
+
+    public void setTxtAutorCrear(JTextField txtAutorCrear) {
+        this.txtAutorCrear = txtAutorCrear;
+    }
+
+    public JTextField getTxtLibroCrear() {
+        return txtLibroCrear;
+    }
+
+    public void setTxtLibroCrear(JTextField txtLibroCrear) {
+        this.txtLibroCrear = txtLibroCrear;
+    }
+
+    public JTextField getTxtUsuarioCrear() {
+        return txtUsuarioCrear;
+    }
+
+    public void setTxtUsuarioCrear(JTextField txtUsuarioCrear) {
+        this.txtUsuarioCrear = txtUsuarioCrear;
+    }
+    
+    
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
     }
 
     /**
@@ -38,14 +153,19 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
         lblLibroCrear = new javax.swing.JLabel();
         lblAutorCrear = new javax.swing.JLabel();
         lblDisponibleCrear = new javax.swing.JLabel();
-        btnVerificarDisp = new javax.swing.JButton();
-        txtLibroCrear = new javax.swing.JTextField();
-        txtAutorCrear = new javax.swing.JTextField();
         txtDisponibleCrear = new javax.swing.JTextField();
-        lblUsuarioCrear = new javax.swing.JLabel();
-        txtUsuarioCrear = new javax.swing.JTextField();
         lblCedulaCrear = new javax.swing.JLabel();
         txtCedulaCrear = new javax.swing.JTextField();
+        lblFechaDevCrear = new javax.swing.JLabel();
+        txtFechaDevCrear = new javax.swing.JTextField();
+        lblDateFormatp = new javax.swing.JLabel();
+        lblDateFormatd = new javax.swing.JLabel();
+        txtLibroCrear = new javax.swing.JTextField();
+        txtAutorCrear = new javax.swing.JTextField();
+        btnBuscarUsuario = new javax.swing.JButton();
+        btnBuscarLibro = new javax.swing.JButton();
+        lblUsuarioCrear = new javax.swing.JLabel();
+        txtUsuarioCrear = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -77,19 +197,26 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
 
         lblDisponibleCrear.setText("Disponible?");
 
-        btnVerificarDisp.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
-        btnVerificarDisp.setText("Verificar Disponibilidad");
-
-        txtLibroCrear.setEditable(false);
-
-        txtAutorCrear.setEditable(false);
-
         txtDisponibleCrear.setEditable(false);
         txtDisponibleCrear.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
 
-        lblUsuarioCrear.setText("Usuario:");
-
         lblCedulaCrear.setText("Cédula:");
+
+        txtCedulaCrear.addActionListener(this::txtCedulaCrearActionPerformed);
+
+        lblFechaDevCrear.setText("Fecha de devolucion:");
+
+        lblDateFormatp.setText("dd/mm/yyyy");
+
+        lblDateFormatd.setText("dd/mm/yyyy");
+
+        txtLibroCrear.addActionListener(this::txtLibroCrearActionPerformed);
+
+        btnBuscarUsuario.setText("Buscar");
+
+        btnBuscarLibro.setText("Buscar");
+
+        lblUsuarioCrear.setText("Usuario:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -98,97 +225,111 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(btnAceptar)
-                        .addGap(82, 82, 82)
-                        .addComponent(btnCancelar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCodigoCrear)
-                            .addComponent(lblFechaCrear))
+                            .addComponent(lblFechaDevCrear))
                         .addGap(39, 39, 39)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtFechaCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                             .addComponent(txtCodigoCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(txtFechaCrear))))
-                .addContainerGap(56, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(txtFechaDevCrear))
+                        .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblDisponibleCrear)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtDisponibleCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblAutorCrear)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtAutorCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblISBNCrear)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtISBNCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblUsuarioCrear)
-                                    .addComponent(lblLibroCrear))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtLibroCrear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtUsuarioCrear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblCedulaCrear)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtCedulaCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblDateFormatp)
+                            .addComponent(lblDateFormatd)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnVerificarDisp)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblFechaCrear)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblCedulaCrear)
+                                        .addComponent(lblUsuarioCrear))
+                                    .addGap(50, 50, 50)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtCedulaCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                        .addComponent(txtUsuarioCrear))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblDisponibleCrear)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                                        .addComponent(txtDisponibleCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblAutorCrear)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtAutorCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblLibroCrear)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtLibroCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblISBNCrear)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtISBNCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBuscarLibro)
+                            .addComponent(btnBuscarUsuario)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(btnAceptar)
+                        .addGap(117, 117, 117)
+                        .addComponent(btnCancelar)))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCodigoCrear)
-                            .addComponent(txtCodigoCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(lblFechaCrear))
-                    .addComponent(txtFechaCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCodigoCrear)
+                    .addComponent(txtCodigoCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsuarioCrear, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtUsuarioCrear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(lblFechaCrear)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFechaCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblDateFormatp)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFechaDevCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFechaDevCrear)
+                    .addComponent(lblDateFormatd))
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCedulaCrear)
-                    .addComponent(txtCedulaCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCedulaCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarUsuario))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUsuarioCrear)
+                    .addComponent(txtUsuarioCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblISBNCrear)
-                    .addComponent(txtISBNCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtISBNCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarLibro))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLibroCrear)
                     .addComponent(txtLibroCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAutorCrear)
                     .addComponent(txtAutorCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDisponibleCrear)
                     .addComponent(txtDisponibleCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnVerificarDisp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
                     .addComponent(btnCancelar))
-                .addGap(22, 22, 22))
+                .addGap(78, 78, 78))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,9 +344,8 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -220,20 +360,32 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtLibroCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLibroCrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLibroCrearActionPerformed
+
+    private void txtCedulaCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaCrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaCrearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnBuscarLibro;
+    private javax.swing.JButton btnBuscarUsuario;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnVerificarDisp;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAutorCrear;
     private javax.swing.JLabel lblCedulaCrear;
     private javax.swing.JLabel lblCodigoCrear;
+    private javax.swing.JLabel lblDateFormatd;
+    private javax.swing.JLabel lblDateFormatp;
     private javax.swing.JLabel lblDisponibleCrear;
     private javax.swing.JLabel lblFechaCrear;
+    private javax.swing.JLabel lblFechaDevCrear;
     private javax.swing.JLabel lblISBNCrear;
     private javax.swing.JLabel lblLibroCrear;
     private javax.swing.JLabel lblUsuarioCrear;
@@ -242,6 +394,7 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCodigoCrear;
     private javax.swing.JTextField txtDisponibleCrear;
     private javax.swing.JTextField txtFechaCrear;
+    private javax.swing.JTextField txtFechaDevCrear;
     private javax.swing.JTextField txtISBNCrear;
     private javax.swing.JTextField txtLibroCrear;
     private javax.swing.JTextField txtUsuarioCrear;

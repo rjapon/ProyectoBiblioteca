@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Asus
@@ -15,6 +19,82 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
      */
     public EliminarPrestamoView() {
         initComponents();
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public void setBtnEliminar(JButton btnEliminar) {
+        this.btnEliminar = btnEliminar;
+    }
+
+    public JTextField getTxtAutorEliminar() {
+        return txtAutorEliminar;
+    }
+
+    public void setTxtAutorEliminar(JTextField txtAutorEliminar) {
+        this.txtAutorEliminar = txtAutorEliminar;
+    }
+
+    public JTextField getTxtCodigoEliminar() {
+        return txtCodigoEliminar;
+    }
+
+    public void setTxtCodigoEliminar(JTextField txtCodigoEliminar) {
+        this.txtCodigoEliminar = txtCodigoEliminar;
+    }
+
+    public JTextField getTxtFechaEliminar() {
+        return txtFechaEliminar;
+    }
+
+    public void setTxtFechaEliminar(JTextField txtFechaEliminar) {
+        this.txtFechaEliminar = txtFechaEliminar;
+    }
+
+    public JTextField getTxtISBNEliminar() {
+        return txtISBNEliminar;
+    }
+
+    public void setTxtISBNEliminar(JTextField txtISBNEliminar) {
+        this.txtISBNEliminar = txtISBNEliminar;
+    }
+
+    public JTextField getTxtLibroEliminar() {
+        return txtLibroEliminar;
+    }
+
+    public void setTxtLibroEliminar(JTextField txtLibroEliminar) {
+        this.txtLibroEliminar = txtLibroEliminar;
+    }
+
+    public JTextField getTxtUsuarioEliminar() {
+        return txtUsuarioEliminar;
+    }
+
+    public void setTxtUsuarioEliminar(JTextField txtUsuarioEliminar) {
+        this.txtUsuarioEliminar = txtUsuarioEliminar;
+    }
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
     }
 
     /**
@@ -47,7 +127,7 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Eliminar Prestamo de memoria");
+        setTitle("Eliminar Prestamo ");
 
         jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Eliminar prestamo con codigo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Bright", 0, 12))); // NOI18N
@@ -68,6 +148,7 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
         lblAutorEliminar.setText("Autor:");
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
@@ -181,12 +262,16 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtFechaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaEliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFechaEliminarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
