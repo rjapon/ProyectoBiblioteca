@@ -59,12 +59,7 @@ public class PrestamoController {
     // Crear Prestamo
     public void crearPrestamo() {
 
-        if (crearPrestamoView.getTxtCodigoCrear().getText().trim().isEmpty()
-                || crearPrestamoView.getTxtISBNCrear().getText().trim().isEmpty()
-                || crearPrestamoView.getTxtCedulaCrear().getText().trim().isEmpty()
-                || crearPrestamoView.getTxtFechaCrear().getText().trim().isEmpty()
-                || crearPrestamoView.getTxtFechaDevCrear().getText().trim().isEmpty()) {
-
+        if (crearPrestamoView.getTxtCodigoCrear().getText().trim().isEmpty()|| crearPrestamoView.getTxtISBNCrear().getText().trim().isEmpty()|| crearPrestamoView.getTxtCedulaCrear().getText().trim().isEmpty()|| crearPrestamoView.getTxtFechaCrear().getText().trim().isEmpty()|| crearPrestamoView.getTxtFechaDevCrear().getText().trim().isEmpty()) {
             crearPrestamoView.mostrarInformacion("Complete todos los campos.");
             return;
         }
