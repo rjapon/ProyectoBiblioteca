@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Asus
@@ -16,6 +20,64 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
     public ActualizarLibroView() {
         initComponents();
     }
+
+    public JButton getBtnActualizar() {
+        return btnActualizar;
+    }
+
+    public void setBtnActualizar(JButton btnActualizar) {
+        this.btnActualizar = btnActualizar;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
+    public JComboBox<String> getCboAutorActualizar() {
+        return cboAutorActualizar;
+    }
+
+    public void setCboAutorActualizar(JComboBox<String> cboAutorActualizar) {
+        this.cboAutorActualizar = cboAutorActualizar;
+    }
+
+    public JComboBox<String> getCboCategoriaActualizar() {
+        return cboCategoriaActualizar;
+    }
+
+    public void setCboCategoriaActualizar(JComboBox<String> cboCategoriaActualizar) {
+        this.cboCategoriaActualizar = cboCategoriaActualizar;
+    }
+
+    public JTextField getTxtEditorialActualizar() {
+        return txtEditorialActualizar;
+    }
+
+    public void setTxtEditorialActualizar(JTextField txtEditorialActualizar) {
+        this.txtEditorialActualizar = txtEditorialActualizar;
+    }
+
+    public JTextField getTxtISBNActualizar() {
+        return txtISBNActualizar;
+    }
+
+    public void setTxtISBNActualizar(JTextField txtISBNActualizar) {
+        this.txtISBNActualizar = txtISBNActualizar;
+    }
+
+    public JTextField getTxtTituloActualizar() {
+        return txtTituloActualizar;
+    }
+
+    public void setTxtTituloActualizar(JTextField txtTituloActualizar) {
+        this.txtTituloActualizar = txtTituloActualizar;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
