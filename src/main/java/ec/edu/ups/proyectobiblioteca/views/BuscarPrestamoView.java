@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -109,7 +111,28 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
         this.txtEstadoBuscar = txtEstadoBuscar;
     }
 
-    
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+
+        setTitle(bundle.getString("tituloVentanaBuscarPrestamo"));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(
+                bundle.getString("tituloPanelBuscarPrestamo")));
+
+        lblCodigoBuscar.setText(bundle.getString("lblCodigoBuscarPrestamo"));
+        lblUsuarioBuscar.setText(bundle.getString("lblUsuarioPrestamo"));
+        lblCedulaBuscar.setText(bundle.getString("lblCedulaPrestamo"));
+        lblLibroBuscar.setText(bundle.getString("lblLibroPrestamo"));
+        lblAutorBuscar.setText(bundle.getString("lblAutorPrestamo"));
+        lblISBNBuscar.setText(bundle.getString("lblISBNPrestamo"));
+        lblFechaBuscar.setText(bundle.getString("lblFechaPrestamo"));
+        lblFechaDevBuscar.setText(bundle.getString("lblFechaDevPrestamo"));
+        lblEstadoBuscar.setText(bundle.getString("lblEstadoPrestamo"));
+
+        btnBuscar.setText(bundle.getString("botonBuscar"));
+        btnAceptar.setText(bundle.getString("botonAceptar"));
+    }
 
     public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
@@ -152,12 +175,12 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Buscar Prestamo");
 
-        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
+        jPanel1.setBackground(new java.awt.Color(0, 204, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar prestamo con codigo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Fax", 0, 12))); // NOI18N
 
         lblCodigoBuscar.setText("Ingrese el codigo del préstamo:");
 
-        btnBuscar.setBackground(java.awt.Color.pink);
+        btnBuscar.setBackground(new java.awt.Color(51, 255, 0));
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(this::btnBuscarActionPerformed);
 

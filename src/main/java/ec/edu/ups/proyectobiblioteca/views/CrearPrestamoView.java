@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -125,8 +127,38 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
     public void setTxtUsuarioCrear(JTextField txtUsuarioCrear) {
         this.txtUsuarioCrear = txtUsuarioCrear;
     }
-    
-    
+
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "ec.edu.ups.proyectobiblioteca.i18n.mensajes",
+                locale);
+
+        setTitle(bundle.getString("tituloVentanaPrestamo"));
+
+        panelCrearPrestamo.setBorder(
+                javax.swing.BorderFactory.createTitledBorder(
+                        bundle.getString("tituloPanelPrestamo")));
+
+        lblCodigoCrear.setText(bundle.getString("lblCodigoPrestamo"));
+        lblFechaCrear.setText(bundle.getString("lblFechaPrestamo"));
+        lblFechaDevCrear.setText(bundle.getString("lblFechaDevPrestamo"));
+        lblCedulaCrear.setText(bundle.getString("lblCedulaPrestamo"));
+        lblUsuarioCrear.setText(bundle.getString("lblUsuarioPrestamo"));
+        lblISBNCrear.setText(bundle.getString("lblISBNPrestamo"));
+        lblLibroCrear.setText(bundle.getString("lblLibroPrestamo"));
+        lblAutorCrear.setText(bundle.getString("lblAutorPrestamo"));
+        lblDisponibleCrear.setText(bundle.getString("lblDisponiblePrestamo"));
+
+        lblDateFormatp.setText(bundle.getString("lblFormatoFecha"));
+        lblDateFormatd.setText(bundle.getString("lblFormatoFecha"));
+
+        btnBuscarUsuario.setText(bundle.getString("botonBuscar"));
+        btnBuscarLibro.setText(bundle.getString("botonBuscar"));
+
+        btnAceptar.setText(bundle.getString("botonAceptar"));
+        btnCancelar.setText(bundle.getString("botonCancelar"));
+    }
 
     public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
@@ -141,7 +173,7 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelCrearPrestamo = new javax.swing.JPanel();
         lblCodigoCrear = new javax.swing.JLabel();
         lblFechaCrear = new javax.swing.JLabel();
         lblISBNCrear = new javax.swing.JLabel();
@@ -173,9 +205,9 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Crear Prestamo\n");
 
-        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingresar datos del prestamo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Bright", 0, 12))); // NOI18N
-        jPanel1.setToolTipText("");
+        panelCrearPrestamo.setBackground(new java.awt.Color(255, 204, 51));
+        panelCrearPrestamo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingresar datos del prestamo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Bright", 0, 12))); // NOI18N
+        panelCrearPrestamo.setToolTipText("");
 
         lblCodigoCrear.setText("Código de préstamo:");
 
@@ -210,7 +242,10 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
 
         lblDateFormatd.setText("dd/mm/yyyy");
 
+        txtLibroCrear.setEditable(false);
         txtLibroCrear.addActionListener(this::txtLibroCrearActionPerformed);
+
+        txtAutorCrear.setEditable(false);
 
         btnBuscarUsuario.setText("Buscar");
 
@@ -218,115 +253,115 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
 
         lblUsuarioCrear.setText("Usuario:");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        txtUsuarioCrear.setEditable(false);
+
+        javax.swing.GroupLayout panelCrearPrestamoLayout = new javax.swing.GroupLayout(panelCrearPrestamo);
+        panelCrearPrestamo.setLayout(panelCrearPrestamoLayout);
+        panelCrearPrestamoLayout.setHorizontalGroup(
+            panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCrearPrestamoLayout.createSequentialGroup()
+                .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCrearPrestamoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCodigoCrear)
-                            .addComponent(lblFechaDevCrear))
+                            .addComponent(lblFechaDevCrear)
+                            .addComponent(lblFechaCrear))
                         .addGap(39, 39, 39)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtFechaCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                             .addComponent(txtCodigoCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                             .addComponent(txtFechaDevCrear))
                         .addGap(37, 37, 37)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDateFormatp)
                             .addComponent(lblDateFormatd)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblFechaCrear)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblCedulaCrear)
-                                        .addComponent(lblUsuarioCrear))
-                                    .addGap(50, 50, 50)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtCedulaCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                                        .addComponent(txtUsuarioCrear))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelCrearPrestamoLayout.createSequentialGroup()
+                        .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(panelCrearPrestamoLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCedulaCrear)
+                                    .addComponent(lblUsuarioCrear))
+                                .addGap(50, 50, 50)
+                                .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtCedulaCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                    .addComponent(txtUsuarioCrear)))
+                            .addGroup(panelCrearPrestamoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(panelCrearPrestamoLayout.createSequentialGroup()
                                         .addComponent(lblDisponibleCrear)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                                         .addComponent(txtDisponibleCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(panelCrearPrestamoLayout.createSequentialGroup()
                                         .addComponent(lblAutorCrear)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txtAutorCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(panelCrearPrestamoLayout.createSequentialGroup()
                                         .addComponent(lblLibroCrear)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txtLibroCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(panelCrearPrestamoLayout.createSequentialGroup()
                                         .addComponent(lblISBNCrear)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txtISBNCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(39, 39, 39)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnBuscarLibro)
                             .addComponent(btnBuscarUsuario)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelCrearPrestamoLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(btnAceptar)
                         .addGap(117, 117, 117)
                         .addComponent(btnCancelar)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelCrearPrestamoLayout.setVerticalGroup(
+            panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCrearPrestamoLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodigoCrear)
                     .addComponent(txtCodigoCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFechaCrear)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtFechaCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblDateFormatp)))
+                .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFechaCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDateFormatp)
+                    .addComponent(lblFechaCrear))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFechaDevCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFechaDevCrear)
                     .addComponent(lblDateFormatd))
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCedulaCrear)
                     .addComponent(txtCedulaCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarUsuario))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUsuarioCrear)
                     .addComponent(txtUsuarioCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblISBNCrear)
                     .addComponent(txtISBNCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarLibro))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLibroCrear)
                     .addComponent(txtLibroCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblAutorCrear)
                     .addComponent(txtAutorCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDisponibleCrear)
                     .addComponent(txtDisponibleCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelCrearPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
                     .addComponent(btnCancelar))
                 .addGap(78, 78, 78))
@@ -338,14 +373,14 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelCrearPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelCrearPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -377,7 +412,6 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscarLibro;
     private javax.swing.JButton btnBuscarUsuario;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAutorCrear;
     private javax.swing.JLabel lblCedulaCrear;
     private javax.swing.JLabel lblCodigoCrear;
@@ -389,6 +423,7 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblISBNCrear;
     private javax.swing.JLabel lblLibroCrear;
     private javax.swing.JLabel lblUsuarioCrear;
+    private javax.swing.JPanel panelCrearPrestamo;
     private javax.swing.JTextField txtAutorCrear;
     private javax.swing.JTextField txtCedulaCrear;
     private javax.swing.JTextField txtCodigoCrear;

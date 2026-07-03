@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -60,7 +62,23 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
     public void setTxtTelefonoActualizarUsuario(JTextField txtTelefonoActualizarUsuario) {
         this.txtTelefonoActualizarUsuario = txtTelefonoActualizarUsuario;
     }
-    
+
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+
+        setTitle(bundle.getString("tituloVentanaActualizarUsuario"));
+
+        jLabel1.setText(bundle.getString("lblCedulaActualizarUsuario"));
+        jLabel2.setText(bundle.getString("lblNombreUsuario"));
+        jLabel3.setText(bundle.getString("lblTelefonoUsuario"));
+
+        btnBuscar.setText(bundle.getString("botonBuscar"));
+        btnActualizar.setText(bundle.getString("botonActualizar"));
+        btnCancelar.setText(bundle.getString("botonCancelar"));
+    }
+
     public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
     }
@@ -173,7 +191,7 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
 

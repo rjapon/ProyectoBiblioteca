@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -60,10 +62,26 @@ public class EliminarAutorView extends javax.swing.JInternalFrame {
     public void setTxtNombreEliminarAutorView(JTextField txtNombreEliminarAutorView) {
         this.txtNombreEliminarAutorView = txtNombreEliminarAutorView;
     }
-    
+
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+
+        setTitle(bundle.getString("tituloVentanaEliminarAutor"));
+
+        jLabel1.setText(bundle.getString("lblCodigoAutor"));
+        jLabel2.setText(bundle.getString("lblNombreAutor"));
+        jLabel3.setText(bundle.getString("lblNacionalidadAutor"));
+
+        btnBuscar.setText(bundle.getString("botonBuscar"));
+        btnEliminar.setText(bundle.getString("botonEliminar"));
+        btnCancelar.setText(bundle.getString("botonCancelar"));
+    }
+
     public void mostrarInformacion(String mensaje) {
-    JOptionPane.showMessageDialog(this, mensaje);
-}
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

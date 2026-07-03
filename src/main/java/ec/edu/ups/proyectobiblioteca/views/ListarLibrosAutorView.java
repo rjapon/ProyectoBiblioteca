@@ -7,6 +7,8 @@ package ec.edu.ups.proyectobiblioteca.views;
 import ec.edu.ups.proyectobiblioteca.models.Autor;
 import ec.edu.ups.proyectobiblioteca.models.Libro;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
@@ -16,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author mateo
  */
 public class ListarLibrosAutorView extends javax.swing.JInternalFrame {
-    
+
     private DefaultTableModel modelo;
 
     /**
@@ -27,9 +29,10 @@ public class ListarLibrosAutorView extends javax.swing.JInternalFrame {
         configurarTabla();
     }
 
-   public JComboBox<String> getAutorComboBoxListarLibros() {
-    return AutorComboBoxListarLibros;
-}
+    public JComboBox<String> getAutorComboBoxListarLibros() {
+        return AutorComboBoxListarLibros;
+    }
+
     public void setAutorComboBoxListarLibros(JComboBox<String> AutorComboBoxListarLibros) {
         this.AutorComboBoxListarLibros = AutorComboBoxListarLibros;
     }
@@ -41,52 +44,64 @@ public class ListarLibrosAutorView extends javax.swing.JInternalFrame {
     public void setBtnListar(JButton BtnListar) {
         this.BtnListar = BtnListar;
     }
-    
-    
 
-    
-    
     public void configurarTabla() {
 
-    modelo = new DefaultTableModel();
+        modelo = new DefaultTableModel();
 
-    modelo.addColumn("ISBN");
-    modelo.addColumn("Título");
-    modelo.addColumn("Editorial");
-    modelo.addColumn("Categoría");
-    modelo.addColumn("Disponible");
+        modelo.addColumn("ISBN");
+        modelo.addColumn("Título");
+        modelo.addColumn("Editorial");
+        modelo.addColumn("Categoría");
+        modelo.addColumn("Disponible");
 
-    jTable1.setModel(modelo);
-}
-    
+        jTable1.setModel(modelo);
+    }
+
     public void cargarDatos(List<Libro> libros) {
 
-    modelo.setRowCount(0);
+        modelo.setRowCount(0);
 
-    for (Libro libro : libros) {
+        for (Libro libro : libros) {
 
-        Object[] fila = {
-            libro.getISBN(),
-            libro.getTitulo(),
-            libro.getEditorial(),
-            libro.getCategoria(),
-            libro.isDisponible()
-        };
+            Object[] fila = {
+                libro.getISBN(),
+                libro.getTitulo(),
+                libro.getEditorial(),
+                libro.getCategoria(),
+                libro.isDisponible()
+            };
 
-        modelo.addRow(fila);
+            modelo.addRow(fila);
+        }
     }
-}
-    
+
     public void cargarAutores(List<Autor> autores) {
 
-    AutorComboBoxListarLibros.removeAllItems();
+        AutorComboBoxListarLibros.removeAllItems();
 
-    for (Autor autor : autores) {
-        AutorComboBoxListarLibros.addItem(autor.getNombre());
+        for (Autor autor : autores) {
+            AutorComboBoxListarLibros.addItem(autor.getNombre());
+        }
     }
-}
-    
-    
+
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+
+        setTitle(bundle.getString("tituloVentanaListarLibrosAutor"));
+
+        BtnListar.setText(bundle.getString("listarMenuItem"));
+
+        modelo.setColumnIdentifiers(new Object[]{
+            bundle.getString("colISBNLibro"),
+            bundle.getString("colTituloLibro"),
+            bundle.getString("colEditorialLibro"),
+            bundle.getString("colCategoriaLibro"),
+            bundle.getString("colDisponibleLibro")
+        });
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

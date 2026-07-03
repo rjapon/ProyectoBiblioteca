@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -41,6 +43,24 @@ public class ListarPrestamoView extends javax.swing.JInternalFrame {
 
         tblPrestamos.setModel(modelo);
 
+    }
+
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+
+        setTitle(bundle.getString("tituloVentanaListarPrestamos"));
+
+        btnListar.setText(bundle.getString("listarMenuItem"));
+
+        modelo.setColumnCount(0);
+
+        modelo.addColumn(bundle.getString("colCodigoPrestamo"));
+        modelo.addColumn(bundle.getString("colLibroPrestamo"));
+        modelo.addColumn(bundle.getString("colFechaPrestamo"));
+        modelo.addColumn(bundle.getString("colUsuarioPrestamo"));
+
+        tblPrestamos.setModel(modelo);
     }
 
     /**

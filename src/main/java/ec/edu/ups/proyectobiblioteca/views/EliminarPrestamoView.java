@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -93,6 +95,27 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
         this.txtUsuarioEliminar = txtUsuarioEliminar;
     }
 
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes",locale);
+
+        setTitle(bundle.getString("tituloVentanaEliminarPrestamo"));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(
+                bundle.getString("tituloPanelEliminarPrestamo")));
+
+        lblCodigoEliminar.setText(bundle.getString("lblCodigoEliminarPrestamo"));
+        lblUsuarioEliminar.setText(bundle.getString("lblUsuarioPrestamo"));
+        lblFechaEliminar.setText(bundle.getString("lblFechaPrestamo"));
+        lblLibroEliminar.setText(bundle.getString("lblLibroPrestamo"));
+        lblAutorEliminar.setText(bundle.getString("lblAutorPrestamo"));
+        lblISBNEliminar.setText(bundle.getString("lblISBNPrestamo"));
+
+        btnBuscar.setText(bundle.getString("botonBuscar"));
+        btnEliminar.setText(bundle.getString("botonEliminar"));
+        btnCancelar.setText(bundle.getString("botonCancelar"));
+    }
+
     public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
     }
@@ -129,13 +152,13 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Eliminar Prestamo ");
 
-        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Eliminar prestamo con codigo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Bright", 0, 12))); // NOI18N
         jPanel1.setDoubleBuffered(false);
 
         lblCodigoEliminar.setText("Ingrese el codigo del prestamo:");
 
-        btnBuscar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Grey"));
+        btnBuscar.setBackground(new java.awt.Color(102, 153, 255));
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(this::btnBuscarActionPerformed);
 
@@ -147,7 +170,13 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
 
         lblAutorEliminar.setText("Autor:");
 
+        btnEliminar.setBackground(new java.awt.Color(255, 102, 102));
         btnEliminar.setText("Eliminar");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseEntered(evt);
+            }
+        });
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         btnCancelar.setText("Cancelar");
@@ -272,6 +301,10 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
+
+    }//GEN-LAST:event_btnEliminarMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

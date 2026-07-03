@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -101,6 +103,32 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
         this.txtISBNActualizar = txtISBNActualizar;
     }
 
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes",locale);
+
+        setTitle(bundle.getString("tituloVentanaActualizarPrestamo"));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("tituloPanelActualizarPrestamo")));
+
+        lblCodigoActualizar.setText(bundle.getString("lblCodigoActualizarPrestamo"));
+        lblUsuarioActualizar.setText(bundle.getString("lblUsuarioPrestamo"));
+        lblLibroActualizar.setText(bundle.getString("lblLibroPrestamo"));
+        lblISBNActualizar.setText(bundle.getString("lblISBNPrestamo"));
+        lblAutorActualizar.setText(bundle.getString("lblAutorPrestamo"));
+        lblFechaActualizar.setText(bundle.getString("lblFechaActualizarPrestamo"));
+        lblFechaDevActualizar.setText(bundle.getString("lblFechaDevActualizarPrestamo"));
+
+        lblLectura1.setText(bundle.getString("lblLectura"));
+        lblLectura2.setText(bundle.getString("lblLectura"));
+        lblLectura3.setText(bundle.getString("lblLectura"));
+        lblLectura4.setText(bundle.getString("lblLectura"));
+
+        btnBuscar.setText(bundle.getString("botonBuscar"));
+        btnAceptar.setText(bundle.getString("botonAceptar"));
+        btnCancelar.setText(bundle.getString("botonCancelar"));
+    }
+
     public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
     }
@@ -143,6 +171,7 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Actualizar Prestamo");
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actualizar datos del prestamo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Bright", 0, 12))); // NOI18N
 
         lblCodigoActualizar.setText("Ingrese el codigo del prestamo:");
@@ -213,20 +242,14 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
                                     .addComponent(txtAutorActualizar)
                                     .addComponent(txtISBNActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtCodigoActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnBuscar))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblLectura4)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblLectura1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblLectura2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                            .addComponent(lblLectura4)
+                            .addComponent(lblLectura1)
+                            .addComponent(lblLectura2)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblFechaDevActualizar)
@@ -239,7 +262,7 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblLectura3))))
                     .addComponent(lblAutorActualizar))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 53, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

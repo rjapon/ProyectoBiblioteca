@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -52,12 +54,25 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
     public void setTxtTelefonoCrearUsuario(JTextField txtTelefonoCrearUsuario) {
         this.txtTelefonoCrearUsuario = txtTelefonoCrearUsuario;
     }
-    
+
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+
+        setTitle(bundle.getString("tituloVentanaAgregarUsuario"));
+
+        jLabel4.setText(bundle.getString("lblCedulaUsuario"));
+        jLabel5.setText(bundle.getString("lblNombreUsuario"));
+        jLabel6.setText(bundle.getString("lblTelefonoUsuario"));
+
+        btnCrear.setText(bundle.getString("crearMenuItem"));
+        btnCancelar.setText(bundle.getString("botonCancelar"));
+    }
+
     public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -60,9 +62,23 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
     public void setTxtTelfonoEliminarUsuario(JTextField txtTelfonoEliminarUsuario) {
         this.txtTelfonoEliminarUsuario = txtTelfonoEliminarUsuario;
     }
-    
-    
-    
+
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+
+        setTitle(bundle.getString("tituloVentanaEliminarUsuario"));
+
+        jLabel1.setText(bundle.getString("lblCedulaUsuario"));
+        jLabel2.setText(bundle.getString("lblNombreUsuario"));
+        jLabel3.setText(bundle.getString("lblTelefonoUsuario"));
+
+        btnBuscarEliminarUsuario.setText(bundle.getString("botonBuscar"));
+        btnEliminar.setText(bundle.getString("botonEliminar"));
+        btnCancelar.setText(bundle.getString("botonCancelar"));
+    }
+
     public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
     }

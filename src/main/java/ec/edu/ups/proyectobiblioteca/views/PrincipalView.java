@@ -15,6 +15,8 @@ import ec.edu.ups.proyectobiblioteca.dao.PrestamoDAO;
 import ec.edu.ups.proyectobiblioteca.dao.PrestamoDAOMemoria;
 import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAO;
 import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAOMemoria;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -94,6 +96,41 @@ public class PrincipalView extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+        IdiomaMenu.setText(bundle.getString("idiomaMenu"));
+
+        PrestamoMenu.setText(bundle.getString("prestamoMenu"));
+        CrearPrestamoMenuItem.setText(bundle.getString("crearMenuItem"));
+        BuscarPrestamoMenuItem.setText(bundle.getString("buscarMenuItem"));
+        ActualizarPrestamoMenuItem.setText(bundle.getString("actualizarMenuItem"));
+        EliminarPrestamoMenuItem.setText(bundle.getString("eliminarMenuItem"));
+        ListarPrestamoMenuItem.setText(bundle.getString("listarMenuItem"));
+
+        LibroMenu.setText(bundle.getString("libroMenu"));
+        AgregarLibroMenuItem.setText(bundle.getString("agregarMenuItem"));
+        EliminarLibroMenuItem.setText(bundle.getString("eliminarMenuItem"));
+        BuscarLibroMenuItem.setText(bundle.getString("buscarMenuItem"));
+        ActualizarLibroMenuItem.setText(bundle.getString("actualizarMenuItem"));
+        ListarLibroMenuItem.setText(bundle.getString("listarMenuItem"));
+
+        AutorMenu.setText(bundle.getString("autorMenu"));
+        AgregarAutorMenuItem.setText(bundle.getString("agregarMenuItem"));
+        BuscarAutorMenuItem.setText(bundle.getString("buscarMenuItem"));
+        EliminarAutorMenuItem.setText(bundle.getString("eliminarMenuItem"));
+        ActualizarAutorMenuItem.setText(bundle.getString("actualizarMenuItem"));
+        ListarLibroAutorMenuItem.setText(bundle.getString("listarMenuItem"));
+
+        UsuarioMenu.setText(bundle.getString("usuarioMenu"));
+        CrearUsuarioMenuItem.setText(bundle.getString("crearMenuItem"));
+        BuscarUsuarioMenuItem.setText(bundle.getString("buscarMenuItem"));
+        EliminarUsuarioMenuItem.setText(bundle.getString("eliminarMenuItem"));
+        ActualizarUsuarioMenuItem.setText(bundle.getString("actualizarMenuItem"));
+        ListarUsuarioMenuItem.setText(bundle.getString("listarLibrosMenuItem"));
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,12 +161,15 @@ public class PrincipalView extends javax.swing.JFrame {
         ActualizarAutorMenuItem = new javax.swing.JMenuItem();
         ListarLibroAutorMenuItem = new javax.swing.JMenuItem();
         BuscarAutorMenuItem = new javax.swing.JMenuItem();
-        UsuariosMenu = new javax.swing.JMenu();
+        UsuarioMenu = new javax.swing.JMenu();
         CrearUsuarioMenuItem = new javax.swing.JMenuItem();
         EliminarUsuarioMenuItem = new javax.swing.JMenuItem();
         ActualizarUsuarioMenuItem = new javax.swing.JMenuItem();
         BuscarUsuarioMenuItem = new javax.swing.JMenuItem();
         ListarUsuarioMenuItem = new javax.swing.JMenuItem();
+        IdiomaMenu = new javax.swing.JMenu();
+        IdiomaESMenuItem = new javax.swing.JMenuItem();
+        IdiomaINMenuItem = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -218,29 +258,41 @@ public class PrincipalView extends javax.swing.JFrame {
 
         jMenuBar2.add(AutorMenu);
 
-        UsuariosMenu.setText("Usuarios");
+        UsuarioMenu.setText("Usuarios");
 
         CrearUsuarioMenuItem.setText("Crear");
         CrearUsuarioMenuItem.addActionListener(this::CrearUsuarioMenuItemActionPerformed);
-        UsuariosMenu.add(CrearUsuarioMenuItem);
+        UsuarioMenu.add(CrearUsuarioMenuItem);
 
         EliminarUsuarioMenuItem.setText("Eliminar");
         EliminarUsuarioMenuItem.addActionListener(this::EliminarUsuarioMenuItemActionPerformed);
-        UsuariosMenu.add(EliminarUsuarioMenuItem);
+        UsuarioMenu.add(EliminarUsuarioMenuItem);
 
         ActualizarUsuarioMenuItem.setText("Actualizar");
         ActualizarUsuarioMenuItem.addActionListener(this::ActualizarUsuarioMenuItemActionPerformed);
-        UsuariosMenu.add(ActualizarUsuarioMenuItem);
+        UsuarioMenu.add(ActualizarUsuarioMenuItem);
 
         BuscarUsuarioMenuItem.setText("Buscar");
         BuscarUsuarioMenuItem.addActionListener(this::BuscarUsuarioMenuItemActionPerformed);
-        UsuariosMenu.add(BuscarUsuarioMenuItem);
+        UsuarioMenu.add(BuscarUsuarioMenuItem);
 
         ListarUsuarioMenuItem.setText("Listar");
         ListarUsuarioMenuItem.addActionListener(this::ListarUsuarioMenuItemActionPerformed);
-        UsuariosMenu.add(ListarUsuarioMenuItem);
+        UsuarioMenu.add(ListarUsuarioMenuItem);
 
-        jMenuBar2.add(UsuariosMenu);
+        jMenuBar2.add(UsuarioMenu);
+
+        IdiomaMenu.setText("Idioma");
+
+        IdiomaESMenuItem.setText("Español");
+        IdiomaESMenuItem.addActionListener(this::IdiomaESMenuItemActionPerformed);
+        IdiomaMenu.add(IdiomaESMenuItem);
+
+        IdiomaINMenuItem.setText("Inglés");
+        IdiomaINMenuItem.addActionListener(this::IdiomaINMenuItemActionPerformed);
+        IdiomaMenu.add(IdiomaINMenuItem);
+
+        jMenuBar2.add(IdiomaMenu);
 
         setJMenuBar(jMenuBar2);
 
@@ -419,6 +471,59 @@ public class PrincipalView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BuscarAutorMenuItemActionPerformed
 
+    private void IdiomaESMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdiomaESMenuItemActionPerformed
+        Locale locale = new Locale("es", "EC");
+        this.cambiarIdioma(locale);
+
+        // Prestamo View
+        crearPrestamoView.cambiarIdioma(locale);
+        actualizarPrestamoView.cambiarIdioma(locale);
+        buscarPrestamoView.cambiarIdioma(locale);
+        eliminarPrestamoView.cambiarIdioma(locale);
+        listarPrestamoView.cambiarIdioma(locale);
+
+        // Autor View
+        actualizarAutorView.cambiarIdioma(locale);
+        agregarAutorView.cambiarIdioma(locale);
+        buscarAutorView.cambiarIdioma(locale);
+        eliminarAutorView.cambiarIdioma(locale);
+        listarLibrosAutorView.cambiarIdioma(locale);
+        ResourceBundle bundle;
+
+        // Usuario View
+        actualizarUsuarioView.cambiarIdioma(locale);
+        buscarUsuarioView.cambiarIdioma(locale);
+        crearUsuarioView.cambiarIdioma(locale);
+        eliminarUsuarioView.cambiarIdioma(locale);
+
+    }//GEN-LAST:event_IdiomaESMenuItemActionPerformed
+
+    private void IdiomaINMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdiomaINMenuItemActionPerformed
+        Locale locale = new Locale("en", "US");
+        this.cambiarIdioma(locale);
+
+        // Prestamo View
+        crearPrestamoView.cambiarIdioma(locale);
+        actualizarPrestamoView.cambiarIdioma(locale);
+        buscarPrestamoView.cambiarIdioma(locale);
+        eliminarPrestamoView.cambiarIdioma(locale);
+        listarPrestamoView.cambiarIdioma(locale);
+
+        // Autor View
+        actualizarAutorView.cambiarIdioma(locale);
+        agregarAutorView.cambiarIdioma(locale);
+        buscarAutorView.cambiarIdioma(locale);
+        eliminarAutorView.cambiarIdioma(locale);
+        listarLibrosAutorView.cambiarIdioma(locale);
+
+        // Usuario View
+        actualizarUsuarioView.cambiarIdioma(locale);
+        buscarUsuarioView.cambiarIdioma(locale);
+        crearUsuarioView.cambiarIdioma(locale);
+        eliminarUsuarioView.cambiarIdioma(locale);
+
+    }//GEN-LAST:event_IdiomaINMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -462,13 +567,16 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem EliminarLibroMenuItem;
     private javax.swing.JMenuItem EliminarPrestamoMenuItem;
     private javax.swing.JMenuItem EliminarUsuarioMenuItem;
+    private javax.swing.JMenuItem IdiomaESMenuItem;
+    private javax.swing.JMenuItem IdiomaINMenuItem;
+    private javax.swing.JMenu IdiomaMenu;
     private javax.swing.JMenu LibroMenu;
     private javax.swing.JMenuItem ListarLibroAutorMenuItem;
     private javax.swing.JMenuItem ListarLibroMenuItem;
     private javax.swing.JMenuItem ListarPrestamoMenuItem;
     private javax.swing.JMenuItem ListarUsuarioMenuItem;
     private javax.swing.JMenu PrestamoMenu;
-    private javax.swing.JMenu UsuariosMenu;
+    private javax.swing.JMenu UsuarioMenu;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem2;
