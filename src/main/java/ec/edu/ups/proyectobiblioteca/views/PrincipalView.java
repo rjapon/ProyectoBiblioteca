@@ -64,6 +64,8 @@ public class PrincipalView extends javax.swing.JFrame {
      * Creates new form PrincipalVoew
      */
     public PrincipalView() {
+        
+        // gay
 
         initComponents();
 
