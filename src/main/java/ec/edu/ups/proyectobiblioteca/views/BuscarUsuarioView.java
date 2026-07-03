@@ -57,18 +57,17 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle bundle = ResourceBundle.getBundle(
-                "ec.edu.ups.proyectobiblioteca.i18n.mensajes",
-                locale);
+        ResourceBundle mensajes = ResourceBundle.getBundle(
+                "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
-        setTitle(bundle.getString("tituloVentanaBuscarUsuario"));
+        setTitle(mensajes.getString("tituloVentanaBuscarUsuario"));
 
-        jLabel1.setText(bundle.getString("lblCedulaBuscarUsuario"));
-        jLabel2.setText(bundle.getString("lblNombreUsuario"));
-        jLabel3.setText(bundle.getString("lblTelefonoUsuario"));
+        jLabel1.setText(mensajes.getString("lblCedulaUsuario"));
+        jLabel2.setText(mensajes.getString("lblNombreUsuario"));
+        jLabel3.setText(mensajes.getString("lblTelefonoUsuario"));
 
-        btnBuscar.setText(bundle.getString("botonBuscar"));
-        btnCancelar.setText(bundle.getString("botonCancelar"));
+        btnBuscar.setText(mensajes.getString("btnBuscar"));
+        btnCancelar.setText(mensajes.getString("btnCancelar"));
     }
 
     public void mostrarInformacion(String mensaje) {
@@ -105,6 +104,7 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
 
         txtTelefonoBuscarUsuarioView.addActionListener(this::txtTelefonoBuscarUsuarioViewActionPerformed);
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
 
         btnCancelar.setText("Cancelar");
@@ -133,7 +133,7 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
                         .addComponent(txtCedulaBuscarUsuarioView)
                         .addComponent(txtTelefonoBuscarUsuarioView))
                     .addComponent(txtNombreBuscarUsuarioView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +150,7 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtTelefonoBuscarUsuarioView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
                     .addComponent(btnCancelar))

@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.proyectobiblioteca.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -13,8 +14,8 @@ import java.util.Date;
 public class Prestamo {
 
     private int codigo;
-    private Date fechaPrestamo;
-    private Date fechaDevolucion;
+    private LocalDate fechaPrestamo;
+    private LocalDate fechaDevolucion;
     private String estado;
     private Libro libro;
     private Usuario usuario;
@@ -22,7 +23,7 @@ public class Prestamo {
     public Prestamo() {
     }
 
-    public Prestamo(int codigo, Date fechaPrestamo, Date fechaDevolucion, String estado, Libro libro, Usuario usuario) {
+    public Prestamo(int codigo, LocalDate fechaPrestamo, LocalDate fechaDevolucion, String estado, Libro libro, Usuario usuario) {
         this.codigo = codigo;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
@@ -30,6 +31,8 @@ public class Prestamo {
         this.libro = libro;
         this.usuario = usuario;
     }
+
+    
 
     public int getCodigo() {
         return codigo;
@@ -39,21 +42,23 @@ public class Prestamo {
         this.codigo = codigo;
     }
 
-    public Date getFechaPrestamo() {
+    public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(Date fechaPrestamo) {
+    public void setFechaPrestamo(LocalDate fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    public Date getFechaDevolucion() {
+    public LocalDate getFechaDevolucion() {
         return fechaDevolucion;
     }
 
-    public void setFechaDevolucion(Date fechaDevolucion) {
+    public void setFechaDevolucion(LocalDate fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
     }
+
+   
 
     public String getEstado() {
         return estado;

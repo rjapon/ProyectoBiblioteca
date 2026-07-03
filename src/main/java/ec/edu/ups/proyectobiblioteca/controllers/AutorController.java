@@ -10,7 +10,7 @@ import ec.edu.ups.proyectobiblioteca.views.ActualizarAutorView;
 import ec.edu.ups.proyectobiblioteca.views.AgregarAutorView;
 import ec.edu.ups.proyectobiblioteca.views.BuscarAutorView;
 import ec.edu.ups.proyectobiblioteca.views.EliminarAutorView;
-import ec.edu.ups.proyectobiblioteca.views.ListarLibrosAutorView;
+import ec.edu.ups.proyectobiblioteca.views.ListarAutorView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -28,14 +28,14 @@ public class AutorController {
     private AgregarAutorView agregarAutorView;
     private EliminarAutorView eliminarAutorView;
     private BuscarAutorView buscarAutorView;
-    private ListarLibrosAutorView listarLibrosAutorView;
+    private ListarAutorView listarAutorView;
     private AutorDAO autorDAO;
 
-    public AutorController(ActualizarAutorView actualizarAutorView, AgregarAutorView agregarAutorView, EliminarAutorView eliminarAutorView, BuscarAutorView buscarAutorView, AutorDAO autorDAO) {
+    public AutorController(ActualizarAutorView actualizarAutorView, AgregarAutorView agregarAutorView, EliminarAutorView eliminarAutorView, BuscarAutorView buscarAutorView,ListarAutorView listarAutorView,AutorDAO autorDAO) {
         this.actualizarAutorView = actualizarAutorView;
         this.agregarAutorView = agregarAutorView;
         this.eliminarAutorView = eliminarAutorView;
-//        this.listarLibrosAutorView = listarLibrosAutorView;
+      this.listarAutorView = listarAutorView;
         this.buscarAutorView = buscarAutorView;
         this.autorDAO = autorDAO;
 
@@ -45,8 +45,7 @@ public class AutorController {
         configurarEventosBuscarActualizarAutor();
         configurarEventosActualizarAutor();
         configurarEventosAgregarAutor();
-//        configurarEventosListarLibrosAutor();
-//        configurarEventosVentanaListarLibros();
+        configurarEventosListarAutores();
     }
 
     public void buscarAutor() {
@@ -265,61 +264,24 @@ public class AutorController {
         });
 
     }
+    
+    public void listarAutores() {
 
-//    public void cargarAutoresCombo() {
-//
-//        List<Autor> autores = autorDAO.listar();
-//
-//        listarLibrosAutorView.cargarAutores(autores);
-//
-//    }
-//
-//    public void listarLibrosAutor() {
-//
-//        String nombre = (String) listarLibrosAutorView
-//                .getAutorComboBoxListarLibros()
-//                .getSelectedItem();
-//
-//        Autor autor = autorDAO.buscarPorNombre(nombre);
-//
-//        if (autor != null) {
-//
-//            listarLibrosAutorView.cargarDatos(
-//                    autor.getLibros());
-//
-//        }
-//
-//    }
-//
-//    public void configurarEventosListarLibrosAutor() {
-//
-//        listarLibrosAutorView.getBtnListar().addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//                listarLibrosAutor();
-//
-//            }
-//
-//        });
-//
-//    }
-//    
-//    
-//    
-//    public void configurarEventosVentanaListarLibros() {
-//
-//    listarLibrosAutorView.addInternalFrameListener(new InternalFrameAdapter() {
-//
-//        @Override
-//        public void internalFrameActivated(InternalFrameEvent e) {
-//
-//            cargarAutoresCombo();
-//
-//        }
-//
-//    });
-//
-//}
+    List<Autor> autores = autorDAO.listar();
+    listarAutorView.cargarDatos(autores);
+}
 
+    
+    public void configurarEventosListarAutores() {
+
+    listarAutorView.getBtnListar().addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            listarAutores();
+        }
+    });
+
+}
+    
+   
 }

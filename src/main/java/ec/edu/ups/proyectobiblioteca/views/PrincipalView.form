@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.JMenuItem" name="jMenuItem2">
       <Properties>
@@ -132,12 +132,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ActualizarAutorMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="ListarLibroAutorMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="ListarAutorMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Listar Libros"/>
+                <Property name="text" type="java.lang.String" value="Listar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListarLibroAutorMenuItemActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListarAutorMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="BuscarAutorMenuItem">
@@ -150,7 +150,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="UsuarioMenu">
+        <Menu class="javax.swing.JMenu" name="UsuariosMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Usuarios"/>
           </Properties>
@@ -197,25 +197,25 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="IdiomaMenu">
+        <Menu class="javax.swing.JMenu" name="idiomaMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Idioma"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="IdiomaESMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="idiomaESMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Espa&#xf1;ol"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IdiomaESMenuItemActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idiomaESMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="IdiomaINMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="idiomaINMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ingl&#xe9;s"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IdiomaINMenuItemActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idiomaINMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -266,7 +266,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="371" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="424" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

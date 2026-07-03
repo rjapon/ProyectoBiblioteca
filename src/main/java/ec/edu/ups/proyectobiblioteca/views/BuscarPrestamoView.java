@@ -117,10 +117,9 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
 
         setTitle(bundle.getString("tituloVentanaBuscarPrestamo"));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(
-                bundle.getString("tituloPanelBuscarPrestamo")));
+        panelBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("tituloPanelBuscarPrestamo")));
 
-        lblCodigoBuscar.setText(bundle.getString("lblCodigoBuscarPrestamo"));
+        lblCodigoBuscar.setText(bundle.getString("lblCodigoPrestamo"));
         lblUsuarioBuscar.setText(bundle.getString("lblUsuarioPrestamo"));
         lblCedulaBuscar.setText(bundle.getString("lblCedulaPrestamo"));
         lblLibroBuscar.setText(bundle.getString("lblLibroPrestamo"));
@@ -130,8 +129,8 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
         lblFechaDevBuscar.setText(bundle.getString("lblFechaDevPrestamo"));
         lblEstadoBuscar.setText(bundle.getString("lblEstadoPrestamo"));
 
-        btnBuscar.setText(bundle.getString("botonBuscar"));
-        btnAceptar.setText(bundle.getString("botonAceptar"));
+        btnBuscar.setText(bundle.getString("btnBuscar"));
+        btnAceptar.setText(bundle.getString("btnAceptar"));
     }
 
     public void mostrarInformacion(String mensaje) {
@@ -147,7 +146,7 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelBuscar = new javax.swing.JPanel();
         lblCodigoBuscar = new javax.swing.JLabel();
         txtCodigoBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
@@ -175,12 +174,13 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Buscar Prestamo");
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar prestamo con codigo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Fax", 0, 12))); // NOI18N
+        panelBuscar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
+        panelBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar prestamo con codigo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Fax", 0, 12))); // NOI18N
 
         lblCodigoBuscar.setText("Ingrese el codigo del préstamo:");
 
-        btnBuscar.setBackground(new java.awt.Color(51, 255, 0));
+        btnBuscar.setBackground(java.awt.Color.pink);
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(this::btnBuscarActionPerformed);
 
@@ -194,119 +194,130 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
 
         lblFechaBuscar.setText("Fecha de prestamo:");
 
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/aceptar.png"))); // NOI18N
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(this::btnAceptarActionPerformed);
 
         txtUsuarioBuscar.setEditable(false);
+        txtUsuarioBuscar.setEnabled(false);
         txtUsuarioBuscar.addActionListener(this::txtUsuarioBuscarActionPerformed);
 
         txtLibroBuscar.setEditable(false);
+        txtLibroBuscar.setEnabled(false);
 
         txtAutorBuscar.setEditable(false);
+        txtAutorBuscar.setEnabled(false);
 
         txtISBNBuscar.setEditable(false);
+        txtISBNBuscar.setEnabled(false);
 
         txtFechaBuscar.setEditable(false);
+        txtFechaBuscar.setEnabled(false);
 
         lblFechaDevBuscar.setText("Fecha de devolucion:");
 
         txtFechaDevBuscar.setEditable(false);
+        txtFechaDevBuscar.setEnabled(false);
 
         lblEstadoBuscar.setText("Estado:");
 
         lblCedulaBuscar.setText("Cedula:");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        txtCedulaBuscar.setEnabled(false);
+
+        txtEstadoBuscar.setEnabled(false);
+
+        javax.swing.GroupLayout panelBuscarLayout = new javax.swing.GroupLayout(panelBuscar);
+        panelBuscar.setLayout(panelBuscarLayout);
+        panelBuscarLayout.setHorizontalGroup(
+            panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBuscarLayout.createSequentialGroup()
+                .addGroup(panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBuscarLayout.createSequentialGroup()
                         .addGap(176, 176, 176)
                         .addComponent(btnAceptar))
                     .addComponent(btnBuscar)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelBuscarLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblAutorBuscar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelBuscarLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblEstadoBuscar)
                         .addGap(18, 18, 18)
                         .addComponent(txtEstadoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelBuscarLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblFechaBuscar)
                         .addGap(18, 18, 18)
                         .addComponent(txtFechaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelBuscarLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelBuscarLayout.createSequentialGroup()
                                 .addComponent(lblCodigoBuscar)
                                 .addGap(33, 33, 33)
                                 .addComponent(txtCodigoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBuscarLayout.createSequentialGroup()
+                                .addGroup(panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblUsuarioBuscar)
                                     .addComponent(lblLibroBuscar)
                                     .addComponent(lblISBNBuscar)
                                     .addComponent(lblCedulaBuscar))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtUsuarioBuscar)
                                     .addComponent(txtISBNBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                                     .addComponent(txtAutorBuscar)
                                     .addComponent(txtLibroBuscar)
                                     .addComponent(txtCedulaBuscar))
                                 .addGap(120, 120, 120))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelBuscarLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblFechaDevBuscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtFechaDevBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelBuscarLayout.setVerticalGroup(
+            panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBuscarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodigoBuscar)
                     .addComponent(txtCodigoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelBuscarLayout.createSequentialGroup()
                         .addComponent(btnBuscar)
                         .addGap(36, 36, 36)
                         .addComponent(lblUsuarioBuscar))
                     .addComponent(txtUsuarioBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCedulaBuscar)
                     .addComponent(txtCedulaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtLibroBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblLibroBuscar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAutorBuscar)
                     .addComponent(txtAutorBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtISBNBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblISBNBuscar))
                 .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaBuscar)
                     .addComponent(txtFechaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaDevBuscar)
                     .addComponent(txtFechaDevBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEstadoBuscar)
                     .addComponent(txtEstadoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
@@ -320,14 +331,14 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -350,7 +361,6 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAutorBuscar;
     private javax.swing.JLabel lblCedulaBuscar;
     private javax.swing.JLabel lblCodigoBuscar;
@@ -360,6 +370,7 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblISBNBuscar;
     private javax.swing.JLabel lblLibroBuscar;
     private javax.swing.JLabel lblUsuarioBuscar;
+    private javax.swing.JPanel panelBuscar;
     private javax.swing.JTextField txtAutorBuscar;
     private javax.swing.JTextField txtCedulaBuscar;
     private javax.swing.JTextField txtCodigoBuscar;

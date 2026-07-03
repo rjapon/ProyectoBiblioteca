@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.proyectobiblioteca.models;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Asus
@@ -16,14 +18,19 @@ public class Libro {
     private boolean disponible;
     private String categoria;
     private Autor autor;
+    private LocalDate fechaPublicacion;
 
-    public Libro(String ISBN, String titulo, String editorial, boolean disponible, String categoria) {
+    public Libro(String ISBN, String titulo, String editorial, boolean disponible, String categoria, Autor autor, LocalDate fechaPublicacion) {
         this.ISBN = ISBN;
         this.titulo = titulo;
         this.editorial = editorial;
         this.disponible = disponible;
         this.categoria = categoria;
+        this.autor = autor;
+        this.fechaPublicacion = fechaPublicacion;
     }
+
+ 
 
     public Libro() {
 
@@ -84,6 +91,14 @@ public class Libro {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public LocalDate getFechaPublicacion() {
+        return fechaPublicacion;
+    }
+
+    public void setFechaPublicacion(LocalDate fechaPublicacion) {
+        this.fechaPublicacion = fechaPublicacion;
     }
     
     

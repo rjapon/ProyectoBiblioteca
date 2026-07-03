@@ -68,15 +68,18 @@ public class EliminarAutorView extends javax.swing.JInternalFrame {
         ResourceBundle bundle = ResourceBundle.getBundle(
                 "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
+        // Ventana
         setTitle(bundle.getString("tituloVentanaEliminarAutor"));
 
+        // Labels
         jLabel1.setText(bundle.getString("lblCodigoAutor"));
         jLabel2.setText(bundle.getString("lblNombreAutor"));
         jLabel3.setText(bundle.getString("lblNacionalidadAutor"));
 
-        btnBuscar.setText(bundle.getString("botonBuscar"));
-        btnEliminar.setText(bundle.getString("botonEliminar"));
-        btnCancelar.setText(bundle.getString("botonCancelar"));
+        // Botones
+        btnBuscar.setText(bundle.getString("btnBuscar"));
+        btnEliminar.setText(bundle.getString("btnEliminar"));
+        btnCancelar.setText(bundle.getString("btnCancelar"));
     }
 
     public void mostrarInformacion(String mensaje) {
@@ -117,8 +120,10 @@ public class EliminarAutorView extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Nacionalidad:");
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
 
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/eliminar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
 
         btnCancelar.setText("Cancelar");
@@ -145,7 +150,7 @@ public class EliminarAutorView extends javax.swing.JInternalFrame {
                     .addComponent(txtCodigoEliminarAutorView, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                     .addComponent(txtNombreEliminarAutorView)
                     .addComponent(txtNacionalidadEliminarAutorView))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBuscar)
                 .addGap(92, 92, 92))
         );
@@ -165,7 +170,7 @@ public class EliminarAutorView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNacionalidadEliminarAutorView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar)
                     .addComponent(btnCancelar))

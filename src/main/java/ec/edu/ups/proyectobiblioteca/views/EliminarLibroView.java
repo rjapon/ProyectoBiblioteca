@@ -4,6 +4,12 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Asus
@@ -15,6 +21,101 @@ public class EliminarLibroView extends javax.swing.JInternalFrame {
      */
     public EliminarLibroView() {
         initComponents();
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public void setBtnEliminar(JButton btnEliminar) {
+        this.btnEliminar = btnEliminar;
+    }
+
+    public JTextField getTxtAutorEliminar() {
+        return txtAutorEliminar;
+    }
+
+    public void setTxtAutorEliminar(JTextField txtAutorEliminar) {
+        this.txtAutorEliminar = txtAutorEliminar;
+    }
+
+    public JTextField getTxtCategoriaEliminar() {
+        return txtCategoriaEliminar;
+    }
+
+    public void setTxtCategoriaEliminar(JTextField txtCategoriaEliminar) {
+        this.txtCategoriaEliminar = txtCategoriaEliminar;
+    }
+
+    public JTextField getTxtEditorialEliminar() {
+        return txtEditorialEliminar;
+    }
+
+    public void setTxtEditorialEliminar(JTextField txtEditorialEliminar) {
+        this.txtEditorialEliminar = txtEditorialEliminar;
+    }
+
+    public JTextField getTxtFechaEliminar() {
+        return txtFechaEliminar;
+    }
+
+    public void setTxtFechaEliminar(JTextField txtFechaEliminar) {
+        this.txtFechaEliminar = txtFechaEliminar;
+    }
+
+    public JTextField getTxtISBNEliminar() {
+        return txtISBNEliminar;
+    }
+
+    public void setTxtISBNEliminar(JTextField txtISBNEliminar) {
+        this.txtISBNEliminar = txtISBNEliminar;
+    }
+
+    public JTextField getTxtTituloEliminar() {
+        return txtTituloEliminar;
+    }
+
+    public void setTxtTituloEliminar(JTextField txtTituloEliminar) {
+        this.txtTituloEliminar = txtTituloEliminar;
+    }
+
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+
+        // Ventana
+        setTitle(bundle.getString("tituloVentanaEliminarLibro"));
+
+        // Panel
+        jPanel1.setBorder(
+                javax.swing.BorderFactory.createTitledBorder(
+                        bundle.getString("tituloPanelEliminarLibro")));
+
+        // Labels
+        lblISBNEliminar.setText(bundle.getString("lblISBNLibro"));
+        lblTituloEliminar.setText(bundle.getString("lblTituloLibro"));
+        lblAutorEliminar.setText(bundle.getString("lblAutorLibro"));
+        lblCategoriaEliminar.setText(bundle.getString("lblCategoriaLibro"));
+        lblEditorialEliminar.setText(bundle.getString("lblEditorialLibro"));
+        lblFechaEliminar.setText(bundle.getString("lblFechaPubLibro"));
+
+        // Botones
+        btnBuscar.setText(bundle.getString("btnBuscar"));
+        btnEliminar.setText(bundle.getString("btnEliminar"));
+        btnCancelar.setText(bundle.getString("btnCancelar"));
+    }
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
     }
 
     /**
@@ -52,8 +153,9 @@ public class EliminarLibroView extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(128, 191, 82));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Eliminar Libro del sistema", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Bright", 0, 12))); // NOI18N
 
-        lblISBNEliminar.setText("Ingrese el ISBN:");
+        lblISBNEliminar.setText("Ingrese el ISBN del libro:");
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
 
         lblTituloEliminar.setText("Titulo:");
@@ -66,11 +168,14 @@ public class EliminarLibroView extends javax.swing.JInternalFrame {
 
         lblFechaEliminar.setText("Fecha de publicación:");
 
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/eliminar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
 
         btnCancelar.setText("Cancelar");
 
         txtAutorEliminar.addActionListener(this::txtAutorEliminarActionPerformed);
+
+        txtCategoriaEliminar.addActionListener(this::txtCategoriaEliminarActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,7 +195,7 @@ public class EliminarLibroView extends javax.swing.JInternalFrame {
                             .addComponent(lblAutorEliminar)
                             .addComponent(lblCategoriaEliminar)
                             .addComponent(lblEditorialEliminar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtTituloEliminar)
@@ -101,7 +206,7 @@ public class EliminarLibroView extends javax.swing.JInternalFrame {
                                 .addComponent(txtISBNEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnBuscar)))
-                        .addContainerGap(122, Short.MAX_VALUE))))
+                        .addContainerGap(87, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(90, 90, 90)
                 .addComponent(btnEliminar)
@@ -137,7 +242,7 @@ public class EliminarLibroView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaEliminar)
                     .addComponent(txtFechaEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar)
                     .addComponent(btnCancelar))
@@ -167,6 +272,10 @@ public class EliminarLibroView extends javax.swing.JInternalFrame {
     private void txtAutorEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAutorEliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAutorEliminarActionPerformed
+
+    private void txtCategoriaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCategoriaEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

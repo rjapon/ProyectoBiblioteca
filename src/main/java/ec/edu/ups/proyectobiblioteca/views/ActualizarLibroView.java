@@ -4,8 +4,11 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -19,6 +22,7 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
      */
     public ActualizarLibroView() {
         initComponents();
+        cargarAnios();
     }
 
     public JButton getBtnActualizar() {
@@ -45,12 +49,28 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
         this.cboAutorActualizar = cboAutorActualizar;
     }
 
-    public JComboBox<String> getCboCategoriaActualizar() {
-        return cboCategoriaActualizar;
+    public JComboBox<String> getComboBoxAnio() {
+        return ComboBoxAnio;
     }
 
-    public void setCboCategoriaActualizar(JComboBox<String> cboCategoriaActualizar) {
-        this.cboCategoriaActualizar = cboCategoriaActualizar;
+    public void setComboBoxAnio(JComboBox<String> ComboBoxAnio) {
+        this.ComboBoxAnio = ComboBoxAnio;
+    }
+
+    public JComboBox<String> getComboBoxDia() {
+        return ComboBoxDia;
+    }
+
+    public void setComboBoxDia(JComboBox<String> ComboBoxDia) {
+        this.ComboBoxDia = ComboBoxDia;
+    }
+
+    public JComboBox<String> getComboBoxMes() {
+        return ComboBoxMes;
+    }
+
+    public void setComboBoxMes(JComboBox<String> ComboBoxMes) {
+        this.ComboBoxMes = ComboBoxMes;
     }
 
     public JTextField getTxtEditorialActualizar() {
@@ -76,8 +96,47 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
     public void setTxtTituloActualizar(JTextField txtTituloActualizar) {
         this.txtTituloActualizar = txtTituloActualizar;
     }
-    
-    
+
+    private void cargarAnios() {
+        int actual = java.time.Year.now().getValue();
+
+        for (int i = actual - 100; i <= actual; i++) {
+            ComboBoxAnio.addItem(String.valueOf(i));
+        }
+
+    }
+
+    public JTextField getTxtCategoria() {
+        return txtCategoria;
+    }
+
+    public void setTxtCategoria(JTextField txtCategoria) {
+        this.txtCategoria = txtCategoria;
+    }
+
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+
+        setTitle(bundle.getString("tituloVentanaActualizarLibro"));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("tituloPanelActualizarLibro")));
+
+        lblISBNActualizar.setText(bundle.getString("lblISBNLibro"));
+        lblTituloActualizar.setText(bundle.getString("lblTituloLibro"));
+        lblFechaActualizar.setText(bundle.getString("lblFechaPubLibro"));
+        lblAutorActualizar.setText(bundle.getString("lblAutorLibro"));
+        lblCategoriaActualizar.setText(bundle.getString("lblCategoriaLibro"));
+        lblEditorialActualizar.setText(bundle.getString("lblEditorialLibro"));
+
+        btnBuscar.setText(bundle.getString("btnBuscar"));
+        btnActualizar.setText(bundle.getString("actualizarMenuItem"));
+        btnCancelar.setText(bundle.getString("btnCancelar"));
+    }
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,16 +153,18 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
         lblTituloActualizar = new javax.swing.JLabel();
         txtTituloActualizar = new javax.swing.JTextField();
         lblFechaActualizar = new javax.swing.JLabel();
-        temporal = new javax.swing.JTextField();
         lblAutorActualizar = new javax.swing.JLabel();
         lblCategoriaActualizar = new javax.swing.JLabel();
         cboAutorActualizar = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
-        cboCategoriaActualizar = new javax.swing.JComboBox<>();
         lblEditorialActualizar = new javax.swing.JLabel();
         txtEditorialActualizar = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        txtCategoria = new javax.swing.JTextField();
+        ComboBoxDia = new javax.swing.JComboBox<>();
+        ComboBoxMes = new javax.swing.JComboBox<>();
+        ComboBoxAnio = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -120,25 +181,26 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
 
         lblFechaActualizar.setText("Fecha de publicacion:");
 
-        temporal.addActionListener(this::temporalActionPerformed);
-
         lblAutorActualizar.setText("Autor:");
 
         lblCategoriaActualizar.setText("Categoría:");
 
-        cboAutorActualizar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
-
-        cboCategoriaActualizar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblEditorialActualizar.setText("Editorial:");
 
         txtEditorialActualizar.addActionListener(this::txtEditorialActualizarActionPerformed);
 
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/actualizar.png"))); // NOI18N
         btnActualizar.setText("Actualizar");
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
+
+        ComboBoxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        ComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -156,12 +218,18 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
                             .addComponent(lblCategoriaActualizar)
                             .addComponent(lblEditorialActualizar))
                         .addGap(39, 39, 39)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTituloActualizar)
-                            .addComponent(temporal)
-                            .addComponent(cboAutorActualizar, 0, 140, Short.MAX_VALUE)
-                            .addComponent(cboCategoriaActualizar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtEditorialActualizar)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtTituloActualizar)
+                                .addComponent(cboAutorActualizar, 0, 140, Short.MAX_VALUE)
+                                .addComponent(txtEditorialActualizar)
+                                .addComponent(txtCategoria))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(ComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(ComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(ComboBoxAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnActualizar)
@@ -175,7 +243,7 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
                                 .addComponent(txtISBNActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)
                                 .addComponent(btnBuscar)))))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,20 +260,22 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaActualizar)
-                    .addComponent(temporal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboBoxAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAutorActualizar)
                     .addComponent(cboAutorActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCategoriaActualizar)
-                    .addComponent(cboCategoriaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCategoriaActualizar)
+                    .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEditorialActualizar)
                     .addComponent(txtEditorialActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizar)
                     .addComponent(btnCancelar))
@@ -232,21 +302,23 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void temporalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_temporalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_temporalActionPerformed
-
     private void txtEditorialActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditorialActualizarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEditorialActualizarActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboBoxAnio;
+    private javax.swing.JComboBox<String> ComboBoxDia;
+    private javax.swing.JComboBox<String> ComboBoxMes;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cboAutorActualizar;
-    private javax.swing.JComboBox<String> cboCategoriaActualizar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAutorActualizar;
     private javax.swing.JLabel lblCategoriaActualizar;
@@ -254,7 +326,7 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblFechaActualizar;
     private javax.swing.JLabel lblISBNActualizar;
     private javax.swing.JLabel lblTituloActualizar;
-    private javax.swing.JTextField temporal;
+    private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextField txtEditorialActualizar;
     private javax.swing.JTextField txtISBNActualizar;
     private javax.swing.JTextField txtTituloActualizar;

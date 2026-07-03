@@ -65,23 +65,17 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle bundle = ResourceBundle.getBundle(
-                "ec.edu.ups.proyectobiblioteca.i18n.mensajes",
-                locale);
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
         setTitle(bundle.getString("tituloVentanaActualizarAutor"));
 
-        jPanel1.setBorder(
-                javax.swing.BorderFactory.createTitledBorder(
-                        bundle.getString("tituloPanelActualizarAutor")));
-
-        jLabel1.setText(bundle.getString("lblCodigoActualizarAutor"));
+        jLabel1.setText(bundle.getString("lblCodigoAutor"));
         jLabel2.setText(bundle.getString("lblNombreAutor"));
         jLabel3.setText(bundle.getString("lblNacionalidadAutor"));
 
-        btnBuscar.setText(bundle.getString("botonBuscar"));
-        btnActualizar.setText(bundle.getString("botonActualizar"));
-        btnCancelar.setText(bundle.getString("botonCancelar"));
+        btnBuscar.setText(bundle.getString("btnBuscar"));
+        btnActualizar.setText(bundle.getString("actualizarMenuItem"));
+        btnCancelar.setText(bundle.getString("btnCancelar"));
     }
 
     public void mostrarInformacion(String mensaje) {
@@ -113,12 +107,14 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Codigo");
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
 
         jLabel2.setText("Nombre:");
 
         jLabel3.setText("Nacionalidad:");
 
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/actualizar.png"))); // NOI18N
         btnActualizar.setText("Actualizar");
 
         btnCancelar.setText("Cancelar");
@@ -134,12 +130,12 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(txtCodigoActulizarAutorView, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                     .addComponent(txtNombreActualizarAutorView)
                     .addComponent(txtNacionalidadActualizarAutorView))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBuscar)
                 .addGap(26, 26, 26))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -169,7 +165,7 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizar)
                     .addComponent(btnCancelar))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

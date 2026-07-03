@@ -65,18 +65,17 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle bundle = ResourceBundle.getBundle(
-                "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+        ResourceBundle mensajes = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
-        setTitle(bundle.getString("tituloVentanaActualizarUsuario"));
+        setTitle(mensajes.getString("tituloVentanaActualizarUsuario"));
 
-        jLabel1.setText(bundle.getString("lblCedulaActualizarUsuario"));
-        jLabel2.setText(bundle.getString("lblNombreUsuario"));
-        jLabel3.setText(bundle.getString("lblTelefonoUsuario"));
+        jLabel1.setText(mensajes.getString("lblCedulaUsuario"));
+        jLabel2.setText(mensajes.getString("lblNombreUsuario"));
+        jLabel3.setText(mensajes.getString("lblTelefonoUsuario"));
 
-        btnBuscar.setText(bundle.getString("botonBuscar"));
-        btnActualizar.setText(bundle.getString("botonActualizar"));
-        btnCancelar.setText(bundle.getString("botonCancelar"));
+        btnBuscar.setText(mensajes.getString("btnBuscar"));
+        btnActualizar.setText(mensajes.getString("btnActualizar"));
+        btnCancelar.setText(mensajes.getString("btnCancelar"));
     }
 
     public void mostrarInformacion(String mensaje) {
@@ -112,8 +111,10 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Telefono:");
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
 
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/actualizar.png"))); // NOI18N
         btnActualizar.setText("Actualizar");
 
         btnCancelar.setText("Cancelar");
@@ -135,12 +136,12 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTelefonoActualizarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNombreActualizarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCedulaActualizarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBuscar)
                 .addContainerGap())
         );
@@ -164,7 +165,7 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtTelefonoActualizarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizar)
                     .addComponent(btnCancelar))

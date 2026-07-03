@@ -57,17 +57,17 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle bundle = ResourceBundle.getBundle(
+        ResourceBundle mensajes = ResourceBundle.getBundle(
                 "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
-        setTitle(bundle.getString("tituloVentanaAgregarUsuario"));
+        setTitle(mensajes.getString("tituloVentanaCrearUsuario"));
 
-        jLabel4.setText(bundle.getString("lblCedulaUsuario"));
-        jLabel5.setText(bundle.getString("lblNombreUsuario"));
-        jLabel6.setText(bundle.getString("lblTelefonoUsuario"));
+        jLabel4.setText(mensajes.getString("lblCedulaUsuario"));
+        jLabel5.setText(mensajes.getString("lblNombreUsuario"));
+        jLabel6.setText(mensajes.getString("lblTelefonoUsuario"));
 
-        btnCrear.setText(bundle.getString("crearMenuItem"));
-        btnCancelar.setText(bundle.getString("botonCancelar"));
+        btnCrear.setText(mensajes.getString("crearMenuItem"));
+        btnCancelar.setText(mensajes.getString("btnCancelar"));
     }
 
     public void mostrarInformacion(String mensaje) {
@@ -102,6 +102,7 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Telefono:");
 
+        btnCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/nuevo-usuario.png"))); // NOI18N
         btnCrear.setText("Crear");
         btnCrear.addActionListener(this::btnCrearActionPerformed);
 
@@ -128,9 +129,8 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtTelefonoCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNombreCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                                .addComponent(txtCedulaCrearUsuario)))))
+                            .addComponent(txtNombreCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                            .addComponent(txtCedulaCrearUsuario))))
                 .addGap(89, 89, 89))
         );
         jPanel1Layout.setVerticalGroup(

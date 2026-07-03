@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import ec.edu.ups.proyectobiblioteca.models.Libro;
+import ec.edu.ups.proyectobiblioteca.models.Prestamo;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.table.DefaultTableModel;
@@ -45,22 +49,41 @@ public class ListarPrestamoView extends javax.swing.JInternalFrame {
 
     }
 
+    public void cargarDatos(List<Prestamo> prestamos) {
+
+        modelo.setRowCount(0);
+
+        DateTimeFormatter formatter
+                = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        for (Prestamo prestamo : prestamos) {
+
+            Object[] fila = {
+                prestamo.getCodigo(),
+                prestamo.getLibro().getTitulo(),
+                prestamo.getFechaPrestamo().format(formatter),
+                prestamo.getUsuario().getNombre()
+            };
+
+            modelo.addRow(fila);
+        }
+
+    }
+
     public void cambiarIdioma(Locale locale) {
 
         ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
-        setTitle(bundle.getString("tituloVentanaListarPrestamos"));
+        setTitle(bundle.getString("tituloVentanaListarPrestamo"));
 
-        btnListar.setText(bundle.getString("listarMenuItem"));
+        btnListar.setText(bundle.getString("btnListar"));
 
-        modelo.setColumnCount(0);
-
-        modelo.addColumn(bundle.getString("colCodigoPrestamo"));
-        modelo.addColumn(bundle.getString("colLibroPrestamo"));
-        modelo.addColumn(bundle.getString("colFechaPrestamo"));
-        modelo.addColumn(bundle.getString("colUsuarioPrestamo"));
-
-        tblPrestamos.setModel(modelo);
+        modelo.setColumnIdentifiers(new Object[]{
+            bundle.getString("lblInCodigoPrestamo"),
+            bundle.getString("lblLibroPrestamo"),
+            bundle.getString("lblFechaPrestamo"),
+            bundle.getString("lblUsuarioPrestamo")
+        });
     }
 
     /**
@@ -95,6 +118,7 @@ public class ListarPrestamoView extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblPrestamos);
 
+        btnListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/listar.png"))); // NOI18N
         btnListar.setText("Listar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

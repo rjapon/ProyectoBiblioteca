@@ -4,17 +4,78 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import ec.edu.ups.proyectobiblioteca.models.Libro;
+import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Asus
  */
 public class ListarLibroView extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel modelo;
+
     /**
      * Creates new form ListarLibroView
      */
     public ListarLibroView() {
         initComponents();
+        configurarTabla();
+    }
+
+    public JButton getBtlListar() {
+        return btlListar;
+    }
+
+    public void setBtlListar(JButton btlListar) {
+        this.btlListar = btlListar;
+    }
+
+    public void configurarTabla() {
+        modelo = new DefaultTableModel();
+        modelo.addColumn("ISBN");
+        modelo.addColumn("Titulo");
+        modelo.addColumn("Editorial");
+        modelo.addColumn("Disponible");
+        modelo.addColumn("Categoria");
+        modelo.addColumn("Autor");
+        modelo.addColumn("Fecha Publicacion");
+
+        tblListar.setModel(modelo);
+    }
+
+    public void cargarDatos(List<Libro> libros) {
+
+        modelo.setRowCount(0);
+
+        for (Libro libro : libros) {
+            Object[] fila = {libro.getISBN(), libro.getTitulo(), libro.getEditorial(), libro.isDisponible(), libro.getCategoria(), libro.getAutor().getNombre(), libro.getFechaPublicacion()};
+            modelo.addRow(fila);
+        }
+
+    }
+
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+
+        setTitle(bundle.getString("tituloVentanaListarLibro"));
+
+        btlListar.setText(bundle.getString("btnListar"));
+
+        modelo.setColumnIdentifiers(new Object[]{
+            bundle.getString("colISBNLibro"),
+            bundle.getString("lblTituloLibro"),
+            bundle.getString("lblEditorialLibro"),
+            bundle.getString("lblEstadoLibro"),
+            bundle.getString("lblCategoriaLibro"),
+            bundle.getString("lblAutorLibro"),
+            bundle.getString("lblFechaPubLibro")
+        });
     }
 
     /**
@@ -50,6 +111,7 @@ public class ListarLibroView extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblListar);
 
+        btlListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/listar.png"))); // NOI18N
         btlListar.setText("Listar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -59,17 +121,19 @@ public class ListarLibroView extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btlListar)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btlListar)
+                        .addGap(0, 418, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btlListar)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 7, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

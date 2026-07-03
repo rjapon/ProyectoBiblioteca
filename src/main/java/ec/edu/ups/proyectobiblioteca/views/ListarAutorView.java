@@ -5,36 +5,26 @@
 package ec.edu.ups.proyectobiblioteca.views;
 
 import ec.edu.ups.proyectobiblioteca.models.Autor;
-import ec.edu.ups.proyectobiblioteca.models.Libro;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author mateo
  */
-public class ListarLibrosAutorView extends javax.swing.JInternalFrame {
+public class ListarAutorView extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo;
 
     /**
      * Creates new form ListarLibrosAutorView
      */
-    public ListarLibrosAutorView() {
+    public ListarAutorView() {
         initComponents();
         configurarTabla();
-    }
-
-    public JComboBox<String> getAutorComboBoxListarLibros() {
-        return AutorComboBoxListarLibros;
-    }
-
-    public void setAutorComboBoxListarLibros(JComboBox<String> AutorComboBoxListarLibros) {
-        this.AutorComboBoxListarLibros = AutorComboBoxListarLibros;
     }
 
     public JButton getBtnListar() {
@@ -49,57 +39,42 @@ public class ListarLibrosAutorView extends javax.swing.JInternalFrame {
 
         modelo = new DefaultTableModel();
 
-        modelo.addColumn("ISBN");
-        modelo.addColumn("Título");
-        modelo.addColumn("Editorial");
-        modelo.addColumn("Categoría");
-        modelo.addColumn("Disponible");
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Nacionalidad");
 
         jTable1.setModel(modelo);
     }
 
-    public void cargarDatos(List<Libro> libros) {
+    public void cargarDatos(List<Autor> autores) {
 
         modelo.setRowCount(0);
 
-        for (Libro libro : libros) {
+        for (Autor autor : autores) {
 
             Object[] fila = {
-                libro.getISBN(),
-                libro.getTitulo(),
-                libro.getEditorial(),
-                libro.getCategoria(),
-                libro.isDisponible()
+                autor.getCodigo(),
+                autor.getNombre(),
+                autor.getNacionalidad()
             };
 
             modelo.addRow(fila);
         }
     }
 
-    public void cargarAutores(List<Autor> autores) {
-
-        AutorComboBoxListarLibros.removeAllItems();
-
-        for (Autor autor : autores) {
-            AutorComboBoxListarLibros.addItem(autor.getNombre());
-        }
-    }
-
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle bundle = ResourceBundle.getBundle(
+        ResourceBundle mensajes = ResourceBundle.getBundle(
                 "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
-        setTitle(bundle.getString("tituloVentanaListarLibrosAutor"));
+        setTitle(mensajes.getString("tituloVentanaListarAutor"));
 
-        BtnListar.setText(bundle.getString("listarMenuItem"));
+        BtnListar.setText(mensajes.getString("btnListar"));
 
         modelo.setColumnIdentifiers(new Object[]{
-            bundle.getString("colISBNLibro"),
-            bundle.getString("colTituloLibro"),
-            bundle.getString("colEditorialLibro"),
-            bundle.getString("colCategoriaLibro"),
-            bundle.getString("colDisponibleLibro")
+            mensajes.getString("lblCodigoAutor"),
+            mensajes.getString("lblNombreAutor"),
+            mensajes.getString("lblNacionalidadAutor")
         });
     }
 
@@ -116,10 +91,9 @@ public class ListarLibrosAutorView extends javax.swing.JInternalFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         BtnListar = new javax.swing.JButton();
-        AutorComboBoxListarLibros = new javax.swing.JComboBox<>();
 
         setClosable(true);
-        setTitle("Lista Libros Del Autor");
+        setTitle("Listar Autores");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -134,9 +108,8 @@ public class ListarLibrosAutorView extends javax.swing.JInternalFrame {
         ));
         jScrollPane4.setViewportView(jTable1);
 
+        BtnListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/listar.png"))); // NOI18N
         BtnListar.setText("Listar");
-
-        AutorComboBoxListarLibros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,22 +120,16 @@ public class ListarLibrosAutorView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(AutorComboBoxListarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BtnListar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnListar)
-                    .addComponent(AutorComboBoxListarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(BtnListar)
                 .addContainerGap())
         );
 
@@ -185,7 +152,6 @@ public class ListarLibrosAutorView extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> AutorComboBoxListarLibros;
     private javax.swing.JButton BtnListar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane4;

@@ -65,18 +65,18 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle bundle = ResourceBundle.getBundle(
+        ResourceBundle mensajes = ResourceBundle.getBundle(
                 "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
-        setTitle(bundle.getString("tituloVentanaEliminarUsuario"));
+        setTitle(mensajes.getString("tituloVentanaEliminarUsuario"));
 
-        jLabel1.setText(bundle.getString("lblCedulaUsuario"));
-        jLabel2.setText(bundle.getString("lblNombreUsuario"));
-        jLabel3.setText(bundle.getString("lblTelefonoUsuario"));
+        jLabel1.setText(mensajes.getString("lblCedulaUsuario"));
+        jLabel2.setText(mensajes.getString("lblNombreUsuario"));
+        jLabel3.setText(mensajes.getString("lblTelefonoUsuario"));
 
-        btnBuscarEliminarUsuario.setText(bundle.getString("botonBuscar"));
-        btnEliminar.setText(bundle.getString("botonEliminar"));
-        btnCancelar.setText(bundle.getString("botonCancelar"));
+        btnBuscarEliminarUsuario.setText(mensajes.getString("btnBuscar"));
+        btnEliminar.setText(mensajes.getString("btnEliminar"));
+        btnCancelar.setText(mensajes.getString("btnCancelar"));
     }
 
     public void mostrarInformacion(String mensaje) {
@@ -112,8 +112,10 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Telefono:");
 
+        btnBuscarEliminarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/buscar.png"))); // NOI18N
         btnBuscarEliminarUsuario.setText("Buscar");
 
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/eliminar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
 
         btnCancelar.setText("Cancelar");
@@ -150,7 +152,7 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
                 .addComponent(btnEliminar)
                 .addGap(35, 35, 35)
                 .addComponent(btnCancelar)
-                .addGap(0, 116, Short.MAX_VALUE))
+                .addGap(0, 92, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +174,7 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtTelfonoEliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar)
                     .addComponent(btnCancelar))

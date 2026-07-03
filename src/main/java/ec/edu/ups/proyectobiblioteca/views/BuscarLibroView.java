@@ -4,7 +4,10 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -91,8 +94,31 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
     public void setTxtTituloBuscar(JTextField txtTituloBuscar) {
         this.txtTituloBuscar = txtTituloBuscar;
     }
-    
-    
+
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+
+        setTitle(bundle.getString("tituloVentanaBuscarLibro"));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("tituloPanelBuscarLibro")));
+
+        lblISBNBuscar.setText(bundle.getString("lblISBNLibro"));
+        lblTituloBuscar.setText(bundle.getString("lblTituloLibro"));
+        lblAutorBuscar.setText(bundle.getString("lblAutorLibro"));
+        lblFechaBuscar.setText(bundle.getString("lblFechaPubLibro"));
+        lblCategoriaBuscar.setText(bundle.getString("lblCategoriaLibro"));
+        lblEditorialBuscar.setText(bundle.getString("lblEditorialLibro"));
+        lblEstadoBuscar.setText(bundle.getString("lblEstadoLibro"));
+
+        btnBuscar.setText(bundle.getString("btnBuscar"));
+        btnAceptar.setText(bundle.getString("btnAceptar"));
+    }
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -120,7 +146,6 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
         txtEditorialBuscar = new javax.swing.JTextField();
         txtEstadoBuscar = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -147,9 +172,9 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
 
         lblEstadoBuscar.setText("Estado:");
 
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/aceptar.png"))); // NOI18N
         btnAceptar.setText("Aceptar");
-
-        btnCancelar.setText("Cancelar");
+        btnAceptar.addActionListener(this::btnAceptarActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -171,24 +196,18 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtISBNBuscar)
-                                    .addComponent(txtTituloBuscar)
-                                    .addComponent(txtAutorBuscar)
-                                    .addComponent(txtFechaBuscar)
-                                    .addComponent(txtCategoriaBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                                    .addComponent(txtEditorialBuscar))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                                .addComponent(btnBuscar))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtEstadoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtISBNBuscar)
+                                .addComponent(txtTituloBuscar)
+                                .addComponent(txtAutorBuscar)
+                                .addComponent(txtFechaBuscar)
+                                .addComponent(txtCategoriaBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                                .addComponent(txtEditorialBuscar))
+                            .addComponent(txtEstadoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(btnCancelar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(64, 64, 64)
+                        .addComponent(btnBuscar)))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,9 +215,8 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblISBNBuscar)
-                    .addComponent(txtISBNBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
-                .addGap(27, 27, 27)
+                    .addComponent(txtISBNBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTituloBuscar)
                     .addComponent(txtTituloBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -225,7 +243,7 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnBuscar))
                 .addGap(19, 19, 19))
         );
 
@@ -249,11 +267,14 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAutorBuscar;
     private javax.swing.JLabel lblCategoriaBuscar;

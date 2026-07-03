@@ -60,18 +60,17 @@ public class BuscarAutorView extends javax.swing.JInternalFrame {
         ResourceBundle bundle = ResourceBundle.getBundle(
                 "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
+        // Ventana
         setTitle(bundle.getString("tituloVentanaBuscarAutor"));
 
+        // Labels
         jLabel1.setText(bundle.getString("lblCodigoAutor"));
-
         jLabel2.setText(bundle.getString("lblNombreAutor"));
-
         jLabel3.setText(bundle.getString("lblNacionalidadAutor"));
 
-        btnBuscar.setText(bundle.getString("botonBuscar"));
-
-        btnCancelar.setText(bundle.getString("botonCancelar"));
-
+        // Botones
+        btnBuscar.setText(bundle.getString("btnBuscar"));
+        btnCancelar.setText(bundle.getString("btnCancelar"));
     }
 
     public void mostrarInformacion(String mensaje) {
@@ -114,6 +113,7 @@ public class BuscarAutorView extends javax.swing.JInternalFrame {
 
         txtNacionalidadBuscarAutor.addActionListener(this::txtNacionalidadBuscarAutorActionPerformed);
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
 
         btnCancelar.setText("Cancelar");
@@ -163,7 +163,7 @@ public class BuscarAutorView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNacionalidadBuscarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
                     .addComponent(btnCancelar))

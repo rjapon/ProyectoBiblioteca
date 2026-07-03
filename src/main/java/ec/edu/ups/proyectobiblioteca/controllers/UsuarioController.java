@@ -13,6 +13,7 @@ import ec.edu.ups.proyectobiblioteca.views.EliminarUsuarioView;
 import ec.edu.ups.proyectobiblioteca.views.ListarUsuarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,16 +25,16 @@ public class UsuarioController {
     private CrearUsuarioView crearUsuarioView;
     private ActualizarUsuarioView actualizarUsuarioView;
     private EliminarUsuarioView eliminarUsuarioview;
-    private ListarUsuarioView listarUsuariosview;
+    private ListarUsuarioView listarUsuarioView;
     private BuscarUsuarioView buscarUsuarioView;
 
     private UsuarioDAO usuarioDAO;
 
-    public UsuarioController(CrearUsuarioView crearUsuarioView, ActualizarUsuarioView actualizarUsuarioView, EliminarUsuarioView eliminarUsuarioview, BuscarUsuarioView buscarUsuarioView, UsuarioDAO usuarioDAO) {
+    public UsuarioController(CrearUsuarioView crearUsuarioView, ActualizarUsuarioView actualizarUsuarioView, EliminarUsuarioView eliminarUsuarioview, BuscarUsuarioView buscarUsuarioView,  ListarUsuarioView listarUsuarioView, UsuarioDAO usuarioDAO) {
         this.crearUsuarioView = crearUsuarioView;
         this.actualizarUsuarioView = actualizarUsuarioView;
         this.eliminarUsuarioview = eliminarUsuarioview;
-//        this.listarUsuariosview = listarUsuariosview;
+        this.listarUsuarioView = listarUsuarioView;
         this.buscarUsuarioView = buscarUsuarioView;
         this.usuarioDAO = usuarioDAO;
 
@@ -43,6 +44,7 @@ public class UsuarioController {
         configurarEventosActualizarUsuario();
         configurarEventosBuscarEliminarUsuario();
         configurarEventosEliminarUsuario();
+        configurarEventosListarUsuarios();
     }
 
     public void crearUsuario() {
@@ -281,6 +283,22 @@ public class UsuarioController {
 
                 eliminarUsuario();
 
+            }
+        });
+
+    }
+
+    public void listarUsuarios() {
+        List<Usuario> usuarios = usuarioDAO.listar();
+        listarUsuarioView.cargarDatos(usuarios);
+    }
+
+    public void configurarEventosListarUsuarios() {
+
+        listarUsuarioView.getBtnListar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listarUsuarios();
             }
         });
 

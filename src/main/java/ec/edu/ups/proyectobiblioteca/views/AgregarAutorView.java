@@ -60,14 +60,17 @@ public class AgregarAutorView extends javax.swing.JInternalFrame {
         ResourceBundle bundle = ResourceBundle.getBundle(
                 "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
+        // Ventana
         setTitle(bundle.getString("tituloVentanaAgregarAutor"));
 
+        // Labels
         jLabel1.setText(bundle.getString("lblCodigoAutor"));
         jLabel2.setText(bundle.getString("lblNombreAutor"));
         jLabel3.setText(bundle.getString("lblNacionalidadAutor"));
 
-        btnAceptar.setText(bundle.getString("botonAceptar"));
-        btnCancelar.setText(bundle.getString("botonCancelar"));
+        // Botones
+        btnAceptar.setText(bundle.getString("agregarMenuItem"));
+        btnCancelar.setText(bundle.getString("btnCancelar"));
     }
 
     public void mostrarInformacion(String mensaje) {
@@ -105,6 +108,7 @@ public class AgregarAutorView extends javax.swing.JInternalFrame {
 
         txtNacionalidadAgregarAutorView.addActionListener(this::txtNacionalidadAgregarAutorViewActionPerformed);
 
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/nuevo-usuario.png"))); // NOI18N
         btnAceptar.setText("Agregar");
         btnAceptar.addActionListener(this::btnAceptarActionPerformed);
 
@@ -153,7 +157,7 @@ public class AgregarAutorView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNacionalidadAgregarAutorView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
                     .addComponent(btnCancelar))

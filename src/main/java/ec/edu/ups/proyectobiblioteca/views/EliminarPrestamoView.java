@@ -97,23 +97,23 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes",locale);
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
         setTitle(bundle.getString("tituloVentanaEliminarPrestamo"));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(
-                bundle.getString("tituloPanelEliminarPrestamo")));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("tituloPanelEliminarPrestamo")));
 
-        lblCodigoEliminar.setText(bundle.getString("lblCodigoEliminarPrestamo"));
+        lblCodigoEliminar.setText(bundle.getString("lblCodigoPrestamo"));
         lblUsuarioEliminar.setText(bundle.getString("lblUsuarioPrestamo"));
         lblFechaEliminar.setText(bundle.getString("lblFechaPrestamo"));
         lblLibroEliminar.setText(bundle.getString("lblLibroPrestamo"));
         lblAutorEliminar.setText(bundle.getString("lblAutorPrestamo"));
         lblISBNEliminar.setText(bundle.getString("lblISBNPrestamo"));
 
-        btnBuscar.setText(bundle.getString("botonBuscar"));
-        btnEliminar.setText(bundle.getString("botonEliminar"));
-        btnCancelar.setText(bundle.getString("botonCancelar"));
+        btnBuscar.setText(bundle.getString("btnBuscar"));
+        btnEliminar.setText(bundle.getString("btnEliminar"));
+        btnCancelar.setText(bundle.getString("btnCancelar"));
     }
 
     public void mostrarInformacion(String mensaje) {
@@ -152,13 +152,14 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Eliminar Prestamo ");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Eliminar prestamo con codigo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Bright", 0, 12))); // NOI18N
         jPanel1.setDoubleBuffered(false);
 
         lblCodigoEliminar.setText("Ingrese el codigo del prestamo:");
 
-        btnBuscar.setBackground(new java.awt.Color(102, 153, 255));
+        btnBuscar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Grey"));
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(this::btnBuscarActionPerformed);
 
@@ -170,30 +171,30 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
 
         lblAutorEliminar.setText("Autor:");
 
-        btnEliminar.setBackground(new java.awt.Color(255, 102, 102));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/eliminar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
-        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnEliminarMouseEntered(evt);
-            }
-        });
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         txtUsuarioEliminar.setEditable(false);
+        txtUsuarioEliminar.setEnabled(false);
 
         txtFechaEliminar.setEditable(false);
+        txtFechaEliminar.setEnabled(false);
         txtFechaEliminar.addActionListener(this::txtFechaEliminarActionPerformed);
 
         txtLibroEliminar.setEditable(false);
+        txtLibroEliminar.setEnabled(false);
 
         txtAutorEliminar.setEditable(false);
+        txtAutorEliminar.setEnabled(false);
 
         lblISBNEliminar.setText("ISBN:");
 
         txtISBNEliminar.setEditable(false);
+        txtISBNEliminar.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -259,7 +260,7 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblISBNEliminar)
                     .addComponent(txtISBNEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnEliminar))
@@ -301,10 +302,6 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
-
-    }//GEN-LAST:event_btnEliminarMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
