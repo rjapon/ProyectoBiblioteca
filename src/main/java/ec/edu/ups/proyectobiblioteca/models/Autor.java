@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.proyectobiblioteca.models;
 
+import ec.edu.ups.proyectobiblioteca.enums.NacionalidadesAutor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +16,14 @@ public class Autor {
 
     private int codigo;
     private String nombre;
-    private String nacionalidad;
+    private NacionalidadesAutor nacionalidad;
     private List<Libro> libros;
 
     public Autor() {
         libros = new ArrayList<>();
     }
 
-    public Autor(int codigo, String nombre, String nacionalidad) {
+    public Autor(int codigo, String nombre, NacionalidadesAutor nacionalidad) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
@@ -45,11 +46,11 @@ public class Autor {
         this.nombre = nombre;
     }
 
-    public String getNacionalidad() {
+    public NacionalidadesAutor getNacionalidad() {
         return nacionalidad;
     }
 
-    public void setNacionalidad(String nacionalidad) {
+    public void setNacionalidad(NacionalidadesAutor nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
 

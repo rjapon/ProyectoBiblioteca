@@ -232,6 +232,7 @@ public class LibroController {
 
                 eliminarLibroView.mostrarInformacion("Libro eliminado");
 
+                eliminarLibroView.getTxtISBNEliminar().setText("");
                 eliminarLibroView.getTxtTituloEliminar().setText("");
                 eliminarLibroView.getTxtAutorEliminar().setText("");
                 eliminarLibroView.getTxtCategoriaEliminar().setText("");

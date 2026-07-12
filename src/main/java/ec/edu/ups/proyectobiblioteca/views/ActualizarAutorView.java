@@ -4,9 +4,11 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import ec.edu.ups.proyectobiblioteca.enums.NacionalidadesAutor;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -47,12 +49,12 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
         this.txtCodigoActulizarAutorView = txtCodigoActulizarAutorView;
     }
 
-    public JTextField getTxtNacionalidadActualizarAutorView() {
-        return txtNacionalidadActualizarAutorView;
+    public JComboBox<NacionalidadesAutor> getCboNacionalidadesActualizar() {
+        return cboNacionalidadesActualizar;
     }
 
-    public void setTxtNacionalidadActualizarAutorView(JTextField txtNacionalidadActualizarAutorView) {
-        this.txtNacionalidadActualizarAutorView = txtNacionalidadActualizarAutorView;
+    public void setCboNacionalidadesActualizar(JComboBox<NacionalidadesAutor> cboNacionalidadesActualizar) {
+        this.cboNacionalidadesActualizar = cboNacionalidadesActualizar;
     }
 
     public JTextField getTxtNombreActualizarAutorView() {
@@ -97,10 +99,10 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtNacionalidadActualizarAutorView = new javax.swing.JTextField();
         txtNombreActualizarAutorView = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        cboNacionalidadesActualizar = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setTitle("Actualizar Autor");
@@ -134,7 +136,7 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(txtCodigoActulizarAutorView, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                     .addComponent(txtNombreActualizarAutorView)
-                    .addComponent(txtNacionalidadActualizarAutorView))
+                    .addComponent(cboNacionalidadesActualizar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBuscar)
                 .addGap(26, 26, 26))
@@ -157,11 +159,11 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtNombreActualizarAutorView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(txtNacionalidadActualizarAutorView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                    .addComponent(cboNacionalidadesActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizar)
                     .addComponent(btnCancelar))
@@ -194,12 +196,12 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JComboBox<NacionalidadesAutor> cboNacionalidadesActualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtCodigoActulizarAutorView;
-    private javax.swing.JTextField txtNacionalidadActualizarAutorView;
     private javax.swing.JTextField txtNombreActualizarAutorView;
     // End of variables declaration//GEN-END:variables
 }

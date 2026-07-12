@@ -174,9 +174,17 @@ public class EliminarLibroView extends javax.swing.JInternalFrame {
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
+        txtTituloEliminar.setEnabled(false);
+
+        txtAutorEliminar.setEnabled(false);
         txtAutorEliminar.addActionListener(this::txtAutorEliminarActionPerformed);
 
+        txtCategoriaEliminar.setEnabled(false);
         txtCategoriaEliminar.addActionListener(this::txtCategoriaEliminarActionPerformed);
+
+        txtEditorialEliminar.setEnabled(false);
+
+        txtFechaEliminar.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

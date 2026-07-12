@@ -173,6 +173,18 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
 
         lblEstadoBuscar.setText("Estado:");
 
+        txtTituloBuscar.setEnabled(false);
+
+        txtAutorBuscar.setEnabled(false);
+
+        txtFechaBuscar.setEnabled(false);
+
+        txtCategoriaBuscar.setEnabled(false);
+
+        txtEditorialBuscar.setEnabled(false);
+
+        txtEstadoBuscar.setEnabled(false);
+
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/aceptar.png"))); // NOI18N
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(this::btnAceptarActionPerformed);
@@ -269,7 +281,7 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        this.dispose();
+
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed

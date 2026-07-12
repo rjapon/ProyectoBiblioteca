@@ -4,9 +4,11 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import ec.edu.ups.proyectobiblioteca.enums.NacionalidadesAutor;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -39,13 +41,14 @@ public class AgregarAutorView extends javax.swing.JInternalFrame {
         this.txtCodigoAgregarAutorView = txtCodigoAgregarAutorView;
     }
 
-    public JTextField getTxtNacionalidadAgregarAutorView() {
-        return txtNacionalidadAgregarAutorView;
+    public JComboBox<NacionalidadesAutor> getCboNacionalidadesAgregar() {
+        return cboNacionalidadesAgregar;
     }
 
-    public void setTxtNacionalidadAgregarAutorView(JTextField txtNacionalidadAgregarAutorView) {
-        this.txtNacionalidadAgregarAutorView = txtNacionalidadAgregarAutorView;
+    public void setCboNacionalidadesAgregar(JComboBox<NacionalidadesAutor> cboNacionalidadesAgregar) {
+        this.cboNacionalidadesAgregar = cboNacionalidadesAgregar;
     }
+
 
     public JTextField getTxtNombreAgregarAutorView() {
         return txtNombreAgregarAutorView;
@@ -91,9 +94,9 @@ public class AgregarAutorView extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         txtNombreAgregarAutorView = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtNacionalidadAgregarAutorView = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        cboNacionalidadesAgregar = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setTitle("Agregar Autor");
@@ -105,8 +108,6 @@ public class AgregarAutorView extends javax.swing.JInternalFrame {
         txtNombreAgregarAutorView.addActionListener(this::txtNombreAgregarAutorViewActionPerformed);
 
         jLabel3.setText("Nacionalidad:");
-
-        txtNacionalidadAgregarAutorView.addActionListener(this::txtNacionalidadAgregarAutorViewActionPerformed);
 
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/nuevo-usuario.png"))); // NOI18N
         btnAceptar.setText("Agregar");
@@ -122,19 +123,16 @@ public class AgregarAutorView extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(75, 75, 75)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombreAgregarAutorView, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(txtCodigoAgregarAutorView)
-                            .addComponent(txtNacionalidadAgregarAutorView))
-                        .addContainerGap(112, Short.MAX_VALUE))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel1))
+                    .addComponent(jLabel3))
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtNombreAgregarAutorView, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(txtCodigoAgregarAutorView)
+                    .addComponent(cboNacionalidadesAgregar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(90, 90, 90)
                 .addComponent(btnAceptar)
@@ -156,7 +154,7 @@ public class AgregarAutorView extends javax.swing.JInternalFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtNacionalidadAgregarAutorView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboNacionalidadesAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
@@ -175,10 +173,6 @@ public class AgregarAutorView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreAgregarAutorViewActionPerformed
 
-    private void txtNacionalidadAgregarAutorViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNacionalidadAgregarAutorViewActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNacionalidadAgregarAutorViewActionPerformed
-
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
@@ -187,11 +181,11 @@ public class AgregarAutorView extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JComboBox<NacionalidadesAutor> cboNacionalidadesAgregar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtCodigoAgregarAutorView;
-    private javax.swing.JTextField txtNacionalidadAgregarAutorView;
     private javax.swing.JTextField txtNombreAgregarAutorView;
     // End of variables declaration//GEN-END:variables
 }

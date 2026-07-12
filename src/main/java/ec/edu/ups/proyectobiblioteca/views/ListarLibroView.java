@@ -53,7 +53,7 @@ public class ListarLibroView extends javax.swing.JInternalFrame {
         modelo.setRowCount(0);
 
         for (Libro libro : libros) {
-            Object[] fila = {libro.getISBN(), libro.getTitulo(), libro.getEditorial(), libro.isDisponible(), libro.getCategoria(), libro.getAutor().getNombre(), libro.getFechaPublicacion()};
+            Object[] fila = {libro.getISBN(), libro.getTitulo(), libro.getEditorial(), libro.isDisponible() ? "Disponible" : "Prestado", libro.getCategoria(), libro.getAutor().getNombre(), libro.getFechaPublicacion()};
             modelo.addRow(fila);
         }
 

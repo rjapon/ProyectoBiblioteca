@@ -5,6 +5,7 @@
 package ec.edu.ups.proyectobiblioteca.controllers;
 
 import ec.edu.ups.proyectobiblioteca.dao.AutorDAO;
+import ec.edu.ups.proyectobiblioteca.enums.NacionalidadesAutor;
 import ec.edu.ups.proyectobiblioteca.models.Autor;
 import ec.edu.ups.proyectobiblioteca.views.ActualizarAutorView;
 import ec.edu.ups.proyectobiblioteca.views.AgregarAutorView;
@@ -39,6 +40,8 @@ public class AutorController {
         this.buscarAutorView = buscarAutorView;
         this.autorDAO = autorDAO;
 
+        configurarVentanaAgregarAutor();
+        configurarVentanaActualizarAutor();
         configurarEventosBuscarAutor();
         configurarEventosEliminarAutor();
         configurarEventosBuscarEliminarAutor();
@@ -61,7 +64,7 @@ public class AutorController {
                     .setText(autor.getNombre());
 
             buscarAutorView.getTxtNacionalidadBuscarAutor()
-                    .setText(autor.getNacionalidad());
+                    .setText(autor.getNacionalidad().toString());
 
         } else {
 
@@ -132,7 +135,7 @@ public class AutorController {
                             .setText(autor.getNombre());
 
                     eliminarAutorView.getTxtNacionalidadEliminarAutorView()
-                            .setText(autor.getNacionalidad());
+                            .setText(autor.getNacionalidad().toString());
 
                 } else {
 
@@ -155,8 +158,8 @@ public class AutorController {
 
             actualizarAutorView.getTxtNombreActualizarAutorView().setText(autor.getNombre());
 
-            actualizarAutorView.getTxtNacionalidadActualizarAutorView()
-                    .setText(autor.getNacionalidad());
+            actualizarAutorView.getCboNacionalidadesActualizar()
+                    .setSelectedItem(autor.getNacionalidad());
 
         } else {
 
@@ -192,8 +195,10 @@ public class AutorController {
             String nombre = actualizarAutorView
                     .getTxtNombreActualizarAutorView().getText();
 
-            String nacionalidad = actualizarAutorView
-                    .getTxtNacionalidadActualizarAutorView().getText();
+            NacionalidadesAutor nacionalidad
+                    = (NacionalidadesAutor) actualizarAutorView
+                            .getCboNacionalidadesActualizar()
+                            .getSelectedItem();
 
             Autor autorActualizado = new Autor();
 
@@ -208,6 +213,15 @@ public class AutorController {
         }
     }
 
+    public void cargarNacionalidadesActualizar() {
+
+        actualizarAutorView.getCboNacionalidadesActualizar().removeAllItems();
+
+        for (NacionalidadesAutor nacionalidad : NacionalidadesAutor.values()) {
+            actualizarAutorView.getCboNacionalidadesActualizar().addItem(nacionalidad);
+        }
+    }
+
     public void configurarEventosActualizarAutor() {
 
         actualizarAutorView.getBtnActualizar().addActionListener(new ActionListener() {
@@ -219,6 +233,18 @@ public class AutorController {
 
     }
 
+    public void configurarVentanaActualizarAutor() {
+
+        actualizarAutorView.addInternalFrameListener(new InternalFrameAdapter() {
+
+            @Override
+            public void internalFrameActivated(InternalFrameEvent e) {
+                cargarNacionalidadesActualizar();
+            }
+
+        });
+    }
+
     public void agregarAutor() {
 
         int codigo = Integer.parseInt(
@@ -227,8 +253,10 @@ public class AutorController {
         String nombre = agregarAutorView
                 .getTxtNombreAgregarAutorView().getText();
 
-        String nacionalidad = agregarAutorView
-                .getTxtNacionalidadAgregarAutorView().getText();
+        NacionalidadesAutor nacionalidad
+                = (NacionalidadesAutor) agregarAutorView
+                        .getCboNacionalidadesAgregar()
+                        .getSelectedItem();
 
         Autor autor = autorDAO.buscar(codigo);
 
@@ -252,6 +280,15 @@ public class AutorController {
 
     }
 
+    public void cargarNacionalidadesAgregar() {
+
+        agregarAutorView.getCboNacionalidadesAgregar().removeAllItems();
+
+        for (NacionalidadesAutor nacionalidad : NacionalidadesAutor.values()) {
+            agregarAutorView.getCboNacionalidadesAgregar().addItem(nacionalidad);
+        }
+    }
+
     public void configurarEventosAgregarAutor() {
 
         agregarAutorView.getBtnAceptar().addActionListener(new ActionListener() {
@@ -261,6 +298,18 @@ public class AutorController {
             }
         });
 
+    }
+
+    public void configurarVentanaAgregarAutor() {
+
+        agregarAutorView.addInternalFrameListener(new InternalFrameAdapter() {
+
+            @Override
+            public void internalFrameActivated(InternalFrameEvent e) {
+                cargarNacionalidadesAgregar();
+            }
+
+        });
     }
 
     public void listarAutores() {

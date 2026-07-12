@@ -490,7 +490,7 @@ public class PrincipalView extends javax.swing.JFrame {
         Locale locale = new Locale("es", "EC");
         this.cambiarIdioma(locale);
 
-        // Prestamo View
+         // Prestamo View
         actualizarPrestamoView.cambiarIdioma(locale);
         buscarPrestamoView.cambiarIdioma(locale);
         crearPrestamoView.cambiarIdioma(locale);
@@ -512,7 +512,7 @@ public class PrincipalView extends javax.swing.JFrame {
         listarAutorView.cambiarIdioma(locale);
 
         // Usuario View
-        actualizarAutorView.cambiarIdioma(locale);
+        actualizarUsuarioView.cambiarIdioma(locale);
         buscarUsuarioView.cambiarIdioma(locale);
         crearUsuarioView.cambiarIdioma(locale);
         eliminarUsuarioView.cambiarIdioma(locale);

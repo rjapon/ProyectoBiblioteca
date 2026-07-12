@@ -206,20 +206,35 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTituloEliminar">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAutorEliminar">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAutorEliminarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCategoriaEliminar">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCategoriaEliminarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEditorialEliminar">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFechaEliminar">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
