@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import ec.edu.ups.proyectobiblioteca.enums.CategoriasLibro;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
@@ -41,13 +42,14 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
         this.cboAutorAgregar = cboAutorAgregar;
     }
 
-    public JTextField getTxtCategoria() {
-        return txtCategoria;
+    public JComboBox<CategoriasLibro> getCboCategoriaAgregar() {
+        return cboCategoriaAgregar;
     }
 
-    public void setTxtCategoria(JTextField txtCategoria) {
-        this.txtCategoria = txtCategoria;
+    public void setCboCategoriaAgregar(JComboBox<CategoriasLibro> cboCategoriaAgregar) {
+        this.cboCategoriaAgregar = cboCategoriaAgregar;
     }
+    
 
     public JTextField getTxtEditorialAgregar() {
         return txtEditorialAgregar;
@@ -151,10 +153,10 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
         txtEditorialAgregar = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        txtCategoria = new javax.swing.JTextField();
         comboBoxDia = new javax.swing.JComboBox<>();
         comboBoxMes = new javax.swing.JComboBox<>();
         ComboBoxAnio = new javax.swing.JComboBox<>();
+        cboCategoriaAgregar = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -167,11 +169,11 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
 
         lblISBNAgregar.setText("Ingrese el ISBN del libro:");
 
+        txtISBNAgregar.setInheritsPopupMenu(true);
+
         lblTituloAgregar.setText("Titulo:");
 
         lblAutorAgregar.setText("Autor:");
-
-        cboAutorAgregar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblCategoriaAgregar.setText("Categoria:");
 
@@ -183,6 +185,7 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
         btnAceptar.setText("Aceptar");
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         comboBoxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", " " }));
         comboBoxDia.addActionListener(this::comboBoxDiaActionPerformed);
@@ -208,19 +211,19 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
                         .addComponent(lblEditorialAgregar)))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtISBNAgregar, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtTituloAgregar, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cboAutorAgregar, javax.swing.GroupLayout.Alignment.LEADING, 0, 113, Short.MAX_VALUE)
-                        .addComponent(txtEditorialAgregar, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnCancelar)
-                        .addComponent(txtCategoria))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(comboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(comboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(ComboBoxAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ComboBoxAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(cboCategoriaAgregar, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtISBNAgregar, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtTituloAgregar, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cboAutorAgregar, javax.swing.GroupLayout.Alignment.LEADING, 0, 113, Short.MAX_VALUE)
+                        .addComponent(txtEditorialAgregar, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnCancelar)))
                 .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
@@ -241,7 +244,7 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCategoriaAgregar)
-                    .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboCategoriaAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaAgregar)
@@ -287,12 +290,18 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_ComboBoxAnioActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxAnio;
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cboAutorAgregar;
+    private javax.swing.JComboBox<CategoriasLibro> cboCategoriaAgregar;
     private javax.swing.JComboBox<String> comboBoxDia;
     private javax.swing.JComboBox<String> comboBoxMes;
     private javax.swing.JPanel jPanel1;
@@ -302,7 +311,6 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblFechaAgregar;
     private javax.swing.JLabel lblISBNAgregar;
     private javax.swing.JLabel lblTituloAgregar;
-    private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextField txtEditorialAgregar;
     private javax.swing.JTextField txtISBNAgregar;
     private javax.swing.JTextField txtTituloAgregar;

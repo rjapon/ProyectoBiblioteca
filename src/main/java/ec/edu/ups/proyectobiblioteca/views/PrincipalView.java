@@ -16,8 +16,11 @@ import ec.edu.ups.proyectobiblioteca.dao.PrestamoDAO;
 import ec.edu.ups.proyectobiblioteca.dao.PrestamoDAOMemoria;
 import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAO;
 import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAOMemoria;
+import java.awt.Image;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -64,10 +67,11 @@ public class PrincipalView extends javax.swing.JFrame {
      * Creates new form PrincipalVoew
      */
     public PrincipalView() {
-        
-        // gay
 
         initComponents();
+        setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+        
+    
 
         actualizarAutorView = new ActualizarAutorView();
         actualizarLibroView = new ActualizarLibroView();
@@ -99,7 +103,7 @@ public class PrincipalView extends javax.swing.JFrame {
         autorController = new AutorController(actualizarAutorView, agregarAutorView, eliminarAutorView, buscarAutorView, listarAutorView, autorDAO);
         prestamoController = new PrestamoController(prestamoDAO, libroDAO, usuarioDAO, crearPrestamoView, actualizarPrestamoView, eliminarPrestamoView, buscarPrestamoView, listarPrestamoView);
         libroController = new LibroController(agregarLibroView, actualizarLibroView, buscarLibroView, eliminarLibroView, listarLibroView, libroDAO, autorDAO);
-
+        
     }
 
     public void cambiarIdioma(Locale locale) {
@@ -150,7 +154,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem2 = new javax.swing.JMenuItem();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jDesktopPane1 = new DesktopPaneConFondo();
         jMenuBar2 = new javax.swing.JMenuBar();
         PrestamoMenu = new javax.swing.JMenu();
         CrearPrestamoMenuItem = new javax.swing.JMenuItem();
@@ -188,11 +192,11 @@ public class PrincipalView extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 554, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 424, Short.MAX_VALUE)
+            .addGap(0, 875, Short.MAX_VALUE)
         );
 
         PrestamoMenu.setText("Prestamo");
@@ -485,28 +489,28 @@ public class PrincipalView extends javax.swing.JFrame {
 
         Locale locale = new Locale("es", "EC");
         this.cambiarIdioma(locale);
-        
+
         // Prestamo View
         actualizarPrestamoView.cambiarIdioma(locale);
         buscarPrestamoView.cambiarIdioma(locale);
         crearPrestamoView.cambiarIdioma(locale);
         eliminarPrestamoView.cambiarIdioma(locale);
         listarPrestamoView.cambiarIdioma(locale);
-        
+
         // Libro View
         actualizarLibroView.cambiarIdioma(locale);
         agregarLibroView.cambiarIdioma(locale);
         buscarLibroView.cambiarIdioma(locale);
         eliminarLibroView.cambiarIdioma(locale);
         listarLibroView.cambiarIdioma(locale);
-        
+
         // Autor View
         actualizarAutorView.cambiarIdioma(locale);
         agregarAutorView.cambiarIdioma(locale);
         buscarAutorView.cambiarIdioma(locale);
         eliminarAutorView.cambiarIdioma(locale);
         listarAutorView.cambiarIdioma(locale);
-        
+
         // Usuario View
         actualizarAutorView.cambiarIdioma(locale);
         buscarUsuarioView.cambiarIdioma(locale);
@@ -521,7 +525,7 @@ public class PrincipalView extends javax.swing.JFrame {
 
         Locale locale = new Locale("en", "US");
         this.cambiarIdioma(locale);
-        
+
         // Prestamo View
         actualizarPrestamoView.cambiarIdioma(locale);
         buscarPrestamoView.cambiarIdioma(locale);
@@ -535,21 +539,21 @@ public class PrincipalView extends javax.swing.JFrame {
         buscarLibroView.cambiarIdioma(locale);
         eliminarLibroView.cambiarIdioma(locale);
         listarLibroView.cambiarIdioma(locale);
-        
+
         // Autor View
         actualizarAutorView.cambiarIdioma(locale);
         agregarAutorView.cambiarIdioma(locale);
         buscarAutorView.cambiarIdioma(locale);
         eliminarAutorView.cambiarIdioma(locale);
         listarAutorView.cambiarIdioma(locale);
-        
+
         // Usuario View
         actualizarUsuarioView.cambiarIdioma(locale);
         buscarUsuarioView.cambiarIdioma(locale);
         crearUsuarioView.cambiarIdioma(locale);
         eliminarUsuarioView.cambiarIdioma(locale);
         listarUsuarioView.cambiarIdioma(locale);
-       
+
     }//GEN-LAST:event_idiomaINMenuItemActionPerformed
 
     /**

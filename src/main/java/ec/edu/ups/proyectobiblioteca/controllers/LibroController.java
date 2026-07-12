@@ -2,6 +2,7 @@ package ec.edu.ups.proyectobiblioteca.controllers;
 
 import ec.edu.ups.proyectobiblioteca.dao.AutorDAO;
 import ec.edu.ups.proyectobiblioteca.dao.LibroDAO;
+import ec.edu.ups.proyectobiblioteca.enums.CategoriasLibro;
 import ec.edu.ups.proyectobiblioteca.models.Autor;
 import ec.edu.ups.proyectobiblioteca.models.Libro;
 import ec.edu.ups.proyectobiblioteca.views.ActualizarLibroView;
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
@@ -26,6 +28,7 @@ public class LibroController {
     private BuscarLibroView buscarLibroView;
     private EliminarLibroView eliminarLibroView;
     private ListarLibroView listarLibroView;
+    private CategoriasLibro categorias;
 
     private LibroDAO libroDAO;
     private AutorDAO autorDAO;
@@ -60,25 +63,17 @@ public class LibroController {
 
         if (libro != null) {
 
-            agregarLibroView.mostrarInformacion(
-                    "Ya existe un libro con ese ISBN");
+            agregarLibroView.mostrarInformacion("Ya existe un libro con ese ISBN");
 
         } else {
 
-            String titulo = agregarLibroView
-                    .getTxtTituloAgregar().getText();
+            String titulo = agregarLibroView.getTxtTituloAgregar().getText();
 
-            String editorial = agregarLibroView
-                    .getTxtEditorialAgregar().getText();
+            String editorial = agregarLibroView.getTxtEditorialAgregar().getText();
 
-            String categoria = agregarLibroView
-                    .getTxtCategoria()
-                    .getText();
+            CategoriasLibro categoria = (CategoriasLibro) agregarLibroView.getCboCategoriaAgregar().getSelectedItem();
 
-            String nombreAutor = agregarLibroView
-                    .getCboAutorAgregar()
-                    .getSelectedItem()
-                    .toString();
+            String nombreAutor = agregarLibroView.getCboAutorAgregar().getSelectedItem().toString();
 
             Autor autor = autorDAO.buscarPorNombre(nombreAutor);
 
@@ -132,6 +127,18 @@ public class LibroController {
 
     }
 
+    public void cargarCategoriasCombo() {
+
+        DefaultComboBoxModel<CategoriasLibro> modelo = new DefaultComboBoxModel<>();
+
+        for (CategoriasLibro categoria : CategoriasLibro.values()) {
+            modelo.addElement(categoria);
+        }
+
+        agregarLibroView.getCboCategoriaAgregar().setModel(modelo);
+
+    }
+
     public void configurarVentanaAgregarLibro() {
 
         agregarLibroView.addInternalFrameListener(new InternalFrameAdapter() {
@@ -140,6 +147,7 @@ public class LibroController {
             public void internalFrameActivated(InternalFrameEvent e) {
 
                 cargarAutoresCombo();
+                cargarCategoriasCombo();
 
             }
 
@@ -170,7 +178,7 @@ public class LibroController {
                     .setText(libro.getFechaPublicacion().format(formatter));
 
             buscarLibroView.getTxtCategoriaBuscar()
-                    .setText(libro.getCategoria());
+                    .setText(libro.getCategoria().toString());
 
             buscarLibroView.getTxtEditorialBuscar()
                     .setText(libro.getEditorial());
@@ -271,7 +279,7 @@ public class LibroController {
                             .setText(libro.getAutor().getNombre());
 
                     eliminarLibroView.getTxtCategoriaEliminar()
-                            .setText(libro.getCategoria());
+                            .setText(libro.getCategoria().toString());
 
                     eliminarLibroView.getTxtEditorialEliminar()
                             .setText(libro.getEditorial());
@@ -326,8 +334,8 @@ public class LibroController {
             actualizarLibroView.getTxtEditorialActualizar()
                     .setText(libro.getEditorial());
 
-            actualizarLibroView.getTxtCategoria()
-                    .setText(libro.getCategoria());
+            actualizarLibroView.getCboCategoriaActualizar()
+                    .setSelectedItem(libro.getCategoria());
 
             actualizarLibroView.getCboAutorActualizar()
                     .setSelectedItem(libro.getAutor().getNombre());
@@ -375,7 +383,10 @@ public class LibroController {
 
             String titulo = actualizarLibroView.getTxtTituloActualizar().getText();
             String editorial = actualizarLibroView.getTxtEditorialActualizar().getText();
-            String categoria = actualizarLibroView.getTxtCategoria().getText();
+            CategoriasLibro categoria
+                    = (CategoriasLibro) actualizarLibroView
+                            .getCboCategoriaActualizar()
+                            .getSelectedItem();
 
             String nombreAutor = actualizarLibroView
                     .getCboAutorActualizar()
@@ -404,7 +415,6 @@ public class LibroController {
             libroActualizado.setAutor(autor);
             libroActualizado.setFechaPublicacion(fecha);
 
-            // Mantener el estado del libro
             Libro libroAnterior = libroDAO.buscar(isbn);
             libroActualizado.setDisponible(libroAnterior.isDisponible());
 
@@ -425,32 +435,44 @@ public class LibroController {
         });
 
     }
-    
-    
+
     public void cargarAutoresComboActualizar() {
 
-    actualizarLibroView.getCboAutorActualizar().removeAllItems();
+        actualizarLibroView.getCboAutorActualizar().removeAllItems();
 
-    for (Autor autor : autorDAO.listar()) {
-        actualizarLibroView.getCboAutorActualizar().addItem(autor.getNombre());
+        for (Autor autor : autorDAO.listar()) {
+            actualizarLibroView.getCboAutorActualizar().addItem(autor.getNombre());
+        }
     }
-}
-    
-    public void configurarVentanaActualizarLibro() {
 
-    actualizarLibroView.addInternalFrameListener(new InternalFrameAdapter() {
+    public void cargarCategoriasComboActualizar() {
 
-        @Override
-        public void internalFrameActivated(InternalFrameEvent e) {
+        DefaultComboBoxModel<CategoriasLibro> modelo
+                = new DefaultComboBoxModel<>();
 
-            cargarAutoresComboActualizar();
-
+        for (CategoriasLibro categoria : CategoriasLibro.values()) {
+            modelo.addElement(categoria);
         }
 
-    });
+        actualizarLibroView
+                .getCboCategoriaActualizar()
+                .setModel(modelo);
+    }
 
-}
-    
-    
-    
+    public void configurarVentanaActualizarLibro() {
+
+        actualizarLibroView.addInternalFrameListener(new InternalFrameAdapter() {
+
+            @Override
+            public void internalFrameActivated(InternalFrameEvent e) {
+
+                cargarAutoresComboActualizar();
+                cargarCategoriasComboActualizar();
+
+            }
+
+        });
+
+    }
+
 }

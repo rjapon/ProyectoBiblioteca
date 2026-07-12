@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.proyectobiblioteca.models;
 
+import ec.edu.ups.proyectobiblioteca.enums.CategoriasLibro;
 import java.time.LocalDate;
 
 /**
@@ -16,11 +17,11 @@ public class Libro {
     private String titulo;
     private String editorial;
     private boolean disponible;
-    private String categoria;
+    private CategoriasLibro categoria;
     private Autor autor;
     private LocalDate fechaPublicacion;
 
-    public Libro(String ISBN, String titulo, String editorial, boolean disponible, String categoria, Autor autor, LocalDate fechaPublicacion) {
+    public Libro(String ISBN, String titulo, String editorial, boolean disponible, CategoriasLibro categoria, Autor autor, LocalDate fechaPublicacion) {
         this.ISBN = ISBN;
         this.titulo = titulo;
         this.editorial = editorial;
@@ -29,8 +30,6 @@ public class Libro {
         this.autor = autor;
         this.fechaPublicacion = fechaPublicacion;
     }
-
- 
 
     public Libro() {
 
@@ -85,11 +84,11 @@ public class Libro {
         }
     }
 
-    public String getCategoria() {
+    public CategoriasLibro getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(CategoriasLibro categoria) {
         this.categoria = categoria;
     }
 
@@ -100,12 +99,10 @@ public class Libro {
     public void setFechaPublicacion(LocalDate fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
     }
-    
-    
 
     @Override
     public String toString() {
-        return "Libro{" + "ISBN=" + ISBN + ", titulo=" + titulo + ", editorial=" + editorial + ", disponible=" + disponible + ", autor=" + (autor.getNombre()) + '}';
+        return "Libro{" + "ISBN=" + ISBN + ", titulo=" + titulo + ", editorial=" + editorial + ", disponible=" + disponible + ", categoria=" + categoria + ", autor=" + autor + ", fechaPublicacion=" + fechaPublicacion + '}';
     }
 
 }

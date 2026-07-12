@@ -31,11 +31,11 @@ public class AutorController {
     private ListarAutorView listarAutorView;
     private AutorDAO autorDAO;
 
-    public AutorController(ActualizarAutorView actualizarAutorView, AgregarAutorView agregarAutorView, EliminarAutorView eliminarAutorView, BuscarAutorView buscarAutorView,ListarAutorView listarAutorView,AutorDAO autorDAO) {
+    public AutorController(ActualizarAutorView actualizarAutorView, AgregarAutorView agregarAutorView, EliminarAutorView eliminarAutorView, BuscarAutorView buscarAutorView, ListarAutorView listarAutorView, AutorDAO autorDAO) {
         this.actualizarAutorView = actualizarAutorView;
         this.agregarAutorView = agregarAutorView;
         this.eliminarAutorView = eliminarAutorView;
-      this.listarAutorView = listarAutorView;
+        this.listarAutorView = listarAutorView;
         this.buscarAutorView = buscarAutorView;
         this.autorDAO = autorDAO;
 
@@ -147,15 +147,13 @@ public class AutorController {
 
     public void buscarAutorActualizar() {
 
-        int codigo = Integer.parseInt(
-                actualizarAutorView.getTxtCodigoActulizarAutorView().getText());
+        int codigo = Integer.parseInt(actualizarAutorView.getTxtCodigoActulizarAutorView().getText());
 
         Autor autor = autorDAO.buscar(codigo);
 
         if (autor != null) {
 
-            actualizarAutorView.getTxtNombreActualizarAutorView()
-                    .setText(autor.getNombre());
+            actualizarAutorView.getTxtNombreActualizarAutorView().setText(autor.getNombre());
 
             actualizarAutorView.getTxtNacionalidadActualizarAutorView()
                     .setText(autor.getNacionalidad());
@@ -264,24 +262,22 @@ public class AutorController {
         });
 
     }
-    
+
     public void listarAutores() {
 
-    List<Autor> autores = autorDAO.listar();
-    listarAutorView.cargarDatos(autores);
-}
+        List<Autor> autores = autorDAO.listar();
+        listarAutorView.cargarDatos(autores);
+    }
 
-    
     public void configurarEventosListarAutores() {
 
-    listarAutorView.getBtnListar().addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            listarAutores();
-        }
-    });
+        listarAutorView.getBtnListar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listarAutores();
+            }
+        });
 
-}
-    
-   
+    }
+
 }

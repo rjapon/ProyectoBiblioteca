@@ -12,14 +12,17 @@ import java.util.List;
  * @author Asus
  */
 public interface LibroDAO {
-      void crear(Libro libro);
+
+    void crear(Libro libro);
 
     Libro buscar(String isbn);
 
     void actualizar(String isbn, Libro libro);
 
     void eliminar(String isbn);
+    
+    void cambiarEstado();
 
     List<Libro> listar();
-    
+
 }

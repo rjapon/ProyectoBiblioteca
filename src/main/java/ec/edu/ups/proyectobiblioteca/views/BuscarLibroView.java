@@ -167,6 +167,7 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
         lblCategoriaBuscar.setText("Categoría:");
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
 
         lblEditorialBuscar.setText("Editorial:");
 
@@ -270,6 +271,12 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        
+        this.dispose();
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

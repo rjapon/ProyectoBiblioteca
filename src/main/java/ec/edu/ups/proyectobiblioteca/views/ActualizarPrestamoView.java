@@ -221,6 +221,7 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
         btnAceptar.setText("Aceptar");
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         lblLectura1.setText("(solo lectura)");
 
@@ -369,6 +370,10 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
     private void txtAutorActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAutorActualizarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAutorActualizarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.dispose();        
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

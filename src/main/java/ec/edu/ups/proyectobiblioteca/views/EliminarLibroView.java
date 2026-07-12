@@ -172,6 +172,7 @@ public class EliminarLibroView extends javax.swing.JInternalFrame {
         btnEliminar.setText("Eliminar");
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         txtAutorEliminar.addActionListener(this::txtAutorEliminarActionPerformed);
 
@@ -276,6 +277,11 @@ public class EliminarLibroView extends javax.swing.JInternalFrame {
     private void txtCategoriaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaEliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCategoriaEliminarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

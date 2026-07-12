@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import ec.edu.ups.proyectobiblioteca.enums.CategoriasLibro;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
@@ -106,12 +107,12 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
 
     }
 
-    public JTextField getTxtCategoria() {
-        return txtCategoria;
+    public JComboBox<CategoriasLibro> getCboCategoriaActualizar() {
+        return cboCategoriaActualizar;
     }
 
-    public void setTxtCategoria(JTextField txtCategoria) {
-        this.txtCategoria = txtCategoria;
+    public void setCboCategoriaActualizar(JComboBox<CategoriasLibro> cboCategoriaActualizar) {
+        this.cboCategoriaActualizar = cboCategoriaActualizar;
     }
 
     public void cambiarIdioma(Locale locale) {
@@ -161,10 +162,10 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
         txtEditorialActualizar = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        txtCategoria = new javax.swing.JTextField();
         ComboBoxDia = new javax.swing.JComboBox<>();
         ComboBoxMes = new javax.swing.JComboBox<>();
         ComboBoxAnio = new javax.swing.JComboBox<>();
+        cboCategoriaActualizar = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -219,17 +220,17 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
                             .addComponent(lblEditorialActualizar))
                         .addGap(39, 39, 39)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtTituloActualizar)
-                                .addComponent(cboAutorActualizar, 0, 140, Short.MAX_VALUE)
-                                .addComponent(txtEditorialActualizar)
-                                .addComponent(txtCategoria))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(ComboBoxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(28, 28, 28)
                                 .addComponent(ComboBoxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
-                                .addComponent(ComboBoxAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(ComboBoxAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cboCategoriaActualizar, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtTituloActualizar, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cboAutorActualizar, javax.swing.GroupLayout.Alignment.LEADING, 0, 140, Short.MAX_VALUE)
+                                .addComponent(txtEditorialActualizar, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnActualizar)
@@ -270,7 +271,7 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCategoriaActualizar)
-                    .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboCategoriaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEditorialActualizar)
@@ -319,6 +320,7 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cboAutorActualizar;
+    private javax.swing.JComboBox<CategoriasLibro> cboCategoriaActualizar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAutorActualizar;
     private javax.swing.JLabel lblCategoriaActualizar;
@@ -326,7 +328,6 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblFechaActualizar;
     private javax.swing.JLabel lblISBNActualizar;
     private javax.swing.JLabel lblTituloActualizar;
-    private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextField txtEditorialActualizar;
     private javax.swing.JTextField txtISBNActualizar;
     private javax.swing.JTextField txtTituloActualizar;

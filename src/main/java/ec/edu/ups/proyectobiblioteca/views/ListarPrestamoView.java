@@ -61,7 +61,7 @@ public class ListarPrestamoView extends javax.swing.JInternalFrame {
             Object[] fila = {
                 prestamo.getCodigo(),
                 prestamo.getLibro().getTitulo(),
-                prestamo.getFechaPrestamo().format(formatter),
+                prestamo.getFechaDevolucion().format(formatter),
                 prestamo.getUsuario().getNombre()
             };
 

@@ -59,5 +59,10 @@ public class LibroDAOMemoria implements LibroDAO{
     public List<Libro> listar() {
         return lista;
     }
+
+    @Override
+    public void cambiarEstado() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

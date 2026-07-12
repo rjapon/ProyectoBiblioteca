@@ -110,6 +110,7 @@ public class ListarAutorView extends javax.swing.JInternalFrame {
 
         BtnListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/listar.png"))); // NOI18N
         BtnListar.setText("Listar");
+        BtnListar.addActionListener(this::BtnListarActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -149,6 +150,10 @@ public class ListarAutorView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnListarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnListarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
