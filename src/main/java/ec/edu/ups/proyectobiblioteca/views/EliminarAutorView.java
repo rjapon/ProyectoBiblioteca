@@ -123,6 +123,12 @@ public class EliminarAutorView extends javax.swing.JInternalFrame {
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
 
+        txtNombreEliminarAutorView.setEditable(false);
+        txtNombreEliminarAutorView.setEnabled(false);
+
+        txtNacionalidadEliminarAutorView.setEditable(false);
+        txtNacionalidadEliminarAutorView.setEnabled(false);
+
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/eliminar.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
 

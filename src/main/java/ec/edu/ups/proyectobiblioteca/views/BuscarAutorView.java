@@ -109,8 +109,10 @@ public class BuscarAutorView extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Nacionalidad:");
 
+        txtNombreBuscarAutor.setEnabled(false);
         txtNombreBuscarAutor.addActionListener(this::txtNombreBuscarAutorActionPerformed);
 
+        txtNacionalidadBuscarAutor.setEnabled(false);
         txtNacionalidadBuscarAutor.addActionListener(this::txtNacionalidadBuscarAutorActionPerformed);
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/buscar.png"))); // NOI18N
