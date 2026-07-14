@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.proyectobiblioteca.models;
 
+import ec.edu.ups.proyectobiblioteca.enums.CiudadesUsuario;
+
 /**
  *
  * @author Asus
@@ -13,14 +15,20 @@ public class Usuario {
     private String nombre;
     private String cedula;
     private String telefono;
+    private String correo;
+    private CiudadesUsuario ciudadesUsuario;
+    private String callePrincipal;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String cedula,String telefono) {
+    public Usuario(String nombre, String cedula,String telefono,String correo,CiudadesUsuario ciudadesUsuario,String callePrincipal) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.telefono = telefono;
+        this.correo= correo;
+        this.ciudadesUsuario= ciudadesUsuario;
+        this.callePrincipal = callePrincipal;
     }
 
     public String getNombre() {
@@ -48,6 +56,31 @@ public class Usuario {
         this.telefono = telefono;
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public CiudadesUsuario getCiudadesUsuario() {
+        return ciudadesUsuario;
+    }
+
+    public void setCiudadesUsuario(CiudadesUsuario ciudadesUsuario) {
+        this.ciudadesUsuario = ciudadesUsuario;
+    }
+
+    public String getCallePrincipal() {
+        return callePrincipal;
+    }
+
+    public void setCallePrincipal(String callePrincipal) {
+        this.callePrincipal = callePrincipal;
+    }
+    
+    
     @Override
     public String toString() {
         return "Persona{" + "nombre=" + nombre + ", cedula=" + cedula + ", telefono=" + telefono + '}';

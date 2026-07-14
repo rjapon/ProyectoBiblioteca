@@ -6,16 +6,12 @@ package ec.edu.ups.proyectobiblioteca.exceptions;
 
 /**
  *
- * @author Asus
+ * @author Miguel Maza
  */
-public class ValidarCamposException extends Exception {
+public class AutorNoEncontradoException extends Exception{
     
-    public ValidarCamposException(){
-       super();
-     }
-    
-    public ValidarCamposException( String error){
+    public AutorNoEncontradoException(String error){
         super(error);
-        
     }
+    
 }

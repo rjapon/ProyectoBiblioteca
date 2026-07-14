@@ -4,9 +4,12 @@
  */
 package ec.edu.ups.proyectobiblioteca.views;
 
+import ec.edu.ups.proyectobiblioteca.enums.CiudadesUsuario;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -21,8 +24,35 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
      */
     public CrearUsuarioView() {
         initComponents();
+        DefaultComboBoxModel<CiudadesUsuario> modelo = (DefaultComboBoxModel) cbxCiudad.getModel(); cbxCiudad.getModel();
+         
+         modelo.addElement(CiudadesUsuario.CUENCA);
+         modelo.addElement(CiudadesUsuario.CAMILO_PONCE_ENRIQUEZ);
+         modelo.addElement(CiudadesUsuario.CHORDELEG);
+         modelo.addElement(CiudadesUsuario.EL_PAN);
+         modelo.addElement(CiudadesUsuario.GIRON);
+         modelo.addElement(CiudadesUsuario.GUACHAPALA);
+         modelo.addElement(CiudadesUsuario.GUALACEO);
+         modelo.addElement(CiudadesUsuario.NABON);
+         modelo.addElement(CiudadesUsuario.OÑA);
+         modelo.addElement(CiudadesUsuario.PAUTE);
+         modelo.addElement(CiudadesUsuario.PUCARA);
+         modelo.addElement(CiudadesUsuario.SANTA_ISABEL);
+         modelo.addElement(CiudadesUsuario.SAN_FERNANDO);
+         modelo.addElement(CiudadesUsuario.SEVILLA_DE_ORO);
+         modelo.addElement(CiudadesUsuario.SIGSIG);
+         
+         
     }
 
+    public JComboBox<String> getCbxCiudad() {
+        return cbxCiudad;
+    }
+
+    public void setCbxCiudad(JComboBox<String> cbxCiudad) {
+        this.cbxCiudad = cbxCiudad;
+    }
+    
     public JButton getBtnCrear() {
         return btnCrear;
     }
@@ -55,6 +85,22 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
         this.txtTelefonoCrearUsuario = txtTelefonoCrearUsuario;
     }
 
+    public JTextField getTxtCallePrincipal() {
+        return txtCallePrincipal;
+    }
+
+    public void setTxtCallePrincipal(JTextField txtCallePrincipal) {
+        this.txtCallePrincipal = txtCallePrincipal;
+    }
+
+    public JTextField getTxtCorreoElectronico() {
+        return txtCorreoElectronico;
+    }
+
+    public void setTxtCorreoElectronico(JTextField txtCorreoElectronico) {
+        this.txtCorreoElectronico = txtCorreoElectronico;
+    }
+    
     public void cambiarIdioma(Locale locale) {
 
         ResourceBundle mensajes = ResourceBundle.getBundle(
@@ -92,83 +138,158 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
         txtTelefonoCrearUsuario = new javax.swing.JTextField();
         btnCrear = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        txtCorreoE = new javax.swing.JLabel();
+        txtCorreoElectronico = new javax.swing.JTextField();
+        lblCiudad = new javax.swing.JLabel();
+        lblCallePrincipal = new javax.swing.JLabel();
+        txtCallePrincipal = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        cbxCiudad = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setTitle("Crear Usuario");
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel4.setText("Cedula:");
 
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel5.setText("Nombre:");
 
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel6.setText("Telefono:");
 
+        btnCrear.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         btnCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/nuevo-usuario.png"))); // NOI18N
         btnCrear.setText("Crear");
         btnCrear.addActionListener(this::btnCrearActionPerformed);
 
+        btnCancelar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
+
+        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel7.setText("Registrar Usuario");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(174, 174, 174)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
+        );
+
+        txtCorreoE.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        txtCorreoE.setText("Correo Electronico:");
+
+        lblCiudad.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblCiudad.setText("Ciudad:");
+
+        lblCallePrincipal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblCallePrincipal.setText("Calle Principal:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
                         .addComponent(btnCrear)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
+                        .addGap(115, 115, 115)
+                        .addComponent(btnCancelar)
+                        .addGap(3, 3, 3))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(lblCiudad)
+                            .addGap(18, 18, 18)
+                            .addComponent(cbxCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(lblCallePrincipal)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtCallePrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTelefonoCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                            .addComponent(txtNombreCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                            .addComponent(txtCedulaCrearUsuario))))
-                .addGap(89, 89, 89))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtNombreCrearUsuario))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtCedulaCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtTelefonoCrearUsuario)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtCorreoE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(119, Short.MAX_VALUE))
+            .addComponent(jSeparator1)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtCedulaCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtNombreCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtTelefonoCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCorreoE)
+                    .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCiudad)
+                    .addComponent(cbxCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCallePrincipal)
+                    .addComponent(txtCallePrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrear)
                     .addComponent(btnCancelar))
-                .addGap(25, 25, 25))
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -186,11 +307,20 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCrear;
+    private javax.swing.JComboBox<String> cbxCiudad;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblCallePrincipal;
+    private javax.swing.JLabel lblCiudad;
+    private javax.swing.JTextField txtCallePrincipal;
     private javax.swing.JTextField txtCedulaCrearUsuario;
+    private javax.swing.JLabel txtCorreoE;
+    private javax.swing.JTextField txtCorreoElectronico;
     private javax.swing.JTextField txtNombreCrearUsuario;
     private javax.swing.JTextField txtTelefonoCrearUsuario;
     // End of variables declaration//GEN-END:variables
