@@ -21,7 +21,7 @@ public interface LibroDAO {
 
     void eliminar(String isbn);
     
-    void cambiarEstado();
+    void cambiarDisponibilidad(String isbn, boolean disponible);
 
     List<Libro> listar();
 
