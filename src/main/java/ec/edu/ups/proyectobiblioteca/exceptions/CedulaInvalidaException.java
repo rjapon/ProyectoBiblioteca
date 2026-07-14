@@ -6,16 +6,14 @@ package ec.edu.ups.proyectobiblioteca.exceptions;
 
 /**
  *
- * @author Asus
+ * @author Miguel Maza
  */
-public class ValidarCamposException extends Exception {
-    
-    public ValidarCamposException(){
-       super();
-     }
-    
-    public ValidarCamposException( String error){
-        super(error);
+public class CedulaInvalidaException extends Exception{
+
+    public CedulaInvalidaException(String error) {
         
+        super(error);
     }
+    
+    
 }

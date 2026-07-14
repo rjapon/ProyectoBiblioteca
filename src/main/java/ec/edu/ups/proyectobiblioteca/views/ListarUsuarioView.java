@@ -42,6 +42,9 @@ public class ListarUsuarioView extends javax.swing.JInternalFrame {
         modelo.addColumn("Cedula");
         modelo.addColumn("Nombre");
         modelo.addColumn("Telefono");
+        modelo.addColumn("Correo Electronico");
+        modelo.addColumn("Ciudad");
+        modelo.addColumn("Calle Principal");
 
         jTable1.setModel(modelo);
 
@@ -56,7 +59,10 @@ public class ListarUsuarioView extends javax.swing.JInternalFrame {
             Object[] fila = {
                 usuario.getCedula(),
                 usuario.getNombre(),
-                usuario.getTelefono()
+                usuario.getTelefono(),
+                usuario.getCorreo(),
+                usuario.getCiudadesUsuario(),
+                usuario.getCallePrincipal()
             };
 
             modelo.addRow(fila);
