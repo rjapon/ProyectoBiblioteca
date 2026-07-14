@@ -144,8 +144,7 @@ public class PrestamoController {
         prestamo.setLibro(libro);
 
         prestamoDAO.crear(prestamo);
-
-        libro.setDisponible(false);
+        libroDAO.cambiarDisponibilidad(isbn, false);
 
         crearPrestamoView.mostrarInformacion(
                 "Préstamo creado correctamente");
@@ -356,8 +355,7 @@ public class PrestamoController {
 
             if (respuesta == JOptionPane.YES_OPTION) {
 
-                // El libro vuelve a estar disponible
-                prestamo.getLibro().setDisponible(true);
+                libroDAO.cambiarDisponibilidad(prestamo.getLibro().getISBN(),true);
 
                 prestamoDAO.eliminar(codigo);
 

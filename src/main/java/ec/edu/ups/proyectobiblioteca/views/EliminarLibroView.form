@@ -207,11 +207,13 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtTituloEliminar">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAutorEliminar">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -220,6 +222,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtCategoriaEliminar">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -228,11 +231,13 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtEditorialEliminar">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFechaEliminar">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>

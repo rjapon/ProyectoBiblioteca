@@ -223,8 +223,10 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
 
         lblCedulaBuscar.setText("Cedula:");
 
+        txtCedulaBuscar.setEditable(false);
         txtCedulaBuscar.setEnabled(false);
 
+        txtEstadoBuscar.setEditable(false);
         txtEstadoBuscar.setEnabled(false);
 
         javax.swing.GroupLayout panelBuscarLayout = new javax.swing.GroupLayout(panelBuscar);
