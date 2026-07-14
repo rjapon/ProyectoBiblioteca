@@ -3,6 +3,8 @@ package ec.edu.ups.proyectobiblioteca.controllers;
 import ec.edu.ups.proyectobiblioteca.dao.LibroDAO;
 import ec.edu.ups.proyectobiblioteca.dao.PrestamoDAO;
 import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAO;
+import ec.edu.ups.proyectobiblioteca.exceptions.CedulaInvalidaException;
+import ec.edu.ups.proyectobiblioteca.exceptions.ValidarCamposException;
 import ec.edu.ups.proyectobiblioteca.models.Libro;
 import ec.edu.ups.proyectobiblioteca.models.Prestamo;
 import ec.edu.ups.proyectobiblioteca.models.Usuario;
@@ -60,47 +62,59 @@ public class PrestamoController {
     }
 
     public void crearPrestamo() {
-
-        int codigo = Integer.parseInt(
-                crearPrestamoView.getTxtCodigoCrear().getText());
-
-        Prestamo prestamoExistente = prestamoDAO.buscar(codigo);
+      
+      try{
+        String codigo = crearPrestamoView.getTxtCodigoCrear().getText().trim();
+                
+        if ( codigo.isEmpty()){
+            throw new ValidarCamposException("Error- campos vacios");
+        }
+        int codigo2 = Integer.parseInt(codigo);
+        Prestamo prestamoExistente = prestamoDAO.buscar(codigo2);
 
         if (prestamoExistente != null) {
 
-            crearPrestamoView.mostrarInformacion(
-                    "Ya existe un préstamo con ese código");
+            crearPrestamoView.mostrarInformacion( "Ya existe un préstamo con ese código");
+                   
             return;
         }
 
-        String cedula = crearPrestamoView
-                .getTxtCedulaCrear().getText();
+        String cedula = crearPrestamoView.getTxtCedulaCrear().getText();
+        if (cedula.isEmpty()){
+            throw new ValidarCamposException("Error-campos vacios");
+        } 
+        
+        if( cedula.length()!= 10){
+            throw new CedulaInvalidaException("Error - cedula invalida");
+        }
 
         Usuario usuario = usuarioDAO.buscar(cedula);
 
         if (usuario == null) {
 
-            crearPrestamoView.mostrarInformacion(
-                    "No existe el usuario");
+            crearPrestamoView.mostrarInformacion("No existe el usuario");
+                    
             return;
         }
 
-        String isbn = crearPrestamoView
-                .getTxtISBNCrear().getText();
+        String isbn = crearPrestamoView.getTxtISBNCrear().getText();
+        if(isbn.isEmpty()){
+            throw new ValidarCamposException("Error- campos vacios");
+        }    
 
         Libro libro = libroDAO.buscar(isbn);
 
         if (libro == null) {
 
-            crearPrestamoView.mostrarInformacion(
-                    "No existe el libro");
+            crearPrestamoView.mostrarInformacion( "No existe el libro");
+                   
             return;
         }
 
         if (!libro.isDisponible()) {
 
-            crearPrestamoView.mostrarInformacion(
-                    "El libro no está disponible");
+            crearPrestamoView.mostrarInformacion( "El libro no está disponible");
+                   
             return;
         }
 
@@ -123,7 +137,7 @@ public class PrestamoController {
 
         Prestamo prestamo = new Prestamo();
 
-        prestamo.setCodigo(codigo);
+        prestamo.setCodigo(codigo2);
         prestamo.setFechaPrestamo(fechaPrestamo);
         prestamo.setFechaDevolucion(fechaDevolucion);
         prestamo.setUsuario(usuario);
@@ -135,6 +149,14 @@ public class PrestamoController {
 
         crearPrestamoView.mostrarInformacion(
                 "Préstamo creado correctamente");
+      }catch(ValidarCamposException e){
+          JOptionPane.showMessageDialog(null, e.getMessage());
+          
+      }catch(NumberFormatException e){
+          JOptionPane.showMessageDialog(null, "El codigo debe ser entero ");
+      }catch(CedulaInvalidaException e){
+          JOptionPane.showMessageDialog(null, e.getMessage());
+      }
     }
 
     public void configurarEventosCrearPrestamo() {
