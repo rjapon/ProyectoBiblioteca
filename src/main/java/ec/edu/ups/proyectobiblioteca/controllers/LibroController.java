@@ -369,9 +369,13 @@ public class LibroController {
     }
 
     public void buscarLibroActualizar() {
-
-        String isbn = actualizarLibroView.getTxtISBNActualizar().getText();
-
+     
+      try{
+        String isbn = actualizarLibroView.getTxtISBNActualizar().getText().trim();
+        
+        if( isbn.isEmpty()){
+            throw new ValidarCamposException("Error- campos vacios");
+        }
         Libro libro = libroDAO.buscar(isbn);
 
         if (libro != null) {
@@ -404,6 +408,9 @@ public class LibroController {
             actualizarLibroView.mostrarInformacion("No se encontró el libro");
 
         }
+      }catch(ValidarCamposException e){
+          JOptionPane.showMessageDialog(null, e.getMessage());
+      }
     }
 
     public void configurarEventosBuscarActualizarLibro() {
@@ -418,9 +425,22 @@ public class LibroController {
     }
 
     public void actualizarLibro() {
-
-        String isbn = actualizarLibroView.getTxtISBNActualizar().getText();
-
+      
+      try{
+        String isbn = actualizarLibroView.getTxtISBNActualizar().getText().trim();
+        String titulo = actualizarLibroView.getTxtTituloActualizar().getText().trim();
+        String editorial = actualizarLibroView.getTxtEditorialActualizar().getText().trim();
+        
+        if(isbn.isEmpty() || titulo.isEmpty() || editorial.isEmpty()){
+            throw new ValidarCamposException("Error- campos vacios");
+        }
+        
+        CategoriasLibro categoria = (CategoriasLibro) actualizarLibroView.getCboCategoriaActualizar().getSelectedItem();
+                                  
+            if ( actualizarLibroView.getCboAutorActualizar().getItemCount() == 0){
+                throw new ValidarCamposException ("Error- Autor no registrado");
+            }
+            String nombreAutor = actualizarLibroView .getCboAutorActualizar().getSelectedItem().toString();
         int respuesta = JOptionPane.showConfirmDialog(
                 actualizarLibroView,
                 "¿Deseas actualizar el libro?",
@@ -429,17 +449,8 @@ public class LibroController {
 
         if (respuesta == JOptionPane.YES_OPTION) {
 
-            String titulo = actualizarLibroView.getTxtTituloActualizar().getText();
-            String editorial = actualizarLibroView.getTxtEditorialActualizar().getText();
-            CategoriasLibro categoria
-                    = (CategoriasLibro) actualizarLibroView
-                            .getCboCategoriaActualizar()
-                            .getSelectedItem();
-
-            String nombreAutor = actualizarLibroView
-                    .getCboAutorActualizar()
-                    .getSelectedItem()
-                    .toString();
+            
+            
 
             Autor autor = autorDAO.buscarPorNombre(nombreAutor);
 
@@ -471,6 +482,10 @@ public class LibroController {
             actualizarLibroView.mostrarInformacion(
                     "Libro actualizado correctamente");
         }
+      }catch(ValidarCamposException e){
+          JOptionPane.showMessageDialog(null, e.getMessage());
+          
+      }
     }
 
     public void configurarEventosActualizarLibro() {
