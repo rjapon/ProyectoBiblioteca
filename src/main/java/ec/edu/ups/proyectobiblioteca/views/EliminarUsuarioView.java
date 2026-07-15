@@ -159,6 +159,10 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel3.setText("Teléfono:");
 
+        txtNombreEliminarUsuario.setEnabled(false);
+
+        txtTelfonoEliminarUsuario.setEnabled(false);
+
         btnBuscarEliminarUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         btnBuscarEliminarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/buscar.png"))); // NOI18N
         btnBuscarEliminarUsuario.setText("Buscar");
@@ -196,11 +200,17 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
         lblCorreoE.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         lblCorreoE.setText("Correo Electronico:");
 
+        txtCorreoElectronico.setEnabled(false);
+
         lblCiudad.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         lblCiudad.setText("Ciudad:");
 
+        txtCiudad.setEnabled(false);
+
         lblCallePrincipal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         lblCallePrincipal.setText("Calle Principal:");
+
+        txtCallePrincipal.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
