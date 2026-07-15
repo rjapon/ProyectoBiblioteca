@@ -40,7 +40,7 @@ public class ListarLibroView extends javax.swing.JInternalFrame {
         modelo.addColumn("ISBN");
         modelo.addColumn("Titulo");
         modelo.addColumn("Editorial");
-        modelo.addColumn("Disponible");
+        modelo.addColumn("Disponibilidad");
         modelo.addColumn("Categoria");
         modelo.addColumn("Autor");
         modelo.addColumn("Fecha Publicacion");

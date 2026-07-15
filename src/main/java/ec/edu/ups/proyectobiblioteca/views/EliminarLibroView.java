@@ -184,16 +184,21 @@ public class EliminarLibroView extends javax.swing.JInternalFrame {
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
+        txtTituloEliminar.setEditable(false);
         txtTituloEliminar.setEnabled(false);
 
+        txtAutorEliminar.setEditable(false);
         txtAutorEliminar.setEnabled(false);
         txtAutorEliminar.addActionListener(this::txtAutorEliminarActionPerformed);
 
+        txtCategoriaEliminar.setEditable(false);
         txtCategoriaEliminar.setEnabled(false);
         txtCategoriaEliminar.addActionListener(this::txtCategoriaEliminarActionPerformed);
 
+        txtEditorialEliminar.setEditable(false);
         txtEditorialEliminar.setEnabled(false);
 
+        txtFechaEliminar.setEditable(false);
         txtFechaEliminar.setEnabled(false);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));

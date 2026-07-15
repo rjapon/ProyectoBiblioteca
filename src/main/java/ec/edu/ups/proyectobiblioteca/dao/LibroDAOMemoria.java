@@ -12,11 +12,12 @@ import java.util.List;
  *
  * @author Asus
  */
-public class LibroDAOMemoria implements LibroDAO{
-      private List<Libro> lista;
+public class LibroDAOMemoria implements LibroDAO {
+
+    private List<Libro> lista;
 
     public LibroDAOMemoria() {
-       lista = new ArrayList<>();
+        lista = new ArrayList<>();
     }
 
     @Override
@@ -61,8 +62,13 @@ public class LibroDAOMemoria implements LibroDAO{
     }
 
     @Override
-    public void cambiarEstado() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void cambiarDisponibilidad(String isbn, boolean disponible) {
+
+        Libro libro = buscar(isbn);
+
+        if (libro != null) {
+            libro.setDisponible(disponible);
+        }
     }
-    
+
 }

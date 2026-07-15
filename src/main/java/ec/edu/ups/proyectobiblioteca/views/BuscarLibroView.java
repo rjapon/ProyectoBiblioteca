@@ -187,6 +187,7 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
         txtTituloBuscar.setEnabled(false);
 
         txtAutorBuscar.setEnabled(false);
+        txtAutorBuscar.addActionListener(this::txtAutorBuscarActionPerformed);
 
         txtFechaBuscar.setEnabled(false);
 
@@ -340,6 +341,10 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtAutorBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAutorBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAutorBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

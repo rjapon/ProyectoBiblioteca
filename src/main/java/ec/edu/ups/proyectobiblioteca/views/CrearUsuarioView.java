@@ -24,25 +24,25 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
      */
     public CrearUsuarioView() {
         initComponents();
-        DefaultComboBoxModel<CiudadesUsuario> modelo = (DefaultComboBoxModel) cbxCiudad.getModel(); cbxCiudad.getModel();
-         
-         modelo.addElement(CiudadesUsuario.CUENCA);
-         modelo.addElement(CiudadesUsuario.CAMILO_PONCE_ENRIQUEZ);
-         modelo.addElement(CiudadesUsuario.CHORDELEG);
-         modelo.addElement(CiudadesUsuario.EL_PAN);
-         modelo.addElement(CiudadesUsuario.GIRON);
-         modelo.addElement(CiudadesUsuario.GUACHAPALA);
-         modelo.addElement(CiudadesUsuario.GUALACEO);
-         modelo.addElement(CiudadesUsuario.NABON);
-         modelo.addElement(CiudadesUsuario.OÑA);
-         modelo.addElement(CiudadesUsuario.PAUTE);
-         modelo.addElement(CiudadesUsuario.PUCARA);
-         modelo.addElement(CiudadesUsuario.SANTA_ISABEL);
-         modelo.addElement(CiudadesUsuario.SAN_FERNANDO);
-         modelo.addElement(CiudadesUsuario.SEVILLA_DE_ORO);
-         modelo.addElement(CiudadesUsuario.SIGSIG);
-         
-         
+        DefaultComboBoxModel<CiudadesUsuario> modelo = (DefaultComboBoxModel) cbxCiudad.getModel();
+        cbxCiudad.getModel();
+
+        modelo.addElement(CiudadesUsuario.CUENCA);
+        modelo.addElement(CiudadesUsuario.CAMILO_PONCE_ENRIQUEZ);
+        modelo.addElement(CiudadesUsuario.CHORDELEG);
+        modelo.addElement(CiudadesUsuario.EL_PAN);
+        modelo.addElement(CiudadesUsuario.GIRON);
+        modelo.addElement(CiudadesUsuario.GUACHAPALA);
+        modelo.addElement(CiudadesUsuario.GUALACEO);
+        modelo.addElement(CiudadesUsuario.NABON);
+        modelo.addElement(CiudadesUsuario.OÑA);
+        modelo.addElement(CiudadesUsuario.PAUTE);
+        modelo.addElement(CiudadesUsuario.PUCARA);
+        modelo.addElement(CiudadesUsuario.SANTA_ISABEL);
+        modelo.addElement(CiudadesUsuario.SAN_FERNANDO);
+        modelo.addElement(CiudadesUsuario.SEVILLA_DE_ORO);
+        modelo.addElement(CiudadesUsuario.SIGSIG);
+
     }
 
     public JComboBox<String> getCbxCiudad() {
@@ -52,7 +52,7 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
     public void setCbxCiudad(JComboBox<String> cbxCiudad) {
         this.cbxCiudad = cbxCiudad;
     }
-    
+
     public JButton getBtnCrear() {
         return btnCrear;
     }
@@ -100,7 +100,7 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
     public void setTxtCorreoElectronico(JTextField txtCorreoElectronico) {
         this.txtCorreoElectronico = txtCorreoElectronico;
     }
-    
+
     public void cambiarIdioma(Locale locale) {
 
         ResourceBundle mensajes = ResourceBundle.getBundle(
@@ -111,6 +111,12 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
         jLabel4.setText(mensajes.getString("lblCedulaUsuario"));
         jLabel5.setText(mensajes.getString("lblNombreUsuario"));
         jLabel6.setText(mensajes.getString("lblTelefonoUsuario"));
+
+        lblTituloCrear.setText(mensajes.getString("lblTituloCrear"));
+        
+        lblCorreo.setText(mensajes.getString("lblCorreoUsuario"));
+        lblCiudad.setText(mensajes.getString("lblCiudadUsuario"));
+        lblCallePrincipal.setText(mensajes.getString("lblCallePrinUsuario"));
 
         btnCrear.setText(mensajes.getString("crearMenuItem"));
         btnCancelar.setText(mensajes.getString("btnCancelar"));
@@ -139,8 +145,8 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
         btnCrear = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        txtCorreoE = new javax.swing.JLabel();
+        lblTituloCrear = new javax.swing.JLabel();
+        lblCorreo = new javax.swing.JLabel();
         txtCorreoElectronico = new javax.swing.JTextField();
         lblCiudad = new javax.swing.JLabel();
         lblCallePrincipal = new javax.swing.JLabel();
@@ -173,8 +179,8 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel7.setText("Registrar Usuario");
+        lblTituloCrear.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        lblTituloCrear.setText("Registrar Usuario");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -189,12 +195,12 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addComponent(lblTituloCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                 .addGap(16, 16, 16))
         );
 
-        txtCorreoE.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        txtCorreoE.setText("Correo Electronico:");
+        lblCorreo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblCorreo.setText("Correo Electronico:");
 
         lblCiudad.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         lblCiudad.setText("Ciudad:");
@@ -265,7 +271,7 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
                     .addComponent(txtTelefonoCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCorreoE)
+                    .addComponent(lblCorreo)
                     .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -314,15 +320,15 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblCallePrincipal;
     private javax.swing.JLabel lblCiudad;
+    private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblTituloCrear;
     private javax.swing.JTextField txtCallePrincipal;
     private javax.swing.JTextField txtCedulaCrearUsuario;
-    private javax.swing.JLabel txtCorreoE;
     private javax.swing.JTextField txtCorreoElectronico;
     private javax.swing.JTextField txtNombreCrearUsuario;
     private javax.swing.JTextField txtTelefonoCrearUsuario;

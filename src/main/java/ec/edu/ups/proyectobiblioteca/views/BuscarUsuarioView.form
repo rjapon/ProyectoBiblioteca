@@ -177,8 +177,14 @@
         <Component class="javax.swing.JTextField" name="txtCedulaBuscarUsuarioView">
         </Component>
         <Component class="javax.swing.JTextField" name="txtNombreBuscarUsuarioView">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTelefonoBuscarUsuarioView">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelefonoBuscarUsuarioViewActionPerformed"/>
           </Events>
@@ -217,7 +223,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTituloBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -226,14 +232,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel4" pref="41" max="32767" attributes="0"/>
+                      <Component id="lblTituloBuscar" pref="41" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel4">
+            <Component class="javax.swing.JLabel" name="lblTituloBuscar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Yu Gothic UI Semibold" size="18" style="0"/>
@@ -256,6 +262,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCorreoElectronico">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCorreoElectronicoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCiudad">
           <Properties>
@@ -266,6 +278,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCiudad">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCallePrincipal">
           <Properties>
@@ -276,6 +291,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCallePrincipal">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

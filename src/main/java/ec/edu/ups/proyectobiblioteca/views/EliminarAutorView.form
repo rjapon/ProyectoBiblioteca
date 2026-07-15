@@ -155,8 +155,16 @@
     <Component class="javax.swing.JTextField" name="txtCodigoEliminarAutorView">
     </Component>
     <Component class="javax.swing.JTextField" name="txtNombreEliminarAutorView">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNacionalidadEliminarAutorView">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnEliminar">
       <Properties>

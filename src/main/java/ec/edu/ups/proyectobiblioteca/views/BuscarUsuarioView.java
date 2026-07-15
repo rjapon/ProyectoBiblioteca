@@ -91,6 +91,12 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
         jLabel1.setText(mensajes.getString("lblCedulaUsuario"));
         jLabel2.setText(mensajes.getString("lblNombreUsuario"));
         jLabel3.setText(mensajes.getString("lblTelefonoUsuario"));
+        
+        lblTituloBuscar.setText(mensajes.getString("lblTituloBuscar"));
+        
+        lblCorreo.setText(mensajes.getString("lblCorreoUsuario"));
+        lblCiudad.setText(mensajes.getString("lblCiudadUsuario"));
+        lblCallePrincipal.setText(mensajes.getString("lblCallePrinUsuario"));
 
         btnBuscar.setText(mensajes.getString("btnBuscar"));
         btnCancelar.setText(mensajes.getString("btnCancelar"));
@@ -119,7 +125,7 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        lblTituloBuscar = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         lblCorreo = new javax.swing.JLabel();
@@ -143,6 +149,9 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel3.setText("Télefono:");
 
+        txtNombreBuscarUsuarioView.setEnabled(false);
+
+        txtTelefonoBuscarUsuarioView.setEnabled(false);
         txtTelefonoBuscarUsuarioView.addActionListener(this::txtTelefonoBuscarUsuarioViewActionPerformed);
 
         btnBuscar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
@@ -155,8 +164,8 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel4.setText("Buscar Usuario");
+        lblTituloBuscar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        lblTituloBuscar.setText("Buscar Usuario");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -164,25 +173,32 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(209, 209, 209)
-                .addComponent(jLabel4)
+                .addComponent(lblTituloBuscar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addComponent(lblTituloBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                 .addGap(16, 16, 16))
         );
 
         lblCorreo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         lblCorreo.setText("Correo Electronico:");
 
+        txtCorreoElectronico.setEnabled(false);
+        txtCorreoElectronico.addActionListener(this::txtCorreoElectronicoActionPerformed);
+
         lblCiudad.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         lblCiudad.setText("Ciudad:");
 
+        txtCiudad.setEnabled(false);
+
         lblCallePrincipal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         lblCallePrincipal.setText("Calle Principal:");
+
+        txtCallePrincipal.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -292,6 +308,10 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void txtCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoElectronicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoElectronicoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
@@ -299,7 +319,6 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
@@ -307,6 +326,7 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblCallePrincipal;
     private javax.swing.JLabel lblCiudad;
     private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblTituloBuscar;
     private javax.swing.JTextField txtCallePrincipal;
     private javax.swing.JTextField txtCedulaBuscarUsuarioView;
     private javax.swing.JTextField txtCiudad;

@@ -238,8 +238,10 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
         lblCedulaBuscar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         lblCedulaBuscar.setText("Cédula:");
 
+        txtCedulaBuscar.setEditable(false);
         txtCedulaBuscar.setEnabled(false);
 
+        txtEstadoBuscar.setEditable(false);
         txtEstadoBuscar.setEnabled(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));

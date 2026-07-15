@@ -115,8 +115,10 @@ public class BuscarAutorView extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel3.setText("Nacionalidad:");
 
+        txtNombreBuscarAutor.setEnabled(false);
         txtNombreBuscarAutor.addActionListener(this::txtNombreBuscarAutorActionPerformed);
 
+        txtNacionalidadBuscarAutor.setEnabled(false);
         txtNacionalidadBuscarAutor.addActionListener(this::txtNacionalidadBuscarAutorActionPerformed);
 
         btnBuscar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
