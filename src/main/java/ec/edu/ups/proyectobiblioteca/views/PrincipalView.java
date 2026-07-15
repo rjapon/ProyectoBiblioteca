@@ -70,8 +70,6 @@ public class PrincipalView extends javax.swing.JFrame {
 
         initComponents();
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
-        
-    
 
         actualizarAutorView = new ActualizarAutorView();
         actualizarLibroView = new ActualizarLibroView();
@@ -103,7 +101,40 @@ public class PrincipalView extends javax.swing.JFrame {
         autorController = new AutorController(actualizarAutorView, agregarAutorView, eliminarAutorView, buscarAutorView, listarAutorView, autorDAO);
         prestamoController = new PrestamoController(prestamoDAO, libroDAO, usuarioDAO, crearPrestamoView, actualizarPrestamoView, eliminarPrestamoView, buscarPrestamoView, listarPrestamoView);
         libroController = new LibroController(agregarLibroView, actualizarLibroView, buscarLibroView, eliminarLibroView, listarLibroView, libroDAO, autorDAO);
-        
+
+        Locale locale = new Locale("es", "EC");
+
+        cambiarIdioma(locale);
+
+        autorController.cambiarIdioma(locale);
+        libroController.cambiarIdioma(locale);
+        prestamoController.cambiarIdioma(locale);
+        usuarioController.cambiarIdioma(locale);
+
+        actualizarAutorView.cambiarIdioma(locale);
+        agregarAutorView.cambiarIdioma(locale);
+        buscarAutorView.cambiarIdioma(locale);
+        eliminarAutorView.cambiarIdioma(locale);
+        listarAutorView.cambiarIdioma(locale);
+
+        actualizarLibroView.cambiarIdioma(locale);
+        agregarLibroView.cambiarIdioma(locale);
+        buscarLibroView.cambiarIdioma(locale);
+        eliminarLibroView.cambiarIdioma(locale);
+        listarLibroView.cambiarIdioma(locale);
+
+        actualizarPrestamoView.cambiarIdioma(locale);
+        buscarPrestamoView.cambiarIdioma(locale);
+        crearPrestamoView.cambiarIdioma(locale);
+        eliminarPrestamoView.cambiarIdioma(locale);
+        listarPrestamoView.cambiarIdioma(locale);
+
+        actualizarUsuarioView.cambiarIdioma(locale);
+        buscarUsuarioView.cambiarIdioma(locale);
+        crearUsuarioView.cambiarIdioma(locale);
+        eliminarUsuarioView.cambiarIdioma(locale);
+        listarUsuarioView.cambiarIdioma(locale);
+
     }
 
     public void cambiarIdioma(Locale locale) {
@@ -490,7 +521,13 @@ public class PrincipalView extends javax.swing.JFrame {
         Locale locale = new Locale("es", "EC");
         this.cambiarIdioma(locale);
 
-         // Prestamo View
+        // Controllers
+        autorController.cambiarIdioma(locale);
+        libroController.cambiarIdioma(locale);
+        prestamoController.cambiarIdioma(locale);
+        usuarioController.cambiarIdioma(locale);
+
+        // Prestamo View
         actualizarPrestamoView.cambiarIdioma(locale);
         buscarPrestamoView.cambiarIdioma(locale);
         crearPrestamoView.cambiarIdioma(locale);
@@ -525,6 +562,12 @@ public class PrincipalView extends javax.swing.JFrame {
 
         Locale locale = new Locale("en", "US");
         this.cambiarIdioma(locale);
+
+        // Controllers
+        autorController.cambiarIdioma(locale);
+        libroController.cambiarIdioma(locale);
+        prestamoController.cambiarIdioma(locale);
+        usuarioController.cambiarIdioma(locale);
 
         // Prestamo View
         actualizarPrestamoView.cambiarIdioma(locale);

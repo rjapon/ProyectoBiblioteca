@@ -154,7 +154,7 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
     }
 
     public void mostrarInformacion(String mensaje) {
-        JOptionPane.showMessageDialog(this, bundle.getString(mensaje));
+        JOptionPane.showMessageDialog(this, mensaje);
     }
 
     /**

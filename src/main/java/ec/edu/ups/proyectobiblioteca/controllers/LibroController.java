@@ -18,6 +18,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.event.InternalFrameAdapter;
@@ -34,6 +36,8 @@ public class LibroController {
 
     private LibroDAO libroDAO;
     private AutorDAO autorDAO;
+
+    private ResourceBundle bundle;
 
     public LibroController(
             AgregarLibroView agregarLibroView, ActualizarLibroView actualizarLibroView, BuscarLibroView buscarLibroView, EliminarLibroView eliminarLibroView, ListarLibroView listarLibroView, LibroDAO libroDAO, AutorDAO autorDAO) {
@@ -57,64 +61,65 @@ public class LibroController {
         configurarVentanaActualizarLibro();
     }
 
-    public void agregarLibro() {  ///Pendiente
+    public void cambiarIdioma(Locale locale) {
+        bundle = ResourceBundle.getBundle(
+                "ec.edu.ups.proyectobiblioteca.i18n.mensajes",
+                locale);
+    }
 
-       try
-          { 
-        String isbn = agregarLibroView.getTxtISBNAgregar().getText();
-        String titulo = agregarLibroView.getTxtTituloAgregar().getText();
+    public void agregarLibro() {
+        ///Pendiente
 
-        String editorial = agregarLibroView.getTxtEditorialAgregar().getText();
-        
-        if( isbn.isEmpty() || titulo.isEmpty() || editorial.isEmpty()){
-             throw  new ValidarCamposException ( "Error- Campos vacios");
-            
-         }
-        Libro libro = libroDAO.buscar(isbn);
+       try {
+            String isbn = agregarLibroView.getTxtISBNAgregar().getText();
+            String titulo = agregarLibroView.getTxtTituloAgregar().getText();
 
-        if (libro != null) {
+            String editorial = agregarLibroView.getTxtEditorialAgregar().getText();
 
-            agregarLibroView.mostrarInformacion("Ya existe un libro con ese ISBN");
-
-        } else {
-
-            CategoriasLibro categoria = (CategoriasLibro) agregarLibroView.getCboCategoriaAgregar().getSelectedItem();
-             
-            if ( agregarLibroView.getCboAutorAgregar().getItemCount() == 0){
-                throw new ValidarCamposException ("Error- Autor no registrado");
+            if (isbn.isEmpty() || titulo.isEmpty() || editorial.isEmpty()) {
+                throw new ValidarCamposException(bundle.getString("errorCamposVacios"));
             }
-            String nombreAutor = agregarLibroView.getCboAutorAgregar().getSelectedItem().toString();
-            
-            
-            Autor autor = autorDAO.buscarPorNombre(nombreAutor);
-            
-            
-            int dia = Integer.parseInt(agregarLibroView.getComboBoxDia().getSelectedItem().toString());
-            int mes = Integer.parseInt(agregarLibroView.getComboBoxMes().getSelectedItem().toString());
-            int anio = Integer.parseInt(agregarLibroView.getComboBoxAnio().getSelectedItem().toString());
+            Libro libro = libroDAO.buscar(isbn);
 
-            LocalDate fechaPublicacion = LocalDate.of(anio, mes, dia);
+            if (libro != null) {
 
-            Libro nuevoLibro = new Libro();
+                agregarLibroView.mostrarInformacion("libroYaExiste");
 
-            nuevoLibro.setISBN(isbn);
-            nuevoLibro.setTitulo(titulo);
-            nuevoLibro.setEditorial(editorial);
-            nuevoLibro.setCategoria(categoria);
-            nuevoLibro.setDisponible(true);
-            nuevoLibro.setAutor(autor);
-            nuevoLibro.setFechaPublicacion(fechaPublicacion);
+            } else {
 
-            libroDAO.crear(nuevoLibro);
+                CategoriasLibro categoria = (CategoriasLibro) agregarLibroView.getCboCategoriaAgregar().getSelectedItem();
 
-            agregarLibroView.mostrarInformacion(
-                    "Libro agregado correctamente");
+                if (agregarLibroView.getCboAutorAgregar().getItemCount() == 0) {
+                    throw new ValidarCamposException(bundle.getString("errorAutorNoRegistrado"));
+                }
+                String nombreAutor = agregarLibroView.getCboAutorAgregar().getSelectedItem().toString();
+
+                Autor autor = autorDAO.buscarPorNombre(nombreAutor);
+
+                int dia = Integer.parseInt(agregarLibroView.getComboBoxDia().getSelectedItem().toString());
+                int mes = Integer.parseInt(agregarLibroView.getComboBoxMes().getSelectedItem().toString());
+                int anio = Integer.parseInt(agregarLibroView.getComboBoxAnio().getSelectedItem().toString());
+
+                LocalDate fechaPublicacion = LocalDate.of(anio, mes, dia);
+
+                Libro nuevoLibro = new Libro();
+
+                nuevoLibro.setISBN(isbn);
+                nuevoLibro.setTitulo(titulo);
+                nuevoLibro.setEditorial(editorial);
+                nuevoLibro.setCategoria(categoria);
+                nuevoLibro.setDisponible(true);
+                nuevoLibro.setAutor(autor);
+                nuevoLibro.setFechaPublicacion(fechaPublicacion);
+
+                libroDAO.crear(nuevoLibro);
+
+                agregarLibroView.mostrarInformacion("libroAgregado");
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
 
         }
-          }catch(ValidarCamposException e){
-              JOptionPane.showMessageDialog(null, e.getMessage());
-              
-          }
     }
 
     public void configurarEventosAgregarLibro() {
@@ -129,23 +134,21 @@ public class LibroController {
         });
 
     }
-    
-     public void validarCampos(String isbn, String titulo, String editorial) throws ValidarCamposException{
-        try{
-         if( isbn.isEmpty() || titulo.isEmpty() || editorial.isEmpty()){
-             throw  new ValidarCamposException ( "Error- Campos vacios");
-             
-         }
-         
-        
-            
-        }catch ( ValidarCamposException e){
-          
+
+    public void validarCampos(String isbn, String titulo, String editorial) throws ValidarCamposException {
+        try {
+            if (isbn.isEmpty() || titulo.isEmpty() || editorial.isEmpty()) {
+                throw new ValidarCamposException(bundle.getString("errorCamposVacios"));
+            }
+
+        } catch (ValidarCamposException e) {
+
             JOptionPane.showMessageDialog(null, e.getMessage());
-                 
-         }
-      
-     }
+
+        }
+
+    }
+
     public void cargarAutoresCombo() {
 
         agregarLibroView.getCboAutorAgregar().removeAllItems();
@@ -189,50 +192,39 @@ public class LibroController {
 
     public void buscarLibro() {
 
-       try
-       { String isbn = buscarLibroView.getTxtISBNBuscar().getText().trim();
-        
-        if( isbn.isEmpty()){
-            throw new ValidarCamposException("Error- Campo vacio");
+        try {
+            String isbn = buscarLibroView.getTxtISBNBuscar().getText().trim();
+
+            if (isbn.isEmpty()) {
+                throw new ValidarCamposException(bundle.getString("errorCampoVacio"));
+            }
+
+            Libro libro = libroDAO.buscar(isbn);
+
+            if (libro != null) {
+
+                buscarLibroView.getTxtTituloBuscar().setText(libro.getTitulo());
+
+                buscarLibroView.getTxtAutorBuscar().setText(libro.getAutor().getNombre());
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+                buscarLibroView.getTxtFechaBuscar().setText(libro.getFechaPublicacion().format(formatter));
+
+                buscarLibroView.getTxtCategoriaBuscar().setText(libro.getCategoria().toString());
+
+                buscarLibroView.getTxtEditorialBuscar().setText(libro.getEditorial());
+
+                buscarLibroView.getTxtEstadoBuscar().setText(libro.isDisponible() ? bundle.getString("disponible") : bundle.getString("prestado"));
+
+            } else {
+
+                buscarLibroView.mostrarInformacion("libroNoEncontrado");
+
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-            
-        Libro libro = libroDAO.buscar(isbn);
-
-        if (libro != null) {
-
-            buscarLibroView.getTxtTituloBuscar().setText(libro.getTitulo());
-                    
-
-            buscarLibroView.getTxtAutorBuscar().setText(libro.getAutor().getNombre());
-                    
-
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                    
-
-            buscarLibroView.getTxtFechaBuscar().setText(libro.getFechaPublicacion().format(formatter));
-                    
-
-            buscarLibroView.getTxtCategoriaBuscar().setText(libro.getCategoria().toString());
-                    
-
-            buscarLibroView.getTxtEditorialBuscar().setText(libro.getEditorial());
-                    
-
-            buscarLibroView.getTxtEstadoBuscar().setText(libro.isDisponible()? "Disponible": "Prestado");
-                            
-                    
-                            
-
-        } else {
-
-            buscarLibroView.mostrarInformacion("No se encontró el libro");
-                    
-
-        }
-       }catch (ValidarCamposException e){
-           JOptionPane.showMessageDialog(null, e.getMessage());
-       }
-       
 
     }
 
@@ -253,43 +245,42 @@ public class LibroController {
 
     public void eliminarLibro() {
 
-       try{
-           String isbn = eliminarLibroView.getTxtISBNEliminar().getText().trim();
-       
-        
-        if( isbn.isEmpty()){
-           throw new ValidarCamposException( "Error- Campo vacio"); 
-        }
-        Libro libro = libroDAO.buscar(isbn);
+        try {
+            String isbn = eliminarLibroView.getTxtISBNEliminar().getText().trim();
 
-        if (libro != null) {
-
-            int respuesta = JOptionPane.showConfirmDialog(
-                    eliminarLibroView,
-                    "¿Deseas eliminar el libro?",
-                    "Confirmación",
-                    JOptionPane.YES_NO_OPTION);
-
-            if (respuesta == JOptionPane.YES_OPTION) {
-
-                libroDAO.eliminar(isbn);
-
-                eliminarLibroView.mostrarInformacion("Libro eliminado");
-
-                eliminarLibroView.getTxtISBNEliminar().setText("");
-                eliminarLibroView.getTxtTituloEliminar().setText("");
-                eliminarLibroView.getTxtAutorEliminar().setText("");
-                eliminarLibroView.getTxtCategoriaEliminar().setText("");
-                eliminarLibroView.getTxtEditorialEliminar().setText("");
-                eliminarLibroView.getTxtFechaEliminar().setText("");
+            if (isbn.isEmpty()) {
+                throw new ValidarCamposException(bundle.getString("errorCampoVacio"));
             }
+            Libro libro = libroDAO.buscar(isbn);
 
-        } else {
-            eliminarLibroView.mostrarInformacion("No se encontró el libro");
+            if (libro != null) {
+
+                int respuesta = JOptionPane.showConfirmDialog(
+                        eliminarLibroView,
+                        bundle.getString("confirmarEliminarLibro"),
+                        bundle.getString("tituloConfirmacion"),
+                        JOptionPane.YES_NO_OPTION);
+
+                if (respuesta == JOptionPane.YES_OPTION) {
+
+                    libroDAO.eliminar(isbn);
+
+                    eliminarLibroView.mostrarInformacion("libroEliminado");
+
+                    eliminarLibroView.getTxtISBNEliminar().setText("");
+                    eliminarLibroView.getTxtTituloEliminar().setText("");
+                    eliminarLibroView.getTxtAutorEliminar().setText("");
+                    eliminarLibroView.getTxtCategoriaEliminar().setText("");
+                    eliminarLibroView.getTxtEditorialEliminar().setText("");
+                    eliminarLibroView.getTxtFechaEliminar().setText("");
+                }
+
+            } else {
+                eliminarLibroView.mostrarInformacion("libroNoEncontrado");
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-       }catch(ValidarCamposException e){
-           JOptionPane.showMessageDialog(null, e.getMessage());
-       }
     }
 
     public void configurarEventosEliminarLibro() {
@@ -312,7 +303,7 @@ public class LibroController {
                 String isbn = eliminarLibroView.getTxtISBNEliminar().getText();
 
                 if (isbn.isEmpty()) {
-                    eliminarLibroView.mostrarInformacion("Ingrese un ISBN");
+                    eliminarLibroView.mostrarInformacion("ingreseISBN");
                     return;
                 }
 
@@ -339,7 +330,7 @@ public class LibroController {
 
                 } else {
 
-                    eliminarLibroView.mostrarInformacion("No se encontró el libro");
+                    eliminarLibroView.mostrarInformacion("libroNoEncontrado");
                 }
             }
         });
@@ -369,48 +360,48 @@ public class LibroController {
     }
 
     public void buscarLibroActualizar() {
-     
-      try{
-        String isbn = actualizarLibroView.getTxtISBNActualizar().getText().trim();
-        
-        if( isbn.isEmpty()){
-            throw new ValidarCamposException("Error- campos vacios");
+
+        try {
+            String isbn = actualizarLibroView.getTxtISBNActualizar().getText().trim();
+
+            if (isbn.isEmpty()) {
+                throw new ValidarCamposException(bundle.getString("errorCamposVacios"));
+            }
+            Libro libro = libroDAO.buscar(isbn);
+
+            if (libro != null) {
+
+                actualizarLibroView.getTxtTituloActualizar()
+                        .setText(libro.getTitulo());
+
+                actualizarLibroView.getTxtEditorialActualizar()
+                        .setText(libro.getEditorial());
+
+                actualizarLibroView.getCboCategoriaActualizar()
+                        .setSelectedItem(libro.getCategoria());
+
+                actualizarLibroView.getCboAutorActualizar()
+                        .setSelectedItem(libro.getAutor().getNombre());
+
+                LocalDate fecha = libro.getFechaPublicacion();
+
+                actualizarLibroView.getComboBoxDia()
+                        .setSelectedItem(String.valueOf(fecha.getDayOfMonth()));
+
+                actualizarLibroView.getComboBoxMes()
+                        .setSelectedItem(String.valueOf(fecha.getMonthValue()));
+
+                actualizarLibroView.getComboBoxAnio()
+                        .setSelectedItem(String.valueOf(fecha.getYear()));
+
+            } else {
+
+                actualizarLibroView.mostrarInformacion("libroNoEncontrado");
+
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        Libro libro = libroDAO.buscar(isbn);
-
-        if (libro != null) {
-
-            actualizarLibroView.getTxtTituloActualizar()
-                    .setText(libro.getTitulo());
-
-            actualizarLibroView.getTxtEditorialActualizar()
-                    .setText(libro.getEditorial());
-
-            actualizarLibroView.getCboCategoriaActualizar()
-                    .setSelectedItem(libro.getCategoria());
-
-            actualizarLibroView.getCboAutorActualizar()
-                    .setSelectedItem(libro.getAutor().getNombre());
-
-            LocalDate fecha = libro.getFechaPublicacion();
-
-            actualizarLibroView.getComboBoxDia()
-                    .setSelectedItem(String.valueOf(fecha.getDayOfMonth()));
-
-            actualizarLibroView.getComboBoxMes()
-                    .setSelectedItem(String.valueOf(fecha.getMonthValue()));
-
-            actualizarLibroView.getComboBoxAnio()
-                    .setSelectedItem(String.valueOf(fecha.getYear()));
-
-        } else {
-
-            actualizarLibroView.mostrarInformacion("No se encontró el libro");
-
-        }
-      }catch(ValidarCamposException e){
-          JOptionPane.showMessageDialog(null, e.getMessage());
-      }
     }
 
     public void configurarEventosBuscarActualizarLibro() {
@@ -425,67 +416,63 @@ public class LibroController {
     }
 
     public void actualizarLibro() {
-      
-      try{
-        String isbn = actualizarLibroView.getTxtISBNActualizar().getText().trim();
-        String titulo = actualizarLibroView.getTxtTituloActualizar().getText().trim();
-        String editorial = actualizarLibroView.getTxtEditorialActualizar().getText().trim();
-        
-        if(isbn.isEmpty() || titulo.isEmpty() || editorial.isEmpty()){
-            throw new ValidarCamposException("Error- campos vacios");
-        }
-        
-        CategoriasLibro categoria = (CategoriasLibro) actualizarLibroView.getCboCategoriaActualizar().getSelectedItem();
-                                  
-            if ( actualizarLibroView.getCboAutorActualizar().getItemCount() == 0){
-                throw new ValidarCamposException ("Error- Autor no registrado");
+
+        try {
+            String isbn = actualizarLibroView.getTxtISBNActualizar().getText().trim();
+            String titulo = actualizarLibroView.getTxtTituloActualizar().getText().trim();
+            String editorial = actualizarLibroView.getTxtEditorialActualizar().getText().trim();
+
+            if (isbn.isEmpty() || titulo.isEmpty() || editorial.isEmpty()) {
+                throw new ValidarCamposException(bundle.getString("errorCamposVacios"));
             }
-            String nombreAutor = actualizarLibroView .getCboAutorActualizar().getSelectedItem().toString();
-        int respuesta = JOptionPane.showConfirmDialog(
-                actualizarLibroView,
-                "¿Deseas actualizar el libro?",
-                "Confirmación",
-                JOptionPane.YES_NO_OPTION);
 
-        if (respuesta == JOptionPane.YES_OPTION) {
+            CategoriasLibro categoria = (CategoriasLibro) actualizarLibroView.getCboCategoriaActualizar().getSelectedItem();
 
-            
-            
+            if (actualizarLibroView.getCboAutorActualizar().getItemCount() == 0) {
+                throw new ValidarCamposException(bundle.getString("errorAutorNoRegistrado"));
+            }
+            String nombreAutor = actualizarLibroView.getCboAutorActualizar().getSelectedItem().toString();
+            int respuesta = JOptionPane.showConfirmDialog(
+                    actualizarLibroView,
+                    bundle.getString("confirmarActualizarLibro"),
+                    bundle.getString("tituloConfirmacion"),
+                    JOptionPane.YES_NO_OPTION);
 
-            Autor autor = autorDAO.buscarPorNombre(nombreAutor);
+            if (respuesta == JOptionPane.YES_OPTION) {
 
-            int dia = Integer.parseInt(
-                    actualizarLibroView.getComboBoxDia().getSelectedItem().toString());
+                Autor autor = autorDAO.buscarPorNombre(nombreAutor);
 
-            int mes = Integer.parseInt(
-                    actualizarLibroView.getComboBoxMes().getSelectedItem().toString());
+                int dia = Integer.parseInt(
+                        actualizarLibroView.getComboBoxDia().getSelectedItem().toString());
 
-            int anio = Integer.parseInt(
-                    actualizarLibroView.getComboBoxAnio().getSelectedItem().toString());
+                int mes = Integer.parseInt(
+                        actualizarLibroView.getComboBoxMes().getSelectedItem().toString());
 
-            LocalDate fecha = LocalDate.of(anio, mes, dia);
+                int anio = Integer.parseInt(
+                        actualizarLibroView.getComboBoxAnio().getSelectedItem().toString());
 
-            Libro libroActualizado = new Libro();
+                LocalDate fecha = LocalDate.of(anio, mes, dia);
 
-            libroActualizado.setISBN(isbn);
-            libroActualizado.setTitulo(titulo);
-            libroActualizado.setEditorial(editorial);
-            libroActualizado.setCategoria(categoria);
-            libroActualizado.setAutor(autor);
-            libroActualizado.setFechaPublicacion(fecha);
+                Libro libroActualizado = new Libro();
 
-            Libro libroAnterior = libroDAO.buscar(isbn);
-            libroActualizado.setDisponible(libroAnterior.isDisponible());
+                libroActualizado.setISBN(isbn);
+                libroActualizado.setTitulo(titulo);
+                libroActualizado.setEditorial(editorial);
+                libroActualizado.setCategoria(categoria);
+                libroActualizado.setAutor(autor);
+                libroActualizado.setFechaPublicacion(fecha);
 
-            libroDAO.actualizar(isbn, libroActualizado);
+                Libro libroAnterior = libroDAO.buscar(isbn);
+                libroActualizado.setDisponible(libroAnterior.isDisponible());
 
-            actualizarLibroView.mostrarInformacion(
-                    "Libro actualizado correctamente");
+                libroDAO.actualizar(isbn, libroActualizado);
+
+                actualizarLibroView.mostrarInformacion("libroActualizado");
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+
         }
-      }catch(ValidarCamposException e){
-          JOptionPane.showMessageDialog(null, e.getMessage());
-          
-      }
     }
 
     public void configurarEventosActualizarLibro() {

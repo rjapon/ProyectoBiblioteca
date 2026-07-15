@@ -17,8 +17,9 @@ import ec.edu.ups.proyectobiblioteca.views.EliminarUsuarioView;
 import ec.edu.ups.proyectobiblioteca.views.ListarUsuarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,9 +34,11 @@ public class UsuarioController {
     private ListarUsuarioView listarUsuarioView;
     private BuscarUsuarioView buscarUsuarioView;
 
+    private ResourceBundle bundle;
+
     private UsuarioDAO usuarioDAO;
 
-    public UsuarioController(CrearUsuarioView crearUsuarioView, ActualizarUsuarioView actualizarUsuarioView, EliminarUsuarioView eliminarUsuarioview, BuscarUsuarioView buscarUsuarioView,  ListarUsuarioView listarUsuarioView, UsuarioDAO usuarioDAO) {
+    public UsuarioController(CrearUsuarioView crearUsuarioView, ActualizarUsuarioView actualizarUsuarioView, EliminarUsuarioView eliminarUsuarioview, BuscarUsuarioView buscarUsuarioView, ListarUsuarioView listarUsuarioView, UsuarioDAO usuarioDAO) {
         this.crearUsuarioView = crearUsuarioView;
         this.actualizarUsuarioView = actualizarUsuarioView;
         this.eliminarUsuarioview = eliminarUsuarioview;
@@ -52,63 +55,66 @@ public class UsuarioController {
         configurarEventosListarUsuarios();
     }
 
-    public void crearUsuario() {
-     try{
-        String cedula = crearUsuarioView.getTxtCedulaCrearUsuario().getText().trim();       
-        String nombre = crearUsuarioView.getTxtNombreCrearUsuario().getText().trim();
-        String telefono = crearUsuarioView.getTxtTelefonoCrearUsuario().getText().trim();
-        String correo = crearUsuarioView.getTxtCorreoElectronico().getText().trim();
-        CiudadesUsuario ciudad=  (CiudadesUsuario) crearUsuarioView.getCbxCiudad().getSelectedItem();
-        String calleP = crearUsuarioView.getTxtCallePrincipal().getText().trim();
-        
-        if ( crearUsuarioView.getCbxCiudad().getItemCount() == 0){
-                throw new ValidarCamposException ("Error- Autor no registrado");
-            }
-        
-        if( cedula.isEmpty()|| nombre.isEmpty() || telefono.isEmpty() || correo.isEmpty() || calleP.isEmpty()){
-            throw new ValidarCamposException("Error- Campos vacios");
-        }
-        
-        if(cedula.length() != 10){
-            throw new CedulaInvalidaException("Error - cedula invalida");
-        }
-
-        Usuario usuario = usuarioDAO.buscar(cedula);
-
-        if (usuario != null) {
-
-            crearUsuarioView.mostrarInformacion("Ya existe un usuario con esa cédula");
-                    
-
-        } else {
-
-            Usuario nuevoUsuario = new Usuario(
-                    nombre,
-                    cedula,
-                    telefono,
-                    correo,
-                    ciudad,
-                    calleP
-            );
-
-            usuarioDAO.crear(nuevoUsuario);
-
-            crearUsuarioView.mostrarInformacion("Usuario creado correctamente");
-                    
-
-            crearUsuarioView.getTxtCedulaCrearUsuario().setText("");
-            crearUsuarioView.getTxtNombreCrearUsuario().setText("");
-            crearUsuarioView.getTxtTelefonoCrearUsuario().setText("");
-            crearUsuarioView.getTxtCallePrincipal().setText("");
-            crearUsuarioView.getTxtCorreoElectronico().setText("");
-            
-            
-        }
-     }catch( ValidarCamposException e){
-         JOptionPane.showMessageDialog(null, e.getMessage());
-     }catch ( CedulaInvalidaException e){
-        JOptionPane.showMessageDialog(null, e.getMessage());
+    public void cambiarIdioma(Locale locale) {
+        bundle = ResourceBundle.getBundle(
+                "ec.edu.ups.proyectobiblioteca.i18n.mensajes",
+                locale);
     }
+
+    public void crearUsuario() {
+        try {
+            String cedula = crearUsuarioView.getTxtCedulaCrearUsuario().getText().trim();
+            String nombre = crearUsuarioView.getTxtNombreCrearUsuario().getText().trim();
+            String telefono = crearUsuarioView.getTxtTelefonoCrearUsuario().getText().trim();
+            String correo = crearUsuarioView.getTxtCorreoElectronico().getText().trim();
+            CiudadesUsuario ciudad = (CiudadesUsuario) crearUsuarioView.getCbxCiudad().getSelectedItem();
+            String calleP = crearUsuarioView.getTxtCallePrincipal().getText().trim();
+
+            if (crearUsuarioView.getCbxCiudad().getItemCount() == 0) {
+                throw new ValidarCamposException(bundle.getString("errorCiudadNoRegistrada"));
+            }
+
+            if (cedula.isEmpty() || nombre.isEmpty() || telefono.isEmpty() || correo.isEmpty() || calleP.isEmpty()) {
+                throw new ValidarCamposException(bundle.getString("errorCamposVacios"));
+            }
+
+            if (cedula.length() != 10) {
+                throw new CedulaInvalidaException(bundle.getString("errorCedulaInvalida"));
+            }
+
+            Usuario usuario = usuarioDAO.buscar(cedula);
+
+            if (usuario != null) {
+
+                crearUsuarioView.mostrarInformacion("usuarioYaExiste");
+
+            } else {
+
+                Usuario nuevoUsuario = new Usuario(
+                        nombre,
+                        cedula,
+                        telefono,
+                        correo,
+                        ciudad,
+                        calleP
+                );
+
+                usuarioDAO.crear(nuevoUsuario);
+
+                crearUsuarioView.mostrarInformacion("usuarioCreado");
+
+                crearUsuarioView.getTxtCedulaCrearUsuario().setText("");
+                crearUsuarioView.getTxtNombreCrearUsuario().setText("");
+                crearUsuarioView.getTxtTelefonoCrearUsuario().setText("");
+                crearUsuarioView.getTxtCallePrincipal().setText("");
+                crearUsuarioView.getTxtCorreoElectronico().setText("");
+
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (CedulaInvalidaException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
 
     public void configurarEventosCrearUsuario() {
@@ -122,36 +128,35 @@ public class UsuarioController {
     }
 
     public void buscarUsuario() {
-     try{
-        String cedula = buscarUsuarioView.getTxtCedulaBuscarUsuarioView().getText().trim();
-        if ( cedula.isEmpty()){
-            throw new ValidarCamposException("Error- campos vacios");
+        try {
+            String cedula = buscarUsuarioView.getTxtCedulaBuscarUsuarioView().getText().trim();
+            if (cedula.isEmpty()) {
+                throw new ValidarCamposException(bundle.getString("errorCamposVacios"));
+            }
+            if (cedula.length() != 10) {
+                throw new CedulaInvalidaException(bundle.getString("errorCedulaInvalida"));
+            }
+
+            Usuario usuario = usuarioDAO.buscar(cedula);
+
+            if (usuario != null) {
+
+                buscarUsuarioView.getTxtNombreBuscarUsuarioView().setText(usuario.getNombre());
+                buscarUsuarioView.getTxtTelefonoBuscarUsuarioView().setText(usuario.getTelefono());
+                buscarUsuarioView.getTxtCorreoElectronico().setText(usuario.getCorreo());
+                buscarUsuarioView.getTxtCiudad().setText(usuario.getCiudadesUsuario().toString());
+                buscarUsuarioView.getTxtCallePrincipal().setText(usuario.getCallePrincipal());
+
+            } else {
+
+                buscarUsuarioView.mostrarInformacion("usuarioNoEncontrado");
+
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (CedulaInvalidaException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        if(cedula.length() != 10){
-            throw new CedulaInvalidaException("Error - cedula invalida");
-        } 
-
-        Usuario usuario = usuarioDAO.buscar(cedula);
-
-        if (usuario != null) {
-
-            buscarUsuarioView.getTxtNombreBuscarUsuarioView().setText(usuario.getNombre());
-            buscarUsuarioView.getTxtTelefonoBuscarUsuarioView().setText(usuario.getTelefono());     
-            buscarUsuarioView.getTxtCorreoElectronico().setText(usuario.getCorreo());   
-            buscarUsuarioView.getTxtCiudad().setText(usuario.getCiudadesUsuario().toString());
-            buscarUsuarioView.getTxtCallePrincipal().setText(usuario.getCallePrincipal());
-
-        } else {
-
-            buscarUsuarioView.mostrarInformacion("No se encontró el usuario");
-                    
-
-        }
-     }catch(ValidarCamposException e){
-         JOptionPane.showMessageDialog(null, e.getMessage());
-     }catch(CedulaInvalidaException e){
-         JOptionPane.showMessageDialog(null, e.getMessage());
-     }
     }
 
     public void configurarEventosBuscarUsuario() {
@@ -168,37 +173,36 @@ public class UsuarioController {
     }
 
     public void buscarUsuarioActualizar() {
-     try{
-        String cedula = actualizarUsuarioView.getTxtCedulaActualizarUsuario().getText().trim();
-                
-        if ( cedula.isEmpty()){
-            throw new ValidarCamposException("Error- campos vacios");
+        try {
+            String cedula = actualizarUsuarioView.getTxtCedulaActualizarUsuario().getText().trim();
+
+            if (cedula.isEmpty()) {
+                throw new ValidarCamposException(bundle.getString("errorCamposVacios"));
+            }
+            if (cedula.length() != 10) {
+                throw new CedulaInvalidaException(bundle.getString("errorCedulaInvalida"));
+            }
+            Usuario usuario = usuarioDAO.buscar(cedula);
+
+            if (usuario != null) {
+
+                actualizarUsuarioView.getTxtNombreActualizarUsuario().setText(usuario.getNombre());
+                actualizarUsuarioView.getTxtTelefonoActualizarUsuario().setText(usuario.getTelefono());
+                actualizarUsuarioView.getTxtCorreoElectronico().setText(usuario.getCorreo());
+                actualizarUsuarioView.getTxtCiudad().setText(usuario.getCiudadesUsuario().toString());
+                actualizarUsuarioView.getTxtCallePrincipal().setText(usuario.getCallePrincipal());
+
+            } else {
+
+                actualizarUsuarioView.mostrarInformacion("usuarioNoEncontrado");
+
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+
+        } catch (CedulaInvalidaException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        if(cedula.length() != 10){
-            throw new CedulaInvalidaException("Error - cedula invalida");
-        }
-        Usuario usuario = usuarioDAO.buscar(cedula);
-
-        if (usuario != null) {
-
-            actualizarUsuarioView.getTxtNombreActualizarUsuario().setText(usuario.getNombre());                  
-            actualizarUsuarioView.getTxtTelefonoActualizarUsuario().setText(usuario.getTelefono());
-            actualizarUsuarioView.getTxtCorreoElectronico().setText(usuario.getCorreo());   
-            actualizarUsuarioView.getTxtCiudad().setText(usuario.getCiudadesUsuario().toString());
-            actualizarUsuarioView.getTxtCallePrincipal().setText(usuario.getCallePrincipal());
-                    
-
-        } else {
-
-            actualizarUsuarioView.mostrarInformacion("No se encontró el usuario");
-                    
-        }
-     }catch(ValidarCamposException e){
-         JOptionPane.showMessageDialog(null, e.getMessage());
-         
-     }catch(CedulaInvalidaException e){
-         JOptionPane.showMessageDialog(null, e.getMessage());
-     }
 
     }
 
@@ -216,63 +220,61 @@ public class UsuarioController {
     }
 
     public void actualizarUsuario() {
-     
-     try{
-        String cedula = actualizarUsuarioView.getTxtCedulaActualizarUsuario().getText().trim();
-        
-        if ( cedula.isEmpty()){
-            throw new ValidarCamposException("Error - campos vacios");
-        }
-        if(cedula.length() != 10){
-            throw new CedulaInvalidaException("Error - cedula invalida");
-        }
-        Usuario usuario = usuarioDAO.buscar(cedula);
 
-        if (usuario == null) {
-             throw new UsuarioNoEncontradoException("No se encontró el usuario");
-         }
-            String nombre = actualizarUsuarioView.getTxtNombreActualizarUsuario().getText();      
+        try {
+            String cedula = actualizarUsuarioView.getTxtCedulaActualizarUsuario().getText().trim();
+
+            if (cedula.isEmpty()) {
+                throw new ValidarCamposException(bundle.getString("errorCamposVacios"));
+            }
+            if (cedula.length() != 10) {
+                throw new CedulaInvalidaException(bundle.getString("errorCedulaInvalida"));
+            }
+            Usuario usuario = usuarioDAO.buscar(cedula);
+
+            if (usuario == null) {
+                throw new UsuarioNoEncontradoException(bundle.getString("usuarioNoEncontrado"));
+            }
+            String nombre = actualizarUsuarioView.getTxtNombreActualizarUsuario().getText();
             String telefono = actualizarUsuarioView.getTxtTelefonoActualizarUsuario().getText();
             String correo = actualizarUsuarioView.getTxtCorreoElectronico().getText().trim();
-            CiudadesUsuario ciudad=  (CiudadesUsuario) actualizarUsuarioView.getCbxCiudad().getSelectedItem();
+            CiudadesUsuario ciudad = (CiudadesUsuario) actualizarUsuarioView.getCbxCiudad().getSelectedItem();
             String calleP = actualizarUsuarioView.getTxtCallePrincipal().getText().trim();
-            
-            if( nombre.isEmpty() || telefono.isEmpty() || correo.isEmpty() || calleP.isEmpty()){
-                throw new ValidarCamposException("Error - campos vacios");
+
+            if (nombre.isEmpty() || telefono.isEmpty() || correo.isEmpty() || calleP.isEmpty()) {
+                throw new ValidarCamposException(bundle.getString("errorCamposVacios"));
             }
-        
-        
-        int respuesta = JOptionPane.showConfirmDialog(
-                actualizarUsuarioView,
-                "¿Deseas actualizar el usuario?",
-                "Confirmación",
-                JOptionPane.YES_NO_OPTION);
 
-        if (respuesta == JOptionPane.YES_OPTION) {
+            int respuesta = JOptionPane.showConfirmDialog(
+                    actualizarUsuarioView,
+                    bundle.getString("confirmarActualizarUsuario"),
+                    bundle.getString("tituloConfirmacion"),
+                    JOptionPane.YES_NO_OPTION);
 
-            
-            Usuario usuarioActualizado = new Usuario();
+            if (respuesta == JOptionPane.YES_OPTION) {
 
-            usuarioActualizado.setCedula(cedula);
-            usuarioActualizado.setNombre(nombre);
-            usuarioActualizado.setTelefono(telefono);
-            usuarioActualizado.setCorreo(correo);
-            usuarioActualizado.setCiudadesUsuario(ciudad);
-            usuarioActualizado.setCallePrincipal(calleP);
+                Usuario usuarioActualizado = new Usuario();
 
-            usuarioDAO.actualizar(cedula, usuarioActualizado);
+                usuarioActualizado.setCedula(cedula);
+                usuarioActualizado.setNombre(nombre);
+                usuarioActualizado.setTelefono(telefono);
+                usuarioActualizado.setCorreo(correo);
+                usuarioActualizado.setCiudadesUsuario(ciudad);
+                usuarioActualizado.setCallePrincipal(calleP);
 
-            actualizarUsuarioView.mostrarInformacion("Usuario actualizado correctamente");
-                    
+                usuarioDAO.actualizar(cedula, usuarioActualizado);
+
+                actualizarUsuarioView.mostrarInformacion("usuarioActualizado");
+
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+
+        } catch (UsuarioNoEncontradoException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (CedulaInvalidaException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-     }catch(ValidarCamposException e){
-         JOptionPane.showMessageDialog(null, e.getMessage());
-         
-     }catch( UsuarioNoEncontradoException e){
-         JOptionPane.showMessageDialog(null, e.getMessage());
-     }catch(CedulaInvalidaException e){
-         JOptionPane.showMessageDialog(null, e.getMessage());
-     }
 
     }
 
@@ -282,8 +284,6 @@ public class UsuarioController {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                
-                
                 actualizarUsuario();
 
             }
@@ -292,35 +292,35 @@ public class UsuarioController {
     }
 
     public void buscarUsuarioEliminar() {
-     
-     try{
-        String cedula = eliminarUsuarioview.getTxtCedulaEliminarUsuario().getText().trim();
-                
-        if ( cedula.isEmpty()){
-            throw new ValidarCamposException("Error - campos vacios");
+
+        try {
+            String cedula = eliminarUsuarioview.getTxtCedulaEliminarUsuario().getText().trim();
+
+            if (cedula.isEmpty()) {
+                throw new ValidarCamposException(bundle.getString("errorCamposVacios"));
+            }
+            if (cedula.length() != 10) {
+                throw new CedulaInvalidaException(bundle.getString("errorCedulaInvalida"));
+            }
+            Usuario usuario = usuarioDAO.buscar(cedula);
+
+            if (usuario != null) {
+
+                eliminarUsuarioview.getTxtNombreEliminarUsuario().setText(usuario.getNombre());
+                eliminarUsuarioview.getTxtTelfonoEliminarUsuario().setText(usuario.getTelefono());
+                eliminarUsuarioview.getTxtCorreoElectronico().setText(usuario.getCorreo());
+                eliminarUsuarioview.getTxtCiudad().setText(usuario.getCiudadesUsuario().toString());
+                eliminarUsuarioview.getTxtCallePrincipal().setText(usuario.getCallePrincipal());
+            } else {
+
+                eliminarUsuarioview.mostrarInformacion("usuarioNoEncontrado");
+
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (CedulaInvalidaException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        if(cedula.length() != 10){
-            throw new CedulaInvalidaException("Error - cedula invalida");
-        }
-        Usuario usuario = usuarioDAO.buscar(cedula);
-
-        if (usuario != null) {
-
-            eliminarUsuarioview.getTxtNombreEliminarUsuario().setText(usuario.getNombre());
-            eliminarUsuarioview.getTxtTelfonoEliminarUsuario().setText(usuario.getTelefono());
-            eliminarUsuarioview.getTxtCorreoElectronico().setText(usuario.getCorreo());   
-            eliminarUsuarioview.getTxtCiudad().setText(usuario.getCiudadesUsuario().toString());
-            eliminarUsuarioview.getTxtCallePrincipal().setText(usuario.getCallePrincipal()); 
-        } else {
-
-            eliminarUsuarioview.mostrarInformacion("No se encontró el usuario");
-
-        }
-     }catch(ValidarCamposException e){
-         JOptionPane.showMessageDialog(null, e.getMessage());
-     }catch (CedulaInvalidaException e){
-         JOptionPane.showMessageDialog(null, e.getMessage());
-     }
     }
 
     public void configurarEventosBuscarEliminarUsuario() {
@@ -337,44 +337,42 @@ public class UsuarioController {
     }
 
     public void eliminarUsuario() {
-     
-     try{
-        String cedula = eliminarUsuarioview.getTxtCedulaEliminarUsuario().getText().trim();
-        
-        if ( cedula.isEmpty()){
-            throw new ValidarCamposException ("Error- campos vacios");
+
+        try {
+            String cedula = eliminarUsuarioview.getTxtCedulaEliminarUsuario().getText().trim();
+
+            if (cedula.isEmpty()) {
+                throw new ValidarCamposException(bundle.getString("errorCamposVacios"));
+            }
+            if (cedula.length() != 10) {
+                throw new CedulaInvalidaException(bundle.getString("errorCedulaInvalida"));
+            }
+
+            int respuesta = JOptionPane.showConfirmDialog(
+                    actualizarUsuarioView,
+                    bundle.getString("confirmarActualizarUsuario"),
+                    bundle.getString("tituloConfirmacion"),
+                    JOptionPane.YES_NO_OPTION);
+
+            if (respuesta == JOptionPane.YES_OPTION) {
+
+                usuarioDAO.eliminar(cedula);
+
+                eliminarUsuarioview.mostrarInformacion("usuarioEliminado");
+
+                eliminarUsuarioview.getTxtCedulaEliminarUsuario().setText("");
+                eliminarUsuarioview.getTxtNombreEliminarUsuario().setText("");
+                eliminarUsuarioview.getTxtTelfonoEliminarUsuario().setText("");
+                eliminarUsuarioview.getTxtCorreoElectronico().setText("");
+                eliminarUsuarioview.getTxtCiudad().setText("");
+                eliminarUsuarioview.getTxtCallePrincipal().setText("");
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+
+        } catch (CedulaInvalidaException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        if(cedula.length() != 10){
-            throw new CedulaInvalidaException("Error - cedula invalida");
-        }
-                
-
-        int respuesta = JOptionPane.showConfirmDialog(
-                eliminarUsuarioview,
-                "¿Deseas eliminar el usuario?",
-                "Confirmación",
-                JOptionPane.YES_NO_OPTION);
-
-        if (respuesta == JOptionPane.YES_OPTION) {
-
-            usuarioDAO.eliminar(cedula);
-
-            eliminarUsuarioview.mostrarInformacion(
-                    "Usuario eliminado correctamente");
-
-            eliminarUsuarioview.getTxtCedulaEliminarUsuario().setText("");
-            eliminarUsuarioview.getTxtNombreEliminarUsuario().setText("");
-            eliminarUsuarioview.getTxtTelfonoEliminarUsuario().setText("");
-            eliminarUsuarioview.getTxtCorreoElectronico().setText("");
-            eliminarUsuarioview.getTxtCiudad().setText("");
-            eliminarUsuarioview.getTxtCallePrincipal().setText("");
-        }
-     }catch(ValidarCamposException e){
-         JOptionPane.showMessageDialog(null, e.getMessage());
-         
-     }catch (CedulaInvalidaException e){
-        JOptionPane.showMessageDialog(null, e.getMessage());
-    }
     }
 
     public void configurarEventosEliminarUsuario() {

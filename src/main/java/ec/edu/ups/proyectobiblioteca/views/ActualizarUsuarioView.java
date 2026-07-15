@@ -144,6 +144,7 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
         lblCiudad.setText(mensajes.getString("lblCiudadUsuario"));
         lblCiudad1.setText(mensajes.getString("lblCiudadUpUsuario"));
         lblCallePrincipal.setText(mensajes.getString("lblCallePrinUsuario"));
+        lblIndicacion.setText(mensajes.getString("lblIndicacion"));
 
         btnBuscar.setText(mensajes.getString("btnBuscar"));
         btnActualizar.setText(mensajes.getString("btnActualizar"));
@@ -183,7 +184,7 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
         txtCiudad = new javax.swing.JTextField();
         lblCallePrincipal = new javax.swing.JLabel();
         txtCallePrincipal = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        lblIndicacion = new javax.swing.JLabel();
         lblCiudad1 = new javax.swing.JLabel();
         cbxCiudad = new javax.swing.JComboBox<>();
 
@@ -245,8 +246,8 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
         lblCallePrincipal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         lblCallePrincipal.setText("Calle Principal:");
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
-        jLabel5.setText("(Ingrese en los campos los datos que desee actualizar)");
+        lblIndicacion.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
+        lblIndicacion.setText("(Ingrese en los campos los datos que desee actualizar)");
 
         lblCiudad1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         lblCiudad1.setText("Ciudad(Actualizar):");
@@ -261,8 +262,8 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCedulaActualizarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71)
+                        .addComponent(txtCedulaActualizarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnBuscar)
                         .addContainerGap(77, Short.MAX_VALUE))
@@ -275,41 +276,38 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblCiudad1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbxCiudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(23, 23, 23))
+                        .addGap(120, 120, 120)
+                        .addComponent(btnActualizar)
+                        .addGap(41, 41, 41)
+                        .addComponent(btnCancelar))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblCiudad)
+                        .addGap(78, 78, 78)
+                        .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(120, 120, 120)
-                                .addComponent(btnActualizar)
-                                .addGap(41, 41, 41)
-                                .addComponent(btnCancelar))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(180, 180, 180)
-                                .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblCallePrincipal)
-                                .addGap(41, 41, 41)
-                                .addComponent(txtCallePrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblCiudad)
-                                .addGap(35, 35, 35)
-                                .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNombreActualizarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                                    .addComponent(txtTelefonoActualizarUsuario)))
-                            .addComponent(lblCorreoUsuario))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(53, 53, 53)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNombreActualizarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                            .addComponent(txtTelefonoActualizarUsuario)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblCorreoUsuario)
+                        .addGap(34, 34, 34)
+                        .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCiudad1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCallePrincipal))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCallePrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jLabel5)
+                .addComponent(lblIndicacion)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -325,7 +323,7 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
                 .addGap(7, 7, 7)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(lblIndicacion)
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -390,7 +388,6 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
@@ -399,6 +396,7 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblCiudad;
     private javax.swing.JLabel lblCiudad1;
     private javax.swing.JLabel lblCorreoUsuario;
+    private javax.swing.JLabel lblIndicacion;
     private javax.swing.JLabel lblTituloActualizar;
     private javax.swing.JTextField txtCallePrincipal;
     private javax.swing.JTextField txtCedulaActualizarUsuario;
