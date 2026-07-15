@@ -19,6 +19,8 @@ import javax.swing.JTextField;
  * @author mateo
  */
 public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
+    
+    private ResourceBundle mensajes;
 
     /**
      * Creates new form ActualizarUsuarioView
@@ -128,7 +130,7 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle mensajes = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+        mensajes = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
         setTitle(mensajes.getString("tituloVentanaActualizarUsuario"));
 
@@ -148,8 +150,8 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
         btnCancelar.setText(mensajes.getString("btnCancelar"));
     }
 
-    public void mostrarInformacion(String mensaje) {
-        JOptionPane.showMessageDialog(this, mensaje);
+     public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensajes.getString(mensaje));
     }
 
     /**

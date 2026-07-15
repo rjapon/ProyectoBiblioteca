@@ -18,6 +18,8 @@ import javax.swing.JTextField;
  * @author Asus
  */
 public class CrearPrestamoView extends javax.swing.JInternalFrame {
+    
+    private ResourceBundle bundle;
 
     /**
      * Creates new form CrearPrestamoView
@@ -148,7 +150,7 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle bundle = ResourceBundle.getBundle(
+        bundle = ResourceBundle.getBundle(
                 "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
         setTitle(bundle.getString("tituloVentanaCrearPrestamo"));
@@ -164,6 +166,8 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
         lblLibroCrear.setText(bundle.getString("lblLibroPrestamo"));
         lblAutorCrear.setText(bundle.getString("lblAutorPrestamo"));
         lblDisponibleCrear.setText(bundle.getString("lblDisponiblePrestamo"));
+        
+        lblRegistrarTitulo.setText(bundle.getString("lblTituloRegistrarPrestamo"));
 
         btnBuscarUsuario.setText(bundle.getString("btnBuscar"));
         btnBuscarLibro.setText(bundle.getString("btnBuscar"));
@@ -172,7 +176,7 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
     }
 
     public void mostrarInformacion(String mensaje) {
-        JOptionPane.showMessageDialog(this, mensaje);
+        JOptionPane.showMessageDialog(this, bundle.getString(mensaje));
     }
 
     /**
@@ -211,7 +215,7 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
         ComboBoxMesDevolucion = new javax.swing.JComboBox<>();
         ComboBoxAnioDevolucion = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblRegistrarTitulo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
 
@@ -292,8 +296,8 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel1.setText("Registrar Préstamo");
+        lblRegistrarTitulo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        lblRegistrarTitulo.setText("Registrar Préstamo");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -301,14 +305,14 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(161, 161, 161)
-                .addComponent(jLabel1)
+                .addComponent(lblRegistrarTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(lblRegistrarTitulo)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -476,7 +480,6 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscarLibro;
     private javax.swing.JButton btnBuscarUsuario;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
@@ -490,6 +493,7 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblFechaDevCrear;
     private javax.swing.JLabel lblISBNCrear;
     private javax.swing.JLabel lblLibroCrear;
+    private javax.swing.JLabel lblRegistrarTitulo;
     private javax.swing.JLabel lblUsuarioCrear;
     private javax.swing.JTextField txtAutorCrear;
     private javax.swing.JTextField txtCedulaCrear;

@@ -16,6 +16,8 @@ import javax.swing.JTextField;
  * @author Asus
  */
 public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
+    
+    private ResourceBundle bundle;
 
     /**
      * Creates new form ActualizarPrestamoView
@@ -122,7 +124,7 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle bundle = ResourceBundle.getBundle(
+        bundle = ResourceBundle.getBundle(
                 "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
         setTitle(bundle.getString("tituloVentanaActualizarPrestamo"));
@@ -143,6 +145,8 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
         lblLectura2.setText(bundle.getString("lblLecturaPrestamo"));
         lblLectura3.setText(bundle.getString("lblLecturaPrestamo"));
         lblLectura4.setText(bundle.getString("lblLecturaPrestamo"));
+        
+        lblTituloActualizar.setText(bundle.getString("lblTituloActualizarPrestamo"));
 
         btnBuscar.setText(bundle.getString("btnBuscar"));
         btnAceptar.setText(bundle.getString("btnAceptar"));
@@ -150,7 +154,7 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
     }
 
     public void mostrarInformacion(String mensaje) {
-        JOptionPane.showMessageDialog(this, mensaje);
+        JOptionPane.showMessageDialog(this, bundle.getString(mensaje));
     }
 
     /**
@@ -188,12 +192,13 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
         ComboBoxAnioDevolucion = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblTituloActualizar = new javax.swing.JLabel();
 
         setClosable(true);
         setResizable(true);
         setTitle("Actualizar Prestamo");
 
+        panelActualizar.setBackground(new java.awt.Color(255, 255, 255));
         panelActualizar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Bright", 0, 12))); // NOI18N
 
         lblCodigoActualizar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
@@ -342,7 +347,7 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
                     .addComponent(lblLibroActualizar)
                     .addComponent(txtLibroActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblLectura2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(panelActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtISBNActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblISBNActualizar))
@@ -373,8 +378,8 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel1.setText("Actualizar Préstamo");
+        lblTituloActualizar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        lblTituloActualizar.setText("Actualizar Préstamo");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -382,15 +387,15 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(lblTituloActualizar)
                 .addGap(171, 171, 171))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel1)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addComponent(lblTituloActualizar)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -428,7 +433,6 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAutorActualizar;
@@ -441,6 +445,7 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblLectura3;
     private javax.swing.JLabel lblLectura4;
     private javax.swing.JLabel lblLibroActualizar;
+    private javax.swing.JLabel lblTituloActualizar;
     private javax.swing.JLabel lblUsuarioActualizar;
     private javax.swing.JPanel panelActualizar;
     private javax.swing.JTextField txtAutorActualizar;

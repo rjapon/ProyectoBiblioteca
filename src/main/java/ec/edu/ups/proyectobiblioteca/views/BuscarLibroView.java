@@ -15,6 +15,8 @@ import javax.swing.JTextField;
  * @author Asus
  */
 public class BuscarLibroView extends javax.swing.JInternalFrame {
+    
+    private ResourceBundle bundle;
 
     /**
      * Creates new form BuscarLibroView
@@ -97,7 +99,7 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle bundle = ResourceBundle.getBundle(
+        bundle = ResourceBundle.getBundle(
                 "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
         setTitle(bundle.getString("tituloVentanaBuscarLibro"));
@@ -111,13 +113,15 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
         lblCategoriaBuscar.setText(bundle.getString("lblCategoriaLibro"));
         lblEditorialBuscar.setText(bundle.getString("lblEditorialLibro"));
         lblEstadoBuscar.setText(bundle.getString("lblEstadoLibro"));
+        
+        lblBuscarTitulo.setText(bundle.getString("lblTituloBuscarLibro"));
 
         btnBuscar.setText(bundle.getString("btnBuscar"));
         btnAceptar.setText(bundle.getString("btnAceptar"));
     }
 
     public void mostrarInformacion(String mensaje) {
-        JOptionPane.showMessageDialog(this, mensaje);
+        JOptionPane.showMessageDialog(this, bundle.getString(mensaje));
     }
 
     /**
@@ -148,7 +152,7 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
         btnAceptar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblBuscarTitulo = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -204,8 +208,8 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel1.setText("Buscar Libro");
+        lblBuscarTitulo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        lblBuscarTitulo.setText("Buscar Libro");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -213,14 +217,14 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(196, 196, 196)
-                .addComponent(jLabel1)
+                .addComponent(lblBuscarTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1)
+                .addComponent(lblBuscarTitulo)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -350,11 +354,11 @@ public class BuscarLibroView extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAutorBuscar;
+    private javax.swing.JLabel lblBuscarTitulo;
     private javax.swing.JLabel lblCategoriaBuscar;
     private javax.swing.JLabel lblEditorialBuscar;
     private javax.swing.JLabel lblEstadoBuscar;

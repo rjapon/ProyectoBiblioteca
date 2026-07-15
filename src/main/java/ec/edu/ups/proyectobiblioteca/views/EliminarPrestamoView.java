@@ -15,6 +15,8 @@ import javax.swing.JTextField;
  * @author Asus
  */
 public class EliminarPrestamoView extends javax.swing.JInternalFrame {
+    
+    private ResourceBundle bundle;
 
     /**
      * Creates new form EliminarPrestamoView
@@ -97,7 +99,7 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle bundle = ResourceBundle.getBundle(
+        bundle = ResourceBundle.getBundle(
                 "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
         setTitle(bundle.getString("tituloVentanaEliminarPrestamo"));
@@ -110,6 +112,8 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
         lblLibroEliminar.setText(bundle.getString("lblLibroPrestamo"));
         lblAutorEliminar.setText(bundle.getString("lblAutorPrestamo"));
         lblISBNEliminar.setText(bundle.getString("lblISBNPrestamo"));
+        
+        lblEliminarTitulo.setText(bundle.getString("lblTituloEliminarPrestamo"));
 
         btnBuscar.setText(bundle.getString("btnBuscar"));
         btnEliminar.setText(bundle.getString("btnEliminar"));
@@ -117,7 +121,7 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
     }
 
     public void mostrarInformacion(String mensaje) {
-        JOptionPane.showMessageDialog(this, mensaje);
+        JOptionPane.showMessageDialog(this, bundle.getString(mensaje));
     }
 
     /**
@@ -146,7 +150,7 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
         lblISBNEliminar = new javax.swing.JLabel();
         txtISBNEliminar = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblEliminarTitulo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
         setClosable(true);
@@ -208,8 +212,8 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel1.setText("Eliminar Préstamo");
+        lblEliminarTitulo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        lblEliminarTitulo.setText("Eliminar Préstamo");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -217,14 +221,14 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(180, 180, 180)
-                .addComponent(jLabel1)
+                .addComponent(lblEliminarTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(lblEliminarTitulo)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -351,12 +355,12 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAutorEliminar;
     private javax.swing.JLabel lblCodigoEliminar;
+    private javax.swing.JLabel lblEliminarTitulo;
     private javax.swing.JLabel lblFechaEliminar;
     private javax.swing.JLabel lblISBNEliminar;
     private javax.swing.JLabel lblLibroEliminar;

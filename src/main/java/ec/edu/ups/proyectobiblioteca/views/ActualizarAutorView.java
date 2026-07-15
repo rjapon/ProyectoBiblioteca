@@ -17,6 +17,8 @@ import javax.swing.JTextField;
  * @author mateo
  */
 public class ActualizarAutorView extends javax.swing.JInternalFrame {
+    
+    private ResourceBundle bundle;
 
     /**
      * Creates new form ActualizarAutorView
@@ -67,9 +69,11 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+        bundle = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
         setTitle(bundle.getString("tituloVentanaActualizarAutor"));
+        
+        lblTituloActualizar.setText(bundle.getString("lblTituloActualizarAutor"));
 
         jLabel1.setText(bundle.getString("lblCodigoAutor"));
         jLabel2.setText(bundle.getString("lblNombreAutor"));
@@ -81,7 +85,7 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
     }
 
     public void mostrarInformacion(String mensaje) {
-        JOptionPane.showMessageDialog(this, mensaje);
+        JOptionPane.showMessageDialog(this, bundle.getString(mensaje));
     }
 
     /**
@@ -104,11 +108,13 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
         btnCancelar = new javax.swing.JButton();
         cboNacionalidadesActualizar = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        lblTituloActualizar = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
         setClosable(true);
         setTitle("Actualizar Autor");
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel1.setText("Código :");
@@ -133,9 +139,9 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel4.setText("Actualizar Autor");
-        jLabel4.setToolTipText("");
+        lblTituloActualizar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        lblTituloActualizar.setText("Actualizar Autor");
+        lblTituloActualizar.setToolTipText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -143,14 +149,14 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(151, 151, 151)
-                .addComponent(jLabel4)
+                .addComponent(lblTituloActualizar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel4)
+                .addComponent(lblTituloActualizar)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -250,10 +256,10 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblTituloActualizar;
     private javax.swing.JTextField txtCodigoActulizarAutorView;
     private javax.swing.JTextField txtNombreActualizarAutorView;
     // End of variables declaration//GEN-END:variables

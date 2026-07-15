@@ -18,6 +18,8 @@ import javax.swing.JTextField;
  */
 public class AgregarLibroView extends javax.swing.JInternalFrame {
 
+    private ResourceBundle bundle;
+
     /**
      * Creates new form AgregarLibroVIew
      */
@@ -49,7 +51,6 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
     public void setCboCategoriaAgregar(JComboBox<CategoriasLibro> cboCategoriaAgregar) {
         this.cboCategoriaAgregar = cboCategoriaAgregar;
     }
-    
 
     public JTextField getTxtEditorialAgregar() {
         return txtEditorialAgregar;
@@ -73,10 +74,6 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
 
     public void setTxtTituloAgregar(JTextField txtTituloAgregar) {
         this.txtTituloAgregar = txtTituloAgregar;
-    }
-
-    public void mostrarInformacion(String mensaje) {
-        JOptionPane.showMessageDialog(this, mensaje);
     }
 
     private void cargarAnios() {
@@ -110,7 +107,7 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
+        bundle = ResourceBundle.getBundle("ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
         setTitle(bundle.getString("tituloVentanaAgregarLibro"));
 
@@ -123,12 +120,18 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
         lblFechaAgregar.setText(bundle.getString("lblFechaPubLibro"));
         lblEditorialAgregar.setText(bundle.getString("lblEditorialLibro"));
 
+        lblAgregarTitulo.setText(bundle.getString("lblTituloAgregarLibro"));
+
         btnAceptar.setText(bundle.getString("btnAceptar"));
         btnCancelar.setText(bundle.getString("btnCancelar"));
     }
 
     public void setComboBoxMes(JComboBox<String> comboBoxMes) {
         this.comboBoxMes = comboBoxMes;
+    }
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, bundle.getString(mensaje));
     }
 
     /**
@@ -158,7 +161,7 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
         ComboBoxAnio = new javax.swing.JComboBox<>();
         cboCategoriaAgregar = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblAgregarTitulo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
         setClosable(true);
@@ -206,8 +209,8 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
         jPanel2.setToolTipText("");
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel1.setText("Agregar Libro");
+        lblAgregarTitulo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        lblAgregarTitulo.setText("Agregar Libro");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -215,14 +218,14 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(lblAgregarTitulo)
                 .addGap(156, 156, 156))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel1)
+                .addComponent(lblAgregarTitulo)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -357,10 +360,10 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<CategoriasLibro> cboCategoriaAgregar;
     private javax.swing.JComboBox<String> comboBoxDia;
     private javax.swing.JComboBox<String> comboBoxMes;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblAgregarTitulo;
     private javax.swing.JLabel lblAutorAgregar;
     private javax.swing.JLabel lblCategoriaAgregar;
     private javax.swing.JLabel lblEditorialAgregar;

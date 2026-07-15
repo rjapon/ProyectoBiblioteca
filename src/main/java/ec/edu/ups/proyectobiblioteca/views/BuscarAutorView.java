@@ -15,6 +15,8 @@ import javax.swing.JTextField;
  * @author mateo
  */
 public class BuscarAutorView extends javax.swing.JInternalFrame {
+    
+    private ResourceBundle bundle;
 
     /**
      * Creates new form BuscarAutorView
@@ -57,7 +59,7 @@ public class BuscarAutorView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle bundle = ResourceBundle.getBundle(
+        bundle = ResourceBundle.getBundle(
                 "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
         // Ventana
@@ -67,6 +69,8 @@ public class BuscarAutorView extends javax.swing.JInternalFrame {
         jLabel1.setText(bundle.getString("lblCodigoAutor"));
         jLabel2.setText(bundle.getString("lblNombreAutor"));
         jLabel3.setText(bundle.getString("lblNacionalidadAutor"));
+        
+        lblBuscarTitulo.setText(bundle.getString("lblTituloBuscarAutor"));
 
         // Botones
         btnBuscar.setText(bundle.getString("btnBuscar"));
@@ -74,7 +78,7 @@ public class BuscarAutorView extends javax.swing.JInternalFrame {
     }
 
     public void mostrarInformacion(String mensaje) {
-        JOptionPane.showMessageDialog(this, mensaje);
+        JOptionPane.showMessageDialog(this, bundle.getString(mensaje));
     }
 
     /**
@@ -98,13 +102,15 @@ public class BuscarAutorView extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        lblBuscarTitulo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
         jScrollPane1.setViewportView(jTextPane1);
 
         setClosable(true);
         setTitle("Buscar Autor");
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel1.setText("Código:");
@@ -132,8 +138,8 @@ public class BuscarAutorView extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel4.setText("Buscar Autor");
+        lblBuscarTitulo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        lblBuscarTitulo.setText("Buscar Autor");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -141,14 +147,14 @@ public class BuscarAutorView extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(156, 156, 156)
-                .addComponent(jLabel4)
+                .addComponent(lblBuscarTitulo)
                 .addContainerGap(225, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel4)
+                .addComponent(lblBuscarTitulo)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -205,7 +211,7 @@ public class BuscarAutorView extends javax.swing.JInternalFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar))
                 .addGap(16, 16, 16))
@@ -253,12 +259,12 @@ public class BuscarAutorView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JLabel lblBuscarTitulo;
     private javax.swing.JTextField txtCodigoBuscarAutor;
     private javax.swing.JTextField txtNacionalidadBuscarAutor;
     private javax.swing.JTextField txtNombreBuscarAutor;

@@ -15,6 +15,8 @@ import javax.swing.JTextField;
  * @author mateo
  */
 public class BuscarUsuarioView extends javax.swing.JInternalFrame {
+    
+    private ResourceBundle mensajes;
 
     /**
      * Creates new form BuscarUsuarioView
@@ -83,7 +85,7 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
 
     public void cambiarIdioma(Locale locale) {
 
-        ResourceBundle mensajes = ResourceBundle.getBundle(
+        mensajes = ResourceBundle.getBundle(
                 "ec.edu.ups.proyectobiblioteca.i18n.mensajes", locale);
 
         setTitle(mensajes.getString("tituloVentanaBuscarUsuario"));
@@ -103,7 +105,7 @@ public class BuscarUsuarioView extends javax.swing.JInternalFrame {
     }
 
     public void mostrarInformacion(String mensaje) {
-        JOptionPane.showMessageDialog(this, mensaje);
+        JOptionPane.showMessageDialog(this, mensajes.getString(mensaje));
     }
 
     /**

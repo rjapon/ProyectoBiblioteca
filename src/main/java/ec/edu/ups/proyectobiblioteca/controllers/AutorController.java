@@ -17,6 +17,8 @@ import ec.edu.ups.proyectobiblioteca.views.ListarAutorView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
@@ -33,6 +35,8 @@ public class AutorController {
     private BuscarAutorView buscarAutorView;
     private ListarAutorView listarAutorView;
     private AutorDAO autorDAO;
+
+    private ResourceBundle bundle;
 
     public AutorController(ActualizarAutorView actualizarAutorView, AgregarAutorView agregarAutorView, EliminarAutorView eliminarAutorView, BuscarAutorView buscarAutorView, ListarAutorView listarAutorView, AutorDAO autorDAO) {
         this.actualizarAutorView = actualizarAutorView;
@@ -51,37 +55,43 @@ public class AutorController {
         configurarEventosActualizarAutor();
         configurarEventosAgregarAutor();
         configurarEventosListarAutores();
+
+        cambiarIdioma(new Locale("es", "EC"));
+    }
+
+    public void cambiarIdioma(Locale locale) {
+        bundle = ResourceBundle.getBundle(
+                "ec.edu.ups.proyectobiblioteca.i18n.mensajes",
+                locale);
     }
 
     public void buscarAutor() {
 
-      try {
-         String codigo = buscarAutorView.getTxtCodigoBuscarAutor().getText().trim();
-         
-         
-         
-         if (codigo.isEmpty()){
-             throw new ValidarCamposException ("Campo de codigo vacio");
-         }
-         
-         int codigo2  = Integer.parseInt(codigo);
-         Autor autor = autorDAO.buscar(codigo2);
-        if (autor != null) {
+        try {
+            String codigo = buscarAutorView.getTxtCodigoBuscarAutor().getText().trim();
 
-            buscarAutorView.getTxtNombreBuscarAutor().setText(autor.getNombre());
-            buscarAutorView.getTxtNacionalidadBuscarAutor().setText(autor.getNacionalidad().toString());
-                    
+            if (codigo.isEmpty()) {
+                throw new ValidarCamposException("Campo de codigo vacio");
+            }
 
-        } else {
+            int codigo2 = Integer.parseInt(codigo);
+            Autor autor = autorDAO.buscar(codigo2);
+            if (autor != null) {
 
-            buscarAutorView.mostrarInformacion( "No se encontró el autor");
-                   
+                buscarAutorView.getTxtNombreBuscarAutor().setText(autor.getNombre());
+                buscarAutorView.getTxtNacionalidadBuscarAutor().setText(autor.getNacionalidad().toString());
+
+            } else {
+
+                buscarAutorView.mostrarInformacion("autorNoEncontrado");
+
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null,
+                    bundle.getString("errorFormatoCodigo"));
         }
-      }catch(ValidarCamposException e){
-          JOptionPane.showMessageDialog(null, e.getMessage());   
-      }catch(NumberFormatException e ){
-          JOptionPane.showMessageDialog(null, "Formato de codigo invalido");
-      }
     }
 
     public void configurarEventosBuscarAutor() {
@@ -97,36 +107,38 @@ public class AutorController {
 
     public void eliminarAutor() {
 
-      try{  
-          String codigo = eliminarAutorView.getTxtCodigoEliminarAutorView().getText();
-               
-          if ( codigo.isEmpty())
-              throw new ValidarCamposException ("Campo de codigo esta vacio");
-        
-        int codigo2 = Integer.parseInt(codigo);
-        
-        int respuesta = JOptionPane.showConfirmDialog(
-                eliminarAutorView,
-                "¿Deseas eliminar el autor?",
-                "Confirmación",
-                JOptionPane.YES_NO_OPTION);
+        try {
+            String codigo = eliminarAutorView.getTxtCodigoEliminarAutorView().getText();
 
-        if (respuesta == JOptionPane.YES_OPTION) {
+            if (codigo.isEmpty()) {
+                throw new ValidarCamposException("Campo de codigo esta vacio");
+            }
 
-            autorDAO.eliminar(codigo2);
+            int codigo2 = Integer.parseInt(codigo);
 
-            eliminarAutorView.mostrarInformacion("Autor eliminado");
+            int respuesta = JOptionPane.showConfirmDialog(
+                    eliminarAutorView,
+                    "¿Deseas eliminar el autor?",
+                    "Confirmación",
+                    JOptionPane.YES_NO_OPTION);
 
-            eliminarAutorView.getTxtCodigoEliminarAutorView().setText("");
-            eliminarAutorView.getTxtNombreEliminarAutorView().setText("");
-            eliminarAutorView.getTxtNacionalidadEliminarAutorView().setText("");
+            if (respuesta == JOptionPane.YES_OPTION) {
+
+                autorDAO.eliminar(codigo2);
+
+                eliminarAutorView.mostrarInformacion("autorEliminado");
+
+                eliminarAutorView.getTxtCodigoEliminarAutorView().setText("");
+                eliminarAutorView.getTxtNombreEliminarAutorView().setText("");
+                eliminarAutorView.getTxtNacionalidadEliminarAutorView().setText("");
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null,
+                    bundle.getString("errorCodigoNumerico"));
         }
-    }catch (ValidarCamposException e ){
-         JOptionPane.showMessageDialog(null, e.getMessage());
-    }catch (NumberFormatException e){
-        JOptionPane.showMessageDialog(null, "El codigo debe ser numerico ");
-    }
-    
+
     }
 
     public void configurarEventosEliminarAutor() {
@@ -161,7 +173,7 @@ public class AutorController {
 
                 } else {
 
-                    eliminarAutorView.mostrarInformacion("No se encontró el autor");
+                    eliminarAutorView.mostrarInformacion("autorNoEncontrado");
 
                 }
 
@@ -171,33 +183,36 @@ public class AutorController {
     }
 
     public void buscarAutorActualizar() {
-     
-    try{
-        String codigo = actualizarAutorView.getTxtCodigoActulizarAutorView().getText();
-        
-        if (codigo.isEmpty())
-            throw new ValidarCamposException("Campo de codigo vacio");
-        
-        int codigo2 = Integer.parseInt(codigo);
-        Autor autor = autorDAO.buscar(codigo2);
 
-        if (autor != null) {
+        try {
+            String codigo = actualizarAutorView.getTxtCodigoActulizarAutorView().getText();
 
-            actualizarAutorView.getTxtNombreActualizarAutorView().setText(autor.getNombre());
+            if (codigo.isEmpty()) {
+                throw new ValidarCamposException("Campo de codigo vacio");
+            }
 
-            actualizarAutorView.getCboNacionalidadesActualizar()
-                    .setSelectedItem(autor.getNacionalidad());
+            int codigo2 = Integer.parseInt(codigo);
+            Autor autor = autorDAO.buscar(codigo2);
 
-        } else {
+            if (autor != null) {
 
-            actualizarAutorView.mostrarInformacion("No se encontró el autor");
+                actualizarAutorView.getTxtNombreActualizarAutorView().setText(autor.getNombre());
+
+                actualizarAutorView.getCboNacionalidadesActualizar()
+                        .setSelectedItem(autor.getNacionalidad());
+
+            } else {
+
+                actualizarAutorView.mostrarInformacion("autorNoEncontrado");
+
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null,
+                    bundle.getString("errorFormatoCodigo"));
 
         }
-    }catch(ValidarCamposException e ){
-        JOptionPane.showMessageDialog(null, e.getMessage());   
-    }catch(NumberFormatException e){
-        JOptionPane.showMessageDialog(null, "Formato invalido"); 
-    }
     }
 
     public void configurarEventosBuscarActualizarAutor() {
@@ -213,50 +228,49 @@ public class AutorController {
 
     public void actualizarAutor() {
 
-       try{
-           
-        String codigo = actualizarAutorView.getTxtCodigoActulizarAutorView().getText().trim();
-        String nombre = actualizarAutorView.getTxtNombreActualizarAutorView().getText().trim();
-        
-        if(nombre.isEmpty() || codigo.isEmpty()){
+        try {
+
+            String codigo = actualizarAutorView.getTxtCodigoActulizarAutorView().getText().trim();
+            String nombre = actualizarAutorView.getTxtNombreActualizarAutorView().getText().trim();
+
+            if (nombre.isEmpty() || codigo.isEmpty()) {
                 throw new ValidarCamposException("Error - campos vacios");
             }
-        int codigo2 = Integer.parseInt(codigo);
-        Autor autor = autorDAO.buscar(codigo2);
+            int codigo2 = Integer.parseInt(codigo);
+            Autor autor = autorDAO.buscar(codigo2);
 
-        if (autor == null) {
-             throw new AutorNoEncontradoException("No se encontró el autor");
-         }
-        int respuesta = JOptionPane.showConfirmDialog(
-                actualizarAutorView,
-                "¿Deseas actualizar el autor?",
-                "Confirmación",
-                JOptionPane.YES_NO_OPTION);
+            if (autor == null) {
+                throw new AutorNoEncontradoException("No se encontró el autor");
+            }
+            int respuesta = JOptionPane.showConfirmDialog(
+                    actualizarAutorView,
+                    "¿Deseas actualizar el autor?",
+                    "Confirmación",
+                    JOptionPane.YES_NO_OPTION);
 
-        if (respuesta == JOptionPane.YES_OPTION) {
+            if (respuesta == JOptionPane.YES_OPTION) {
 
-            
+                NacionalidadesAutor nacionalidad = (NacionalidadesAutor) actualizarAutorView.getCboNacionalidadesActualizar().getSelectedItem();
 
-            NacionalidadesAutor nacionalidad= (NacionalidadesAutor) actualizarAutorView.getCboNacionalidadesActualizar().getSelectedItem();
-                    
-            Autor autorActualizado = new Autor();
+                Autor autorActualizado = new Autor();
 
-            autorActualizado.setCodigo(codigo2);
-            autorActualizado.setNombre(nombre);
-            autorActualizado.setNacionalidad(nacionalidad);
+                autorActualizado.setCodigo(codigo2);
+                autorActualizado.setNombre(nombre);
+                autorActualizado.setNacionalidad(nacionalidad);
 
-            autorDAO.actualizar(codigo2, autorActualizado);
+                autorDAO.actualizar(codigo2, autorActualizado);
 
-            actualizarAutorView.mostrarInformacion("Autor actualizado correctamente");
-                    
+                actualizarAutorView.mostrarInformacion("autorActualizado");
+
+            }
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null,
+                    bundle.getString("errorFormatoCodigoIncorrecto"));
+        } catch (AutorNoEncontradoException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-       }catch(ValidarCamposException e){
-           JOptionPane.showMessageDialog(null, e.getMessage()); 
-       }catch(NumberFormatException e){
-           JOptionPane.showMessageDialog(null, "Formato de codigo incorrecto");
-       }catch(AutorNoEncontradoException e){
-           JOptionPane.showMessageDialog(null, e.getMessage());
-       }
     }
 
     public void cargarNacionalidadesActualizar() {
@@ -292,57 +306,50 @@ public class AutorController {
     }
 
     public void agregarAutor() {
-     try {
-        String codigo = agregarAutorView.getTxtCodigoAgregarAutorView().getText();
-        String nombre = agregarAutorView.getTxtNombreAgregarAutorView().getText();
-        
-            
-        validarCampos(nombre,codigo);                           
+        try {
+            String codigo = agregarAutorView.getTxtCodigoAgregarAutorView().getText();
+            String nombre = agregarAutorView.getTxtNombreAgregarAutorView().getText();
 
-        NacionalidadesAutor nacionalidad
-                = (NacionalidadesAutor) agregarAutorView
-                        .getCboNacionalidadesAgregar()
-                        .getSelectedItem();
-        int codigo2 = Integer.parseInt(codigo);
-        Autor autor = autorDAO.buscar(codigo2);
-  
-        if (autor != null) {
+            validarCampos(nombre, codigo);
 
-            agregarAutorView.mostrarInformacion( "Ya existe un autor con ese código");
-                   
+            NacionalidadesAutor nacionalidad
+                    = (NacionalidadesAutor) agregarAutorView
+                            .getCboNacionalidadesAgregar()
+                            .getSelectedItem();
+            int codigo2 = Integer.parseInt(codigo);
+            Autor autor = autorDAO.buscar(codigo2);
 
-        } else {
+            if (autor != null) {
 
-            Autor nuevoAutor = new Autor(codigo2,nombre,nacionalidad);
-            autorDAO.crear(nuevoAutor);
+                agregarAutorView.mostrarInformacion("autorYaExiste");
 
-            agregarAutorView.mostrarInformacion("Autor agregado exitosamente");
-                    
+            } else {
+
+                Autor nuevoAutor = new Autor(codigo2, nombre, nacionalidad);
+                autorDAO.crear(nuevoAutor);
+
+                agregarAutorView.mostrarInformacion("autorAgregado");
+
+            }
+
+        } catch (ValidarCamposException e) {
+            JOptionPane.showMessageDialog(agregarAutorView, e.getMessage());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(agregarAutorView, "El codigo debe ser numerico");
         }
+    }
 
-    
-    }catch (ValidarCamposException e){
-       JOptionPane.showMessageDialog(agregarAutorView, e.getMessage());
-    }catch (NumberFormatException e) {
-       JOptionPane.showMessageDialog(agregarAutorView, "El codigo debe ser numerico");
-    }
-    }
-    
-    
-    
-    public void validarCampos(String nombre , String codigo) throws ValidarCamposException {
-        if( codigo.isEmpty() || nombre.isEmpty()){
-            throw new ValidarCamposException ("No pueden existir campos vacios");
+    public void validarCampos(String nombre, String codigo) throws ValidarCamposException {
+        if (codigo.isEmpty() || nombre.isEmpty()) {
+            throw new ValidarCamposException("No pueden existir campos vacios");
         }
         try {
             Integer.parseInt(codigo);
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new ValidarCamposException("El codigo debe ser entero");
         }
     }
-    
-    
-    
+
     public void cargarNacionalidadesAgregar() {
 
         agregarAutorView.getCboNacionalidadesAgregar().removeAllItems();
