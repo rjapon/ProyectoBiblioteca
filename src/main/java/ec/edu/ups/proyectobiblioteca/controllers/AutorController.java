@@ -6,6 +6,7 @@ package ec.edu.ups.proyectobiblioteca.controllers;
 
 import ec.edu.ups.proyectobiblioteca.dao.AutorDAO;
 import ec.edu.ups.proyectobiblioteca.enums.NacionalidadesAutor;
+import ec.edu.ups.proyectobiblioteca.exceptions.AutorNoEncontradoException;
 import ec.edu.ups.proyectobiblioteca.exceptions.ValidarCamposException;
 import ec.edu.ups.proyectobiblioteca.models.Autor;
 import ec.edu.ups.proyectobiblioteca.views.ActualizarAutorView;
@@ -214,12 +215,18 @@ public class AutorController {
 
        try{
            
-        int codigo = Integer.parseInt(actualizarAutorView.getTxtCodigoActulizarAutorView().getText());
-        String nombre = actualizarAutorView.getTxtNombreActualizarAutorView().getText();
-            if(nombre.isEmpty()){
-                throw new ValidarCamposException("Campo de nombre vacio");
+        String codigo = actualizarAutorView.getTxtCodigoActulizarAutorView().getText().trim();
+        String nombre = actualizarAutorView.getTxtNombreActualizarAutorView().getText().trim();
+        
+        if(nombre.isEmpty() || codigo.isEmpty()){
+                throw new ValidarCamposException("Error - campos vacios");
             }
+        int codigo2 = Integer.parseInt(codigo);
+        Autor autor = autorDAO.buscar(codigo2);
 
+        if (autor == null) {
+             throw new AutorNoEncontradoException("No se encontró el autor");
+         }
         int respuesta = JOptionPane.showConfirmDialog(
                 actualizarAutorView,
                 "¿Deseas actualizar el autor?",
@@ -234,17 +241,21 @@ public class AutorController {
                     
             Autor autorActualizado = new Autor();
 
-            autorActualizado.setCodigo(codigo);
+            autorActualizado.setCodigo(codigo2);
             autorActualizado.setNombre(nombre);
             autorActualizado.setNacionalidad(nacionalidad);
 
-            autorDAO.actualizar(codigo, autorActualizado);
+            autorDAO.actualizar(codigo2, autorActualizado);
 
             actualizarAutorView.mostrarInformacion("Autor actualizado correctamente");
                     
         }
        }catch(ValidarCamposException e){
            JOptionPane.showMessageDialog(null, e.getMessage()); 
+       }catch(NumberFormatException e){
+           JOptionPane.showMessageDialog(null, "Formato de codigo incorrecto");
+       }catch(AutorNoEncontradoException e){
+           JOptionPane.showMessageDialog(null, e.getMessage());
        }
     }
 

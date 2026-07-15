@@ -3,6 +3,8 @@ package ec.edu.ups.proyectobiblioteca.controllers;
 import ec.edu.ups.proyectobiblioteca.dao.LibroDAO;
 import ec.edu.ups.proyectobiblioteca.dao.PrestamoDAO;
 import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAO;
+import ec.edu.ups.proyectobiblioteca.exceptions.CedulaInvalidaException;
+import ec.edu.ups.proyectobiblioteca.exceptions.ValidarCamposException;
 import ec.edu.ups.proyectobiblioteca.models.Libro;
 import ec.edu.ups.proyectobiblioteca.models.Prestamo;
 import ec.edu.ups.proyectobiblioteca.models.Usuario;
@@ -60,47 +62,59 @@ public class PrestamoController {
     }
 
     public void crearPrestamo() {
-
-        int codigo = Integer.parseInt(
-                crearPrestamoView.getTxtCodigoCrear().getText());
-
-        Prestamo prestamoExistente = prestamoDAO.buscar(codigo);
+      
+      try{
+        String codigo = crearPrestamoView.getTxtCodigoCrear().getText().trim();
+                
+        if ( codigo.isEmpty()){
+            throw new ValidarCamposException("Error- campos vacios");
+        }
+        int codigo2 = Integer.parseInt(codigo);
+        Prestamo prestamoExistente = prestamoDAO.buscar(codigo2);
 
         if (prestamoExistente != null) {
 
-            crearPrestamoView.mostrarInformacion(
-                    "Ya existe un préstamo con ese código");
+            crearPrestamoView.mostrarInformacion( "Ya existe un préstamo con ese código");
+                   
             return;
         }
 
-        String cedula = crearPrestamoView
-                .getTxtCedulaCrear().getText();
+        String cedula = crearPrestamoView.getTxtCedulaCrear().getText();
+        if (cedula.isEmpty()){
+            throw new ValidarCamposException("Error-campos vacios");
+        } 
+        
+        if( cedula.length()!= 10){
+            throw new CedulaInvalidaException("Error - cedula invalida");
+        }
 
         Usuario usuario = usuarioDAO.buscar(cedula);
 
         if (usuario == null) {
 
-            crearPrestamoView.mostrarInformacion(
-                    "No existe el usuario");
+            crearPrestamoView.mostrarInformacion("No existe el usuario");
+                    
             return;
         }
 
-        String isbn = crearPrestamoView
-                .getTxtISBNCrear().getText();
+        String isbn = crearPrestamoView.getTxtISBNCrear().getText();
+        if(isbn.isEmpty()){
+            throw new ValidarCamposException("Error- campos vacios");
+        }    
 
         Libro libro = libroDAO.buscar(isbn);
 
         if (libro == null) {
 
-            crearPrestamoView.mostrarInformacion(
-                    "No existe el libro");
+            crearPrestamoView.mostrarInformacion( "No existe el libro");
+                   
             return;
         }
 
         if (!libro.isDisponible()) {
 
-            crearPrestamoView.mostrarInformacion(
-                    "El libro no está disponible");
+            crearPrestamoView.mostrarInformacion( "El libro no está disponible");
+                   
             return;
         }
 
@@ -118,12 +132,12 @@ public class PrestamoController {
                 crearPrestamoView.getComboBoxAnioDevolucion()
                         .getSelectedItem().toString());
 
-        LocalDate fechaDevolucion
-                = LocalDate.of(anio, mes, dia);
+        LocalDate fechaDevolucion= LocalDate.of(anio, mes, dia);
+                
 
         Prestamo prestamo = new Prestamo();
 
-        prestamo.setCodigo(codigo);
+        prestamo.setCodigo(codigo2);
         prestamo.setFechaPrestamo(fechaPrestamo);
         prestamo.setFechaDevolucion(fechaDevolucion);
         prestamo.setUsuario(usuario);
@@ -134,6 +148,14 @@ public class PrestamoController {
 
         crearPrestamoView.mostrarInformacion(
                 "Préstamo creado correctamente");
+      }catch(ValidarCamposException e){
+          JOptionPane.showMessageDialog(null, e.getMessage());
+          
+      }catch(NumberFormatException e){
+          JOptionPane.showMessageDialog(null, "El codigo debe ser entero ");
+      }catch(CedulaInvalidaException e){
+          JOptionPane.showMessageDialog(null, e.getMessage());
+      }
     }
 
     public void configurarEventosCrearPrestamo() {
@@ -180,8 +202,8 @@ public class PrestamoController {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String isbn
-                        = crearPrestamoView.getTxtISBNCrear().getText();
+                String isbn= crearPrestamoView.getTxtISBNCrear().getText();
+                        
 
                 Libro libro = libroDAO.buscar(isbn);
 
@@ -222,36 +244,41 @@ public class PrestamoController {
 
     public void buscarPrestamo() {
 
-        int codigo = Integer.parseInt(
-                buscarPrestamoView.getTxtCodigoBuscar().getText());
-
-        Prestamo prestamo = prestamoDAO.buscar(codigo);
-
+      try{
+        String codigo = buscarPrestamoView.getTxtCodigoBuscar().getText().trim();
+                
+        if( codigo.isEmpty()){
+            throw new ValidarCamposException("Error - campos vacios");
+        }
+        
+        int codigo2 = Integer.parseInt(codigo);
+        Prestamo prestamo = prestamoDAO.buscar(codigo2);
+        
         if (prestamo != null) {
 
             DateTimeFormatter formatter
                     = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-            buscarPrestamoView.getTxtUsuarioBuscar()
-                    .setText(prestamo.getUsuario().getNombre());
+            buscarPrestamoView.getTxtUsuarioBuscar().setText(prestamo.getUsuario().getNombre());
+                    
 
-            buscarPrestamoView.getTxtCedulaBuscar()
-                    .setText(prestamo.getUsuario().getCedula());
+            buscarPrestamoView.getTxtCedulaBuscar().setText(prestamo.getUsuario().getCedula());
+                    
 
-            buscarPrestamoView.getTxtLibroBuscar()
-                    .setText(prestamo.getLibro().getTitulo());
+            buscarPrestamoView.getTxtLibroBuscar() .setText(prestamo.getLibro().getTitulo());
+                   
 
-            buscarPrestamoView.getTxtAutorBuscar()
-                    .setText(prestamo.getLibro().getAutor().getNombre());
+            buscarPrestamoView.getTxtAutorBuscar().setText(prestamo.getLibro().getAutor().getNombre());
+                    
 
-            buscarPrestamoView.getTxtISBNBuscar()
-                    .setText(prestamo.getLibro().getISBN());
+            buscarPrestamoView.getTxtISBNBuscar().setText(prestamo.getLibro().getISBN());
+                    
 
-            buscarPrestamoView.getTxtFechaBuscar()
-                    .setText(prestamo.getFechaPrestamo().format(formatter));
+            buscarPrestamoView.getTxtFechaBuscar().setText(prestamo.getFechaPrestamo().format(formatter));
+                    
 
-            buscarPrestamoView.getTxtFechaDevBuscar()
-                    .setText(prestamo.getFechaDevolucion().format(formatter));
+            buscarPrestamoView.getTxtFechaDevBuscar().setText(prestamo.getFechaDevolucion().format(formatter));
+                    
 
             buscarPrestamoView.getTxtEstadoBuscar()
                     .setText(prestamo.getLibro().isDisponible()
@@ -260,10 +287,15 @@ public class PrestamoController {
 
         } else {
 
-            buscarPrestamoView.mostrarInformacion(
-                    "No se encontró el préstamo");
+            buscarPrestamoView.mostrarInformacion("No se encontró el préstamo");
+                    
         }
-
+      }catch(ValidarCamposException e){
+          JOptionPane.showMessageDialog(null, e.getMessage());
+          
+      }catch(NumberFormatException e){
+          JOptionPane.showMessageDialog(null, "Error-El codigo debe ser entero");
+      }
     }
 
     public void configurarEventosBuscarPrestamo() {
@@ -283,11 +315,15 @@ public class PrestamoController {
     }
 
     public void buscarPrestamoEliminar() {
-
-        int codigo = Integer.parseInt(
-                eliminarPrestamoView.getTxtCodigoEliminar().getText());
-
-        Prestamo prestamo = prestamoDAO.buscar(codigo);
+     
+      try{
+        String codigo = eliminarPrestamoView.getTxtCodigoEliminar().getText().trim();
+        
+        if(codigo.isEmpty()){
+            throw new ValidarCamposException("Error - campos vacios");
+        }
+        int codigo2 = Integer.parseInt(codigo);
+        Prestamo prestamo = prestamoDAO.buscar(codigo2);
 
         if (prestamo != null) {
 
@@ -311,17 +347,28 @@ public class PrestamoController {
 
         } else {
 
-            eliminarPrestamoView.mostrarInformacion(
-                    "No se encontró el préstamo");
+            eliminarPrestamoView.mostrarInformacion("No se encontró el préstamo");
+                    
         }
+      }catch(ValidarCamposException e){
+          JOptionPane.showMessageDialog(null, e.getMessage());
+          
+      }catch(NumberFormatException e){
+          JOptionPane.showMessageDialog(null, "Error - formato de codigo incorrecto");
+          
+      }
     }
 
     public void eliminarPrestamo() {
-
-        int codigo = Integer.parseInt(
-                eliminarPrestamoView.getTxtCodigoEliminar().getText());
-
-        Prestamo prestamo = prestamoDAO.buscar(codigo);
+     
+     try{
+        String codigo = eliminarPrestamoView.getTxtCodigoEliminar().getText().trim();
+        
+        if(codigo.isEmpty()){
+            throw new ValidarCamposException("Error- campos vacios");
+        }
+        int codigo2 = Integer.parseInt(codigo);
+        Prestamo prestamo = prestamoDAO.buscar(codigo2);
 
         if (prestamo != null) {
 
@@ -335,7 +382,7 @@ public class PrestamoController {
 
                 libroDAO.cambiarDisponibilidad(prestamo.getLibro().getISBN(),true);
 
-                prestamoDAO.eliminar(codigo);
+                prestamoDAO.eliminar(codigo2);
 
                 eliminarPrestamoView.mostrarInformacion(
                         "Préstamo eliminado correctamente");
@@ -353,6 +400,12 @@ public class PrestamoController {
             eliminarPrestamoView.mostrarInformacion(
                     "No existe el préstamo");
         }
+     }catch(ValidarCamposException e){
+         JOptionPane.showMessageDialog(null, e.getMessage());
+         
+     }catch(NumberFormatException e){
+         JOptionPane.showMessageDialog(null, "Error- formato de codigo incorrecto");
+     }
     }
 
     public void configurarEventosBuscarEliminarPrestamo() {
@@ -384,11 +437,16 @@ public class PrestamoController {
     }
 
     public void buscarPrestamoActualizar() {
-
-        int codigo = Integer.parseInt(
-                actualizarPrestamoView.getTxtCodigoActualizar().getText());
-
-        Prestamo prestamo = prestamoDAO.buscar(codigo);
+     
+     try{
+        String codigo = actualizarPrestamoView.getTxtCodigoActualizar().getText().trim();
+        
+        if(codigo.isEmpty()){
+            throw new ValidarCamposException("Error- campos vacios");
+        }
+        
+        int codigo2 = Integer.parseInt(codigo);
+        Prestamo prestamo = prestamoDAO.buscar(codigo2);
 
         if (prestamo != null) {
 
@@ -426,14 +484,24 @@ public class PrestamoController {
             actualizarPrestamoView.mostrarInformacion(
                     "No se encontró el préstamo");
         }
+     }catch (ValidarCamposException e){
+         JOptionPane.showMessageDialog(null, e.getMessage());
+     }catch (NumberFormatException e){
+         JOptionPane.showMessageDialog(null, "Error- formato de codigo incorrecto");
+     }
     }
 
     public void actualizarPrestamo() {
-
-        int codigo = Integer.parseInt(
-                actualizarPrestamoView.getTxtCodigoActualizar().getText());
-
-        Prestamo prestamo = prestamoDAO.buscar(codigo);
+     
+      try{
+        String codigo = actualizarPrestamoView.getTxtCodigoActualizar().getText().trim();
+        
+        if(codigo.isEmpty()){
+            throw new ValidarCamposException("Error - campos vacios");
+        }
+        
+        int codigo2 = Integer.parseInt(codigo);
+        Prestamo prestamo = prestamoDAO.buscar(codigo2);
 
         if (prestamo != null) {
 
@@ -453,7 +521,7 @@ public class PrestamoController {
 
             prestamo.setFechaDevolucion(fechaDevolucion);
 
-            prestamoDAO.actualizar(codigo, prestamo);
+            prestamoDAO.actualizar(codigo2, prestamo);
 
             actualizarPrestamoView.mostrarInformacion(
                     "Préstamo actualizado correctamente");
@@ -463,6 +531,12 @@ public class PrestamoController {
             actualizarPrestamoView.mostrarInformacion(
                     "No existe el préstamo");
         }
+      }catch(ValidarCamposException e){
+          JOptionPane.showMessageDialog(null, e.getMessage());
+          
+      }catch(NumberFormatException e){
+          JOptionPane.showMessageDialog(null, "Error - formato de codigo invalido");
+      }
     }
 
     public void configurarEventosActualizarPrestamo() {
