@@ -106,7 +106,7 @@
                                       <Component id="txtTelefonoActualizarUsuario" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="txtCorreoE" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCorreoUsuario" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -147,7 +147,7 @@
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtCorreoElectronico" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCorreoE" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCorreoUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -259,7 +259,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTituloActualizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -268,7 +268,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel4" pref="55" max="32767" attributes="0"/>
+                      <Component id="lblTituloActualizar" pref="55" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
               </Group>
