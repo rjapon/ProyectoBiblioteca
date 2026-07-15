@@ -98,6 +98,8 @@ public class ListarLibroView extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Listar Libros");
 
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+
         tblListar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -130,8 +132,9 @@ public class ListarLibroView extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btlListar)
                 .addGap(0, 7, Short.MAX_VALUE))
         );
