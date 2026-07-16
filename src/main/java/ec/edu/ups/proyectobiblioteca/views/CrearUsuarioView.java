@@ -157,6 +157,9 @@ public class CrearUsuarioView extends javax.swing.JInternalFrame {
         lblTituloCrear = new javax.swing.JLabel();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Crear Usuario");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

@@ -146,6 +146,9 @@ public class EliminarUsuarioView extends javax.swing.JInternalFrame {
         txtCallePrincipal = new javax.swing.JTextField();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Eliminar Usuario");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

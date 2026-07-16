@@ -108,6 +108,9 @@ public class BuscarAutorView extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTextPane1);
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Buscar Autor");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

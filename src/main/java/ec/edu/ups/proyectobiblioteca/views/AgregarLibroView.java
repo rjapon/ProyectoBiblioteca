@@ -165,6 +165,8 @@ public class AgregarLibroView extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setResizable(true);
         setTitle("Agregar Libro");
 

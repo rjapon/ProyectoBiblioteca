@@ -220,6 +220,8 @@ public class CrearPrestamoView extends javax.swing.JInternalFrame {
         jSeparator2 = new javax.swing.JSeparator();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setResizable(true);
         setTitle("Crear Prestamo\n");
 

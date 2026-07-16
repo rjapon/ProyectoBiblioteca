@@ -120,6 +120,9 @@ public class EliminarAutorView extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Eliminar Autor");
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 102));

@@ -189,6 +189,9 @@ public class ActualizarUsuarioView extends javax.swing.JInternalFrame {
         cbxCiudad = new javax.swing.JComboBox<>();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Actualizar Usuario");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));

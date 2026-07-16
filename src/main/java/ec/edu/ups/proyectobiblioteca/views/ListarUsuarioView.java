@@ -102,6 +102,9 @@ public class ListarUsuarioView extends javax.swing.JInternalFrame {
         btnListar = new javax.swing.JButton();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Listar Usuarios");
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));

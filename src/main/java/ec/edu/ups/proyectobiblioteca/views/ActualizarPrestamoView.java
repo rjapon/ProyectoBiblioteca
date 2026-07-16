@@ -195,6 +195,8 @@ public class ActualizarPrestamoView extends javax.swing.JInternalFrame {
         lblTituloActualizar = new javax.swing.JLabel();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setResizable(true);
         setTitle("Actualizar Prestamo");
 

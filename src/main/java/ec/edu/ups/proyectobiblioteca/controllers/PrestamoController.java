@@ -11,7 +11,7 @@ import ec.edu.ups.proyectobiblioteca.models.Usuario;
 import ec.edu.ups.proyectobiblioteca.views.ActualizarPrestamoView;
 import ec.edu.ups.proyectobiblioteca.views.BuscarPrestamoView;
 import ec.edu.ups.proyectobiblioteca.views.CrearPrestamoView;
-import ec.edu.ups.proyectobiblioteca.views.EliminarPrestamoView;
+import ec.edu.ups.proyectobiblioteca.views.DevolverPrestamoView;
 import ec.edu.ups.proyectobiblioteca.views.ListarPrestamoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,13 +34,13 @@ public class PrestamoController {
 
     private CrearPrestamoView crearPrestamoView;
     private ActualizarPrestamoView actualizarPrestamoView;
-    private EliminarPrestamoView eliminarPrestamoView;
+    private DevolverPrestamoView eliminarPrestamoView;
     private BuscarPrestamoView buscarPrestamoView;
     private ListarPrestamoView listarPrestamoView;
 
     private ResourceBundle bundle;
 
-    public PrestamoController(PrestamoDAO prestamoDAO, LibroDAO libroDAO, UsuarioDAO usuarioDAO, CrearPrestamoView crearPrestamoView, ActualizarPrestamoView actualizarPrestamoView, EliminarPrestamoView eliminarPrestamoView, BuscarPrestamoView buscarPrestamoView, ListarPrestamoView listarPrestamoView) {
+    public PrestamoController(PrestamoDAO prestamoDAO, LibroDAO libroDAO, UsuarioDAO usuarioDAO, CrearPrestamoView crearPrestamoView, ActualizarPrestamoView actualizarPrestamoView, DevolverPrestamoView eliminarPrestamoView, BuscarPrestamoView buscarPrestamoView, ListarPrestamoView listarPrestamoView) {
 
         this.prestamoDAO = prestamoDAO;
         this.libroDAO = libroDAO;

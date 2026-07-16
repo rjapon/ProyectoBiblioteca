@@ -14,14 +14,14 @@ import javax.swing.JTextField;
  *
  * @author Asus
  */
-public class EliminarPrestamoView extends javax.swing.JInternalFrame {
+public class DevolverPrestamoView extends javax.swing.JInternalFrame {
     
     private ResourceBundle bundle;
 
     /**
      * Creates new form EliminarPrestamoView
      */
-    public EliminarPrestamoView() {
+    public DevolverPrestamoView() {
         initComponents();
     }
 
@@ -154,8 +154,10 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setResizable(true);
-        setTitle("Eliminar Prestamo ");
+        setTitle("Devolver Prestamo ");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Bright", 0, 12))); // NOI18N
@@ -213,7 +215,7 @@ public class EliminarPrestamoView extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
         lblEliminarTitulo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        lblEliminarTitulo.setText("Eliminar Préstamo");
+        lblEliminarTitulo.setText("Dévolver Préstamo");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

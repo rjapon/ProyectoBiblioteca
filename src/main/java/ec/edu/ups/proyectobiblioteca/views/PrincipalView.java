@@ -45,7 +45,7 @@ public class PrincipalView extends javax.swing.JFrame {
 
     private EliminarAutorView eliminarAutorView;
     private EliminarLibroView eliminarLibroView;
-    private EliminarPrestamoView eliminarPrestamoView;
+    private DevolverPrestamoView eliminarPrestamoView;
     private EliminarUsuarioView eliminarUsuarioView;
 
     private ListarLibroView listarLibroView;
@@ -85,7 +85,7 @@ public class PrincipalView extends javax.swing.JFrame {
         crearUsuarioView = new CrearUsuarioView();
         eliminarAutorView = new EliminarAutorView();
         eliminarLibroView = new EliminarLibroView();
-        eliminarPrestamoView = new EliminarPrestamoView();
+        eliminarPrestamoView = new DevolverPrestamoView();
         eliminarUsuarioView = new EliminarUsuarioView();
         listarLibroView = new ListarLibroView();
         listarUsuarioView = new ListarUsuarioView();
@@ -148,7 +148,7 @@ public class PrincipalView extends javax.swing.JFrame {
         PrestamoMenu.setText(bundle.getString("prestamoMenu"));
         CrearPrestamoMenuItem.setText(bundle.getString("crearMenuItem"));
         BuscarPrestamoMenuItem.setText(bundle.getString("buscarMenuItem"));
-        EliminarPrestamoMenuItem.setText(bundle.getString("eliminarMenuItem"));
+        EliminarPrestamoMenuItem.setText(bundle.getString("devolverMenuItem"));
         ActualizarPrestamoMenuItem.setText(bundle.getString("actualizarMenuItem"));
         ListarPrestamoMenuItem.setText(bundle.getString("listarMenuItem"));
 
@@ -240,7 +240,7 @@ public class PrincipalView extends javax.swing.JFrame {
         BuscarPrestamoMenuItem.addActionListener(this::BuscarPrestamoMenuItemActionPerformed);
         PrestamoMenu.add(BuscarPrestamoMenuItem);
 
-        EliminarPrestamoMenuItem.setText("Eliminar");
+        EliminarPrestamoMenuItem.setText("Devolver");
         EliminarPrestamoMenuItem.addActionListener(this::EliminarPrestamoMenuItemActionPerformed);
         PrestamoMenu.add(EliminarPrestamoMenuItem);
 

@@ -112,6 +112,9 @@ public class ActualizarAutorView extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Actualizar Autor");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

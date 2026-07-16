@@ -93,6 +93,9 @@ public class ListarAutorView extends javax.swing.JInternalFrame {
         BtnListar = new javax.swing.JButton();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Listar Autores");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
