@@ -41,7 +41,7 @@ public class AutorDAOArchivo implements AutorDAO{
             caracteres[i] = archivo.readChar();
         }
         
-         return new String(caracteres).trim();
+         return new String(caracteres).trim();     
     }
     private void escribirAutor(RandomAccessFile archivo, Autor autor) throws IOException{
         
@@ -230,7 +230,7 @@ public class AutorDAOArchivo implements AutorDAO{
             archivo.seek(i * TAM_REGISTRO);
 
 
-           int codigo = archivo.readInt();
+            int codigo = archivo.readInt();
 
             String nombre = leerTexto(archivo, TAM_NOMBRE);
 
