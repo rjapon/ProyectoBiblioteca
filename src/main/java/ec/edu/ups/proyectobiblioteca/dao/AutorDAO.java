@@ -14,7 +14,7 @@ import java.util.List;
 public interface AutorDAO {
     void crear(Autor autor);
     Autor buscar(int codigo);
-    void actualizar(int codigo, Autor autor);
+    void actualizar( Autor autor);
     void eliminar(int codigo);
     Autor buscarPorNombre(String nombre);
     List<Autor>listar();

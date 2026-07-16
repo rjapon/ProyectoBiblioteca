@@ -266,7 +266,7 @@ public class AutorController {
                 autorActualizado.setNombre(nombre);
                 autorActualizado.setNacionalidad(nacionalidad);
 
-                autorDAO.actualizar(codigo2, autorActualizado);
+                autorDAO.actualizar( autorActualizado);
 
                 actualizarAutorView.mostrarInformacion("autorActualizado");
 
