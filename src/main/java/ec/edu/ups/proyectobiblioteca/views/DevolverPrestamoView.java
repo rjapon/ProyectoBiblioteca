@@ -185,8 +185,8 @@ public class DevolverPrestamoView extends javax.swing.JInternalFrame {
         lblAutorEliminar.setText("Autor:");
 
         btnEliminar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/eliminar.png"))); // NOI18N
-        btnEliminar.setText("Eliminar");
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/ups/proyectobiblioteca/images/10633837_resized.png"))); // NOI18N
+        btnEliminar.setText("Devolver");
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
         btnCancelar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
