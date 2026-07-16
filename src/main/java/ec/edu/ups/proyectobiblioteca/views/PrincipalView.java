@@ -9,12 +9,16 @@ import ec.edu.ups.proyectobiblioteca.controllers.LibroController;
 import ec.edu.ups.proyectobiblioteca.controllers.PrestamoController;
 import ec.edu.ups.proyectobiblioteca.controllers.UsuarioController;
 import ec.edu.ups.proyectobiblioteca.dao.AutorDAO;
+import ec.edu.ups.proyectobiblioteca.dao.AutorDAOArchivo;
 import ec.edu.ups.proyectobiblioteca.dao.AutorDAOMemoria;
 import ec.edu.ups.proyectobiblioteca.dao.LibroDAO;
+import ec.edu.ups.proyectobiblioteca.dao.LibroDAOArchivo;
 import ec.edu.ups.proyectobiblioteca.dao.LibroDAOMemoria;
 import ec.edu.ups.proyectobiblioteca.dao.PrestamoDAO;
+import ec.edu.ups.proyectobiblioteca.dao.PrestamoDAOArchivo;
 import ec.edu.ups.proyectobiblioteca.dao.PrestamoDAOMemoria;
 import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAO;
+import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAOArchivo;
 import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAOMemoria;
 import java.awt.Image;
 import java.util.Locale;
@@ -70,7 +74,8 @@ public class PrincipalView extends javax.swing.JFrame {
 
         initComponents();
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
-
+        
+        
         actualizarAutorView = new ActualizarAutorView();
         actualizarLibroView = new ActualizarLibroView();
         actualizarPrestamoView = new ActualizarPrestamoView();
@@ -92,11 +97,28 @@ public class PrincipalView extends javax.swing.JFrame {
         listarPrestamoView = new ListarPrestamoView();
         listarAutorView = new ListarAutorView();
 
-        usuarioDAO = new UsuarioDAOMemoria();
-        autorDAO = new AutorDAOMemoria();
-        libroDAO = new LibroDAOMemoria();
-        prestamoDAO = new PrestamoDAOMemoria();
-
+        Object[] opciones = {"Memoria", "Archivos binarios"};
+         int opcion = javax.swing.JOptionPane.showOptionDialog(this,
+            "Seleccione el mecanismo de persistencia",
+            "Persistencia",
+            javax.swing.JOptionPane.DEFAULT_OPTION,
+            javax.swing.JOptionPane.QUESTION_MESSAGE,
+            null, opciones, opciones[0]);
+         
+         if (opcion == 0){
+             usuarioDAO = new UsuarioDAOMemoria();
+             autorDAO = new AutorDAOMemoria();
+             libroDAO = new LibroDAOMemoria();
+             prestamoDAO = new PrestamoDAOMemoria();
+         }
+         else{
+             usuarioDAO= new UsuarioDAOArchivo();
+             autorDAO = new AutorDAOArchivo();
+             libroDAO = new LibroDAOArchivo(autorDAO);
+             prestamoDAO = new PrestamoDAOArchivo(libroDAO,usuarioDAO);
+         
+         }
+    
         usuarioController = new UsuarioController(crearUsuarioView, actualizarUsuarioView, eliminarUsuarioView, buscarUsuarioView, listarUsuarioView, usuarioDAO);
         autorController = new AutorController(actualizarAutorView, agregarAutorView, eliminarAutorView, buscarAutorView, listarAutorView, autorDAO);
         prestamoController = new PrestamoController(prestamoDAO, libroDAO, usuarioDAO, crearPrestamoView, actualizarPrestamoView, eliminarPrestamoView, buscarPrestamoView, listarPrestamoView);

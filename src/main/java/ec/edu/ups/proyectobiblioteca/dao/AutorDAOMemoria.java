@@ -36,10 +36,10 @@ public class AutorDAOMemoria implements AutorDAO {
     }
 
     @Override
-    public void actualizar(int codigo, Autor autor) {
+    public void actualizar( Autor autor) {
         for (int i = 0; i < lista.size(); i++) {
             Autor autorEncontrado = lista.get(i);
-            if (autorEncontrado.getCodigo() == codigo) {
+            if (autorEncontrado.getCodigo() == autor.getCodigo()) {
                 lista.set(i, autor);
                 break;
             }
