@@ -350,7 +350,7 @@ public class UsuarioController {
 
             int respuesta = JOptionPane.showConfirmDialog(
                     actualizarUsuarioView,
-                    bundle.getString("confirmarActualizarUsuario"),
+                    bundle.getString("confirmarEliminarUsuario"),
                     bundle.getString("tituloConfirmacion"),
                     JOptionPane.YES_NO_OPTION);
 
