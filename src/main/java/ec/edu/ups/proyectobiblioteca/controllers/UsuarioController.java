@@ -7,6 +7,7 @@ package ec.edu.ups.proyectobiblioteca.controllers;
 import ec.edu.ups.proyectobiblioteca.dao.UsuarioDAO;
 import ec.edu.ups.proyectobiblioteca.enums.CiudadesUsuario;
 import ec.edu.ups.proyectobiblioteca.exceptions.CedulaInvalidaException;
+import ec.edu.ups.proyectobiblioteca.exceptions.TelefonoInvalidoException;
 import ec.edu.ups.proyectobiblioteca.exceptions.UsuarioNoEncontradoException;
 import ec.edu.ups.proyectobiblioteca.exceptions.ValidarCamposException;
 import ec.edu.ups.proyectobiblioteca.models.Usuario;
@@ -65,7 +66,10 @@ public class UsuarioController {
         try {
             String cedula = crearUsuarioView.getTxtCedulaCrearUsuario().getText().trim();
             String nombre = crearUsuarioView.getTxtNombreCrearUsuario().getText().trim();
-            String telefono = crearUsuarioView.getTxtTelefonoCrearUsuario().getText().trim();
+ 
+            String telefono =crearUsuarioView.getTxtTelefonoCrearUsuario().getText().trim();
+            int tele = Integer.parseInt(telefono);
+
             String correo = crearUsuarioView.getTxtCorreoElectronico().getText().trim();
             CiudadesUsuario ciudad = (CiudadesUsuario) crearUsuarioView.getCbxCiudad().getSelectedItem();
             String calleP = crearUsuarioView.getTxtCallePrincipal().getText().trim();
@@ -81,6 +85,9 @@ public class UsuarioController {
             if (cedula.length() != 10) {
                 throw new CedulaInvalidaException(bundle.getString("errorCedulaInvalida"));
             }
+             if (telefono.length() != 10) {
+                throw new TelefonoInvalidoException(bundle.getString("errorTelefono"));
+            }
 
             Usuario usuario = usuarioDAO.buscar(cedula);
 
@@ -93,7 +100,7 @@ public class UsuarioController {
                 Usuario nuevoUsuario = new Usuario(
                         nombre,
                         cedula,
-                        telefono,
+                        tele,
                         correo,
                         ciudad,
                         calleP
@@ -108,8 +115,9 @@ public class UsuarioController {
                 crearUsuarioView.getTxtTelefonoCrearUsuario().setText("");
                 crearUsuarioView.getTxtCallePrincipal().setText("");
                 crearUsuarioView.getTxtCorreoElectronico().setText("");
-
             }
+        } catch (TelefonoInvalidoException e) {
+          JOptionPane.showMessageDialog(null, e.getMessage());
         } catch (ValidarCamposException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } catch (CedulaInvalidaException e) {
@@ -142,7 +150,7 @@ public class UsuarioController {
             if (usuario != null) {
 
                 buscarUsuarioView.getTxtNombreBuscarUsuarioView().setText(usuario.getNombre());
-                buscarUsuarioView.getTxtTelefonoBuscarUsuarioView().setText(usuario.getTelefono());
+                buscarUsuarioView.getTxtTelefonoBuscarUsuarioView().setText(String.valueOf(usuario.getTelefono()));
                 buscarUsuarioView.getTxtCorreoElectronico().setText(usuario.getCorreo());
                 buscarUsuarioView.getTxtCiudad().setText(usuario.getCiudadesUsuario().toString());
                 buscarUsuarioView.getTxtCallePrincipal().setText(usuario.getCallePrincipal());
@@ -187,7 +195,7 @@ public class UsuarioController {
             if (usuario != null) {
 
                 actualizarUsuarioView.getTxtNombreActualizarUsuario().setText(usuario.getNombre());
-                actualizarUsuarioView.getTxtTelefonoActualizarUsuario().setText(usuario.getTelefono());
+                actualizarUsuarioView.getTxtTelefonoActualizarUsuario().setText(String.valueOf(usuario.getTelefono()));
                 actualizarUsuarioView.getTxtCorreoElectronico().setText(usuario.getCorreo());
                 actualizarUsuarioView.getTxtCiudad().setText(usuario.getCiudadesUsuario().toString());
                 actualizarUsuarioView.getTxtCallePrincipal().setText(usuario.getCallePrincipal());
@@ -236,12 +244,15 @@ public class UsuarioController {
                 throw new UsuarioNoEncontradoException(bundle.getString("usuarioNoEncontrado"));
             }
             String nombre = actualizarUsuarioView.getTxtNombreActualizarUsuario().getText();
-            String telefono = actualizarUsuarioView.getTxtTelefonoActualizarUsuario().getText();
+
+            int telefono = Integer.parseInt(actualizarUsuarioView.getTxtTelefonoActualizarUsuario().getText());
+            String tele = String.valueOf(telefono);
+
             String correo = actualizarUsuarioView.getTxtCorreoElectronico().getText().trim();
             CiudadesUsuario ciudad = (CiudadesUsuario) actualizarUsuarioView.getCbxCiudad().getSelectedItem();
             String calleP = actualizarUsuarioView.getTxtCallePrincipal().getText().trim();
 
-            if (nombre.isEmpty() || telefono.isEmpty() || correo.isEmpty() || calleP.isEmpty()) {
+            if (nombre.isEmpty() || tele.isEmpty() || correo.isEmpty() || calleP.isEmpty()) {
                 throw new ValidarCamposException(bundle.getString("errorCamposVacios"));
             }
 
@@ -307,7 +318,7 @@ public class UsuarioController {
             if (usuario != null) {
 
                 eliminarUsuarioview.getTxtNombreEliminarUsuario().setText(usuario.getNombre());
-                eliminarUsuarioview.getTxtTelfonoEliminarUsuario().setText(usuario.getTelefono());
+                eliminarUsuarioview.getTxtTelfonoEliminarUsuario().setText(String.valueOf(usuario.getTelefono()));
                 eliminarUsuarioview.getTxtCorreoElectronico().setText(usuario.getCorreo());
                 eliminarUsuarioview.getTxtCiudad().setText(usuario.getCiudadesUsuario().toString());
                 eliminarUsuarioview.getTxtCallePrincipal().setText(usuario.getCallePrincipal());

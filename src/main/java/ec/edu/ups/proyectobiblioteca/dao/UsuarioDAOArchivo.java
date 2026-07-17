@@ -55,7 +55,7 @@ public class UsuarioDAOArchivo implements  UsuarioDAO {
         
         escribirTexto(archivo,usuario.getNombre(),TAM_NOMBRE);
         escribirTexto(archivo,usuario.getCedula(),TAM_CEDULA);
-        escribirTexto(archivo,usuario.getTelefono(),TAM_TELEFONO);
+        escribirTexto(archivo,String.valueOf(usuario.getTelefono()),TAM_TELEFONO);
         escribirTexto(archivo,usuario.getCorreo(),TAM_CORREO);
         escribirTexto(archivo,usuario.getCiudadesUsuario().name(),TAM_CIUDAD);
         escribirTexto(archivo,usuario.getCallePrincipal(),TAM_CALLEPRINCIPAL);
@@ -96,7 +96,7 @@ public class UsuarioDAOArchivo implements  UsuarioDAO {
             
             String nombre = leerTexto(archivo, TAM_NOMBRE);
             String cedulaLeida = leerTexto(archivo, TAM_CEDULA);
-            String telefono = leerTexto(archivo, TAM_TELEFONO);
+            int telefono = Integer.parseInt(leerTexto(archivo, TAM_TELEFONO));
             String correo = leerTexto(archivo, TAM_CORREO);
             String ciudad = leerTexto(archivo, TAM_CIUDAD);
             String calle = leerTexto(archivo, TAM_CALLEPRINCIPAL);
@@ -218,7 +218,7 @@ public class UsuarioDAOArchivo implements  UsuarioDAO {
 
             usuario.setNombre(leerTexto(archivo, TAM_NOMBRE));
             usuario.setCedula(leerTexto(archivo, TAM_CEDULA));
-            usuario.setTelefono(leerTexto(archivo, TAM_TELEFONO));
+            usuario.setTelefono(Integer.parseInt(leerTexto(archivo, TAM_TELEFONO)));
             usuario.setCorreo(leerTexto(archivo, TAM_CORREO));
 
             usuario.setCiudadesUsuario(CiudadesUsuario.valueOf(leerTexto(archivo, TAM_CIUDAD)));

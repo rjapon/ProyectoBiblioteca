@@ -14,7 +14,7 @@ public class Usuario {
 
     private String nombre;
     private String cedula;
-    private String telefono;
+    private int telefono;
     private String correo;
     private CiudadesUsuario ciudadesUsuario;
     private String callePrincipal;
@@ -22,7 +22,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nombre, String cedula,String telefono,String correo,CiudadesUsuario ciudadesUsuario,String callePrincipal) {
+    public Usuario(String nombre, String cedula,int telefono,String correo,CiudadesUsuario ciudadesUsuario,String callePrincipal) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.telefono = telefono;
@@ -48,11 +48,11 @@ public class Usuario {
     }
 
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
