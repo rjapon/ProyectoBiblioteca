@@ -116,7 +116,7 @@ public class DevolverPrestamoView extends javax.swing.JInternalFrame {
         lblEliminarTitulo.setText(bundle.getString("lblTituloEliminarPrestamo"));
 
         btnBuscar.setText(bundle.getString("btnBuscar"));
-        btnEliminar.setText(bundle.getString("btnEliminar"));
+        btnEliminar.setText(bundle.getString("btnDevolver"));
         btnCancelar.setText(bundle.getString("btnCancelar"));
     }
 
